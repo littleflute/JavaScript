@@ -1,0 +1,25 @@
+Cover image for
+Personal Author:
+Spurlock, Jake.
+Title All:
+Bootstrap / Jake Spurlock.
+Author:
+Spurlock, Jake.
+Local Call Number:
+005.27
+ISBN:
+9781449343910
+Edition:
+1st ed.
+Publication Information:
+Sebastopol, CA : O'Reilly Media, 2013.
+Physical Description:
+xiv, 109 p. : ill. ; 24 cm.
+Subject Term:
+JavaScript (Computer program language)
+HTML (Document markup language)
+Cascading style sheets.
+Programming languages (Electronic computers)
+OCLC:
+811001110
+Holds: 0
