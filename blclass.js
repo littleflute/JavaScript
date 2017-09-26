@@ -1,5 +1,5 @@
 function blClass() { 
-    var _v 	= "v0.0.6";
+    var _v 	= "v0.0.7";
     var _by = "xd";
     var _UI = function()
     {       	
