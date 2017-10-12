@@ -1,5 +1,5 @@
 function blClass() { 
-    var _v 	= "v0.0.7";
+    var _v 	= "v0.0.8";
     var _by = "xd";
     var _UI = function()
     {       	
@@ -63,3 +63,4 @@ function blClass() {
         _ShowObj2Div(document,"d1");
     }
 } 
+var blPlx = blClass;
