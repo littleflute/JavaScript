@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,16 +64,20 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+#idTextarea{
+	width:500px;
+    height:200px;
+}
 </style>
 </head>
 <body>
 
 <div class="navbar">
-  <a href=".">Home</a>
-  <a href="https://github.com/littleflute/JavaScript/edit/master/runjs.html">v0.0.4</a>
+  <a href="..">Home</a>
+  <a target="_blank"  href="https://github.com/littleflute/JavaScript/edit/master/runjs.html">v0.1.0</a>
   <a target="_blank" href="https://github.com/littleflute/blog/issues/702">issue</a>
   <div class="dropdown">
-    <button class="dropbtn">Demo
+    <button class="dropbtn">Ref
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
@@ -87,8 +92,17 @@
   </div> 
 </div>
 
-<h3>RunJS</h3>
-<p>Hover over the "Dropdown" link to see the dropdown menu.</p>
-
+<h3>RunJS</h3> 
+<textarea id="idTextarea">
+alert("test");
+</textarea>
+<button id = "idRun" onclick="run()">run</button>
+<script>
+function run()
+{
+	var jstxt = document.getElementById("idTextarea");
+    eval(jstxt.value);
+}
+</script>
 </body>
 </html>
