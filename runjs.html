@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>PHP index.html</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="..">Home</a>
+  <a href=".">PHP</a>
+  <a target="_blank" href="https://github.com/littleflute/blog/issues/701">issue</a>
+  <div class="dropdown">
+    <button class="dropbtn">Demo
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="cchess">cchess</a>
+      <a href="1.html">1.html</a>
+      <a href="tryjson_php_simple.html">tryjson_php_simple.html</a>
+      <a href="php_ajax_livesearch.html">php_ajax_livesearch.html</a> 
+      <a href="php_ajax_poll.html">php_ajax_poll.html</a>  
+      <a href="php_ajax_rss_reader.html">php_ajax_rss_reader.html</a> 
+      <a href="php_ajax_xml.html">php_ajax_xml.html</a> 
+    </div>
+  </div> 
+</div>
+
+<h3>v0.0.9</h3>
+<p>Hover over the "Dropdown" link to see the dropdown menu.</p>
+
+</body>
+</html>
