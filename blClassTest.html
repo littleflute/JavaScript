@@ -7,8 +7,8 @@
 <body>
 
 <script>
-function blClass() { 
-    var _v 	= "v0.0.8";
+function blClass0() { 
+    var _v 	= "v0.0.9";
     var _by = "xd";
     var _UI = function()
     {       	
@@ -34,6 +34,30 @@ function blClass() {
     	}
     	return r; 
 	}
+    var _eLoadRunJSFile = function(worker,href) {          
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+            {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {// code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                   worker._2do(xmlhttp.responseText);
+                }
+            }
+            xmlhttp.open("GET",href,true);
+            xmlhttp.send(); 
+	}//End _eLoadRunJSFile
+    var _eRunJs = function(s){   
+            eval(s);
+        }
+
     var _ShowObj2Div = function(o2Show,idDiv) {  
     	var oBoss = document.getElementById(idDiv);
     	if(!oBoss) {
@@ -61,20 +85,56 @@ function blClass() {
       		oBoss.appendChild(d);
     	}
     }
-    this.blVerl = "0.0.1";
+    this.blVerl = "0.0.3";
+    var body = null;
     this.blRun = function()
     { 
         var uiMain = _UI();
-        var head = _eDiv(uiMain,"idHead","idHeadDiv"); 
-        var body = _eDiv(uiMain,"idBodyDiv","idBodyDiv"); 
-        var bottom = _eDiv(uiMain,"idBottomDiv","idBottomDiv"); 
-        body.style.border = "1px blue solid"; 
-        _ShowObj2Div(this,"idBodyDiv");
+        var head = _eDiv(uiMain,"idHead","htmlHeadDiv"); 
+        body = _eDiv(uiMain,"idBodyDiv","htmlBodyDiv"); 
+        var bottom = _eDiv(uiMain,"idBottomDiv","htmlBottomDiv"); 
+        body.style.border = "1px blue solid";        
+      
+    }
+    this.p			= [];
+    this.n			= 0;
+    this.blLoadPlx = function(href)
+    {
+    	var r = null; 
+        body._2do = function(s)
+        { 
+        	var xd = _eDiv(this,"xd",s); 
+            var strJS =  s;// + "var blo = new blClass;";
+            //strJS += "blo.run();";
+            _eRunJs(strJS);
+        }
+        _eLoadRunJSFile(body,href);
+        this.p[this.n] = blPlx; 
+        
+        this.n++;
+    }
+    this.blShowPlx = function(i)
+    { 
+    	var plx = this.p[i-1];
+        var oPlx = new plx;
+        _ShowObj2Div(oPlx,"idHead");
+    }
+    this.blNewPlx = function(i)
+    { 
+    	var plx = this.p[i-1];
+        var oPlx = new plx;
+        return oPlx;
     }
 } 
 
-var o = new blClass;
+var o = new blClass0;
 o.blRun();
+o.blLoadPlx("https://littleflute.github.io/JavaScript/blclass.js");
+o.blShowPlx(1);
+var p1 = o.blNewPlx(1);
+p1.run();
+
+
 </script>
 
 </body>
