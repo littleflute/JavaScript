@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,7 +75,7 @@
 
 <div class="navbar">
   <a href=".">Home</a>
-  <a target="_blank"  href="https://github.com/littleflute/JavaScript/edit/master/runjs.html">v0.1.9</a>
+  <a target="_blank"  href="https://github.com/littleflute/JavaScript/edit/master/runjs.html">v0.2.0</a>
   <a target="_blank" href="https://github.com/littleflute/blog/issues/702">issue</a>
   <div class="dropdown">
     <button class="dropbtn">PlugIn
@@ -102,6 +103,40 @@
 </div>
 
 <h3>RunJS</h3> 
+<textarea id = "idPlugIn1" style = "display:none;">
+this.blShowObj = showObj;
+this.blShowObj(this.blShowObj);
+
+ 
+function showObj(obj){
+    this.blShowObj.blV = "v0.5.4";
+    var oBoss = document.getElementById("divBlShowObj");
+    if(!oBoss) {
+       oBoss = document.createElement("div");
+       oBoss.id = "divBlShowObj";
+       oBoss.style.border = "green 1px solid";
+       document.body.appendChild(oBoss);
+     } 
+    if(!oBoss){
+        alert("boss error!");return;
+    }
+    oBoss.innerHTML = "";
+    for(i in obj)
+    {
+      var b = document.createElement("button");
+      b.id = b.innerHTML = i;
+      if(i[0]=="b"&&i[1]=="l") b.style.backgroundColor = "yellow";
+      oBoss.appendChild(b);
+      var d = document.createElement("div");
+      d.innerHTML = obj[i];
+      d.style.border = "blue 1px solid";
+      d.style.backgroundColor = "green";
+      d.style.color = "yellow";
+      oBoss.appendChild(d);
+    }
+}  
+</textarea>
+
 <textarea id="idTextarea">
 alert("test");
 </textarea>
@@ -116,7 +151,8 @@ function loadPlugIn(this_,n)
 {
     if(1==n)
     {
-    	jstxt.value = "alert('PlugIn 1');";
+		var p1 = document.getElementById("idPlugIn1");
+    	jstxt.value = p1.value;
     }
 }
 </script>
