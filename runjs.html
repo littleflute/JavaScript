@@ -75,7 +75,7 @@
 
 <div class="navbar">
   <a href=".">Home</a>
-  <a target="_blank"  href="https://github.com/littleflute/JavaScript/edit/master/runjs.html">blRunJS_v0.2.1</a>
+  <a target="_blank"  href="https://github.com/littleflute/JavaScript/edit/master/runjs.html">blRunJS_v0.2.2</a>
   <a target="_blank" href="https://github.com/littleflute/blog/issues/702">issue</a>
   <div class="dropdown">
     <button class="dropbtn">PlugIn
@@ -135,6 +135,78 @@ function showObj(obj){
     }
 }  
 </textarea>
+<textarea id = "idPlugIn2" style = "display:none;">
+function blAjax(){ 
+  this.getData = function (oBoss,src)
+  { 
+     if(!oBoss){alert("boss error!");return;}
+     if(oBoss){
+        var xmlhttp;
+	if (window.XMLHttpRequest)
+	{//"code for IE7+, Firefox, Chrome, Opera, Safari"
+		xmlhttp = new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.boss = oBoss;
+	xmlhttp.src = src;
+	xmlhttp.parseData = function(b,txt) 
+	{
+            if(b)
+            {
+              var d = document.getElementById("idParseData");
+              if(!d){ 
+		  d = document.createElement("div");
+		  d.id = "idParseData";
+	       	  xmlhttp.boss.appendChild(d);
+		  d.n = 0;
+		  d.m = 0;
+
+		  d.style.border = "red 1px solid";
+              }
+ 	      d.n++;
+              var j = JSON.parse(txt);
+              var j1 = j[0];
+	      d.innerHTML = d.m + "=m : n= " + d.n + " sell: " + j1.sell+ " - " + j1.updatetime + "<br>" + txt;
+	    }
+            else
+            {
+              d.m++;
+            }
+            
+            xmlhttp.boss.ajax.getData(xmlhttp.boss,xmlhttp.src);
+	}
+        xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			xmlhttp.parseData(true,xmlhttp.responseText); 
+		}
+                else
+                {
+                	xmlhttp.parseData(false,0); 
+                }
+	}
+	xmlhttp.open("GET",src,true);
+	xmlhttp.send();
+    }
+  } 
+} 
+var o = document.createElement("div");
+document.body.appendChild(o);
+if(o) {
+  o.ajax = new blAjax();
+  o.ajax.getData(o,"http://api.baidao.com/api/hq/npdata.do?ids=201");
+}
+else
+{
+  alert("No div");
+}
+
+}  
+</textarea>
 
 <textarea id="idTextarea">
 alert("test");
@@ -147,12 +219,11 @@ function run()
     eval(jstxt.value);
 }
 function loadPlugIn(this_,n)
-{
-    if(1==n)
-    {
-		var p1 = document.getElementById("idPlugIn1");
-    	jstxt.value = p1.value;
-    }
+{ 
+    var plxId = "idPlugIn"+n;
+	var p = document.getElementById(plxId);
+    jstxt.value = p.value;
+    
 }
 </script>
 </body>
