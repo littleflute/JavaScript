@@ -75,7 +75,7 @@
 
 <div class="navbar">
   <a href=".">Home</a>
-  <a target="_blank"  href="https://github.com/littleflute/JavaScript/edit/master/runjs.html">blRunJS_v0.2.3</a>
+  <a target="_blank"  href="https://github.com/littleflute/JavaScript/edit/master/runjs.html">blRunJS_v0.2.4</a>
   <a target="_blank" href="https://github.com/littleflute/blog/issues/702">issue</a>
   <div class="dropdown">
     <button class="dropbtn">PlugIn
@@ -150,44 +150,13 @@ function blAjax(){
 	{// code for IE6, IE5
 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	}
-	xmlhttp.boss = oBoss;
-	xmlhttp.src = src;
-	xmlhttp.parseData = function(b,txt) 
-	{
-            if(b)
-            {
-              var d = document.getElementById("idParseData");
-              if(!d){ 
-		  d = document.createElement("div");
-		  d.id = "idParseData";
-	       	  xmlhttp.boss.appendChild(d);
-		  d.n = 0;
-		  d.m = 0;
 
-		  d.style.border = "red 1px solid";
-              }
- 	      d.n++;
-              var j = JSON.parse(txt);
-              var j1 = j[0];
-	      d.innerHTML = d.m + "=m : n= " + d.n + " sell: " + j1.sell+ " - " + j1.updatetime + "<br>" + txt;
-	    }
-            else
-            {
-              d.m++;
-            }
-            
-            xmlhttp.boss.ajax.getData(xmlhttp.boss,xmlhttp.src);
-	}
         xmlhttp.onreadystatechange=function()
 	{
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		{
-			xmlhttp.parseData(true,xmlhttp.responseText); 
-		}
-                else
-                {
-                	xmlhttp.parseData(false,0); 
-                }
+		{ 
+                        oBoss._2do(xmlhttp.responseText);
+		} 
 	}
 	xmlhttp.open("GET",src,true);
 	xmlhttp.send();
@@ -197,6 +166,21 @@ function blAjax(){
 var o = document.createElement("div");
 document.body.appendChild(o);
 if(o) {
+	o._2do = function(txt) 
+	{  
+              var d = document.getElementById("idParseData");
+              if(!d){ 
+		  d = document.createElement("div");
+		  d.id = "idParseData";
+	       	  o.appendChild(d); 
+
+		  d.style.border = "green 1px solid";
+              }
+ 	      
+	      d.innerHTML =  txt;
+	      o.ajax.getData(o,"http://api.baidao.com/api/hq/npdata.do?ids=201");
+	}
+
   o.ajax = new blAjax();
   o.ajax.getData(o,"http://api.baidao.com/api/hq/npdata.do?ids=201");
 }
@@ -205,6 +189,7 @@ else
   alert("No div");
 }
  
+
 </textarea>
 
 <textarea id="idTextarea">
