@@ -76,7 +76,7 @@
 
 <div class="navbar">
   <a href=".">Home</a>
-  <a target="_blank"  href="https://github.com/littleflute/JavaScript/edit/master/runjs.html">blRunJS_v0.2.6</a>
+  <a target="_blank"  href="https://github.com/littleflute/JavaScript/edit/master/runjs.html">blRunJS_v0.2.7</a>
   <a target="_blank" href="https://github.com/littleflute/blog/issues/702">issue</a>
   <div class="dropdown">
     <button class="dropbtn">PlugIn
@@ -265,7 +265,7 @@ function blMoveDiv(btnThis)
 
 
 var o = new blMoveDiv; 
-var main = o.blDiv ( document.body,"moveDivTest","::blPlx3::_v0.0.1");
+var main = o.blDiv ( document.body,"moveDivTest","::blPlx3::_v0.0.2");
             var style ="position: absolute;";
 			style += "z-index: 9;";
 			style += "background-color: #f1f1f1;";
@@ -291,7 +291,16 @@ var ClickMsg = o.blDiv(blPlx3Body,"ClickMsg","ClickMsg");
 var bottomBar = o.blDiv(blPlx3Body,"goMsg","goMsg");
 var b101 = o.blBtn(bottomBar,"b101","b101","green");   
 var b102 = o.blBtn(bottomBar,"b102","b102","green");             
-b101.onclick = function(){alert(this.id);}
+b101.onclick = function(){
+  main.style.top = "-200px";
+  main.style.left = "200px";
+}
+                       
+b102.onclick = function(){
+  main.style.top = "200px";
+  main.style.left = "200px";
+}
+     
             
 </textarea>
 
