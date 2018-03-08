@@ -2,7 +2,7 @@ function api3() {
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 143";  
+    this.v = "v0.0. 145";  
    var _TimeFun = function(){	 				 	
        var p = bl$("id_mp3Player"); 	
       _nTime ++;
@@ -21,13 +21,16 @@ function api3() {
 
     this.blrMp3List = function(b,d){ 
             if(!d.v){
-                 d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
+                 d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]); 
+
+                 d.v4List = blo0.blDiv(d,d.id+"v4List ","v4List ",blColor[4]);
                  function _loadIssue9Comments(o) {
-				for(i in o){
-					var a = o[i].body;
-					 
-					d.v.innerHTML +=a; 
-					d.v.innerHTML += "<br>";
+				for(i in o){ 
+					 var btn = blo0.blBtn(d.v,d.v.id + "_btn_"+i, i+1,blColor[i]);
+					 btn.txt = o[i].body; 
+					 btn.onclick = function(_this){
+					        return function (){d.v4List.innerHTML = _this.txt};
+					 }(btn);
 				}
 
 			}
