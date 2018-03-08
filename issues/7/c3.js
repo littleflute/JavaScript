@@ -2,9 +2,11 @@ function api3() {
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 221";  
+    this.v = "v0.0. 222";  
 var _play = function(d){
-  alert(d.id);
+  var p = bl$("id_mp3Player"); 	
+ p.src = d.innerHTML;
+p.play();
 }
   var _makeMp3List2Div = function(d,txt){
      d.innerHTML = "";
