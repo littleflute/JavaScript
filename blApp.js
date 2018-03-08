@@ -1,7 +1,7 @@
   
 function _myJobClass()
 {
-	this.v = "v0.0.32";
+	this.v = "v0.0.33";
 	this.blrIssue3Comments = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
@@ -22,8 +22,16 @@ function _myJobClass()
 	}
 	this.blrAboutblApp= function(b,d){		
 		var s = "blrAboutMe<br>"; 
-		//s += _blhMakeLink('blclass.js ','https://littleflute.github.io/JavaScript/blApp.js','color:skyblue;','_blank');
-		//s += _blhMakeLink(' blclass.js*','https://github.com/littleflute/JavaScript/edit/master/blApp.js','color:skyblue;','_blank');
+		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/blApp.js'"
+		s += " style='color:blue;'";
+		s +=">";
+		s += " blApp.js*  ";
+		s += "</a>"; 
+		s += "<a target='_blank'  href='blApp.js'";
+		s += " style='color:yellow;'";
+		s +=">";
+		s += " blApp.js ";
+		s += "</a>"; 
 		d.innerHTML = s;
 		_on_off_div(b,d);
 	}
