@@ -1,11 +1,11 @@
   
 function _myJobClass()
 {
-	this.v = "v0.0.53";
+	this.v = "v0.0.55";
 	this.blrIssue6C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
-			d.v.innerHTML = "_loadIssue6Comments <br>"; 
+			d.v.innerHTML = "blrIssue6C <br>"; 
 			function _loadIssue6Comments(o) {
 				for(i in o){
 					var a = o[i].body;
@@ -19,6 +19,8 @@ function _myJobClass()
 			w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/6/comments", _loadIssue6Comments);		
 		}
 		_on_off_div(b,d);
+		
+		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	}
 	this.blrAbout= function(b,d){		
 		var s = "blrAboutMe<br>"; 
