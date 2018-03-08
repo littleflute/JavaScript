@@ -1,22 +1,22 @@
- var _g_ver_blApp = "v0.2. 12";
+ var _g_ver_blApp = "v0.2. 13";
 
 function _myJobClass()
 {
 	this.blrToolBar = function(b,d){
 		if(!d.tb){
-			var tb = blo0.blDiv(d,d.id + "tb","",blGrey[2]);
+			var tb = blo0.blDiv(d,d.id + "tb","",blGrey[3]);
 			d.tb = tb;
 			tb.innerHTML = "#7";
-			tb.load = blo0.blBtn(tb,tb.id + "btnLoad","loadAPI",blGrey[1]);
+			tb.load = blo0.blBtn(tb,tb.id + "btnLoad","loadAPI",blGrey[5]);
 			tb.load.onclick = function(){
-			  w3.getHttpObject("https://api.github.com/repos/littleflute/beautifullover.org/issues/3/comments", tb.load.loadApiOK);
+			  w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/7/comments", tb.load.loadApiOK);
 				tb.load.style.display = "none";
 			}
 			tb.load.loadApiOK = function (o) {
 
 			  for(i in o){
 			     var a = "var f = " + o[i].body;
-			      tb.load.b1 = blo0.blBtn(tb,tb.load.id + "b" + i,"b" + i,blGrey[1]); 
+			      tb.load.b1 = blo0.blBtn(tb,tb.load.id + "b" + i,"b" + i,blGrey[5]); 
 			      tb.load.b1.onclick = function(){eval(a); return f;}();
 			  }
 			}
