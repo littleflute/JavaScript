@@ -1,7 +1,7 @@
   
 function _myJobClass()
 {
-	this.v = "v0.0.115";
+	this.v = "v0.0.121";
 	this.blrIssue6C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
@@ -29,7 +29,7 @@ function _myJobClass()
 		s +=">";
 		s += " blApp.js*  ";
 		s += "</a>"; 
-		s += "<a target='_blank'  href='blApp.js'";
+		s += "<a target='_blank'  href='https://littleflute.github.io/JavaScript/blApp.js'";
 		s += " style='color:yellow;'";
 		s +=">";
 		s += " blApp.js ";
