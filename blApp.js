@@ -1,7 +1,7 @@
   
 function _myJobClass()
 {
-	this.v = "v0.0.31";
+	this.v = "v0.0.32";
 	this.blrIssue3Comments = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
@@ -20,10 +20,10 @@ function _myJobClass()
 		}
 		_on_off_div(b,d);
 	}
-	this.blrAboutMe= function(b,d){		
-		var s = ""; 
-		s += _blhMakeLink('blclass.js ','https://littleflute.github.io/JavaScript/blApp.js','color:skyblue;','_blank');
-		s += _blhMakeLink(' blclass.js*','https://github.com/littleflute/JavaScript/edit/master/blApp.js','color:skyblue;','_blank');
+	this.blrAboutblApp= function(b,d){		
+		var s = "blrAboutMe<br>"; 
+		//s += _blhMakeLink('blclass.js ','https://littleflute.github.io/JavaScript/blApp.js','color:skyblue;','_blank');
+		//s += _blhMakeLink(' blclass.js*','https://github.com/littleflute/JavaScript/edit/master/blApp.js','color:skyblue;','_blank');
 		d.innerHTML = s;
 		_on_off_div(b,d);
 	}
