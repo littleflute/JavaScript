@@ -1,7 +1,7 @@
-  
+ var _g_ver_blApp = "v0.1. 224";
+
 function _myJobClass()
 {
-	this.v = "v0.0.121";
 	this.blrIssue6C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
@@ -43,7 +43,7 @@ function _myJobClass()
 }
 function CBlAppClass()
 {
-	var mfUI = blo0.blMDiv(document.body, "id_div_CXdMainFrame" , "blApp: v0.1. 223 " , 0,0,150,50, blColor[2]);  
+	var mfUI = blo0.blMDiv(document.body, "id_div_CXdMainFrame" , "blApp: " + _g_ver_blApp , 0,0,150,50, blColor[2]);  
 	mfUI.style.position = "fixed"; 
 	mfUI.b1 = blo0.blBtn(mfUI,mfUI.id+"b1","+",this.v,blGrey[0]);
 	mfUI.v 	= blo0.blDiv(mfUI,mfUI.id + "v" , "mfUI.v" ,0,150,190,20,blColor[1]);   
