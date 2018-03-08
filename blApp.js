@@ -1,12 +1,12 @@
   
 function _myJobClass()
 {
-	this.v = "v0.0.42";
-	this.blrIssue3C = function(b,d){
+	this.v = "v0.0.43";
+	this.blrIssue6C = function(b,d){
 		if(!d.v){
-			d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
-			d.v.innerHTML = "_loadIssue3Comments <br>"; 
-			function _loadIssue3Comments(o) {
+			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[0]);
+			d.v.innerHTML = "_loadIssue6Comments <br>"; 
+			function _loadIssue6Comments(o) {
 				for(i in o){
 					var a = o[i].body;
 					var b = a.split("~~~html");
@@ -16,7 +16,7 @@ function _myJobClass()
 				}
 
 			}
-			w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/3/comments", _loadIssue3Comments);		
+			w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/3/comments", _loadIssue6Comments);		
 		}
 		_on_off_div(b,d);
 	}
@@ -33,7 +33,8 @@ function _myJobClass()
 		s += " blApp.js ";
 		s += "</a>"; 
 		d.innerHTML = s;
-		_on_off_div(b,d);d.style.background = d.style.background=="red"?blGrey[5]:blColor[4];
+		_on_off_div(b,d);
+		d.style.background = blGrey[0];// d.style.background=="red"?blGrey[5]:blColor[4];
 	}
 }
 function CBlAppClass()
