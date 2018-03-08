@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 14";
+ var _g_ver_blApp = "v0.2. 15";
 
 function _myJobClass()
 {
@@ -79,6 +79,7 @@ function CBlAppClass()
 		_on_off_div(this,mfUI.v);
 	}
  	mfUI.b1.click();  	mfUI.b1.click(); 
+	bl$("blrToolBar").click();	 
 	bl$("blrIssue6C").click();	bl$("blrIssue6C").click();
 	bl$("blrAbout").click();	bl$("blrAbout").click();
 }
