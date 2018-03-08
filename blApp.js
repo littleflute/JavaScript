@@ -1,7 +1,32 @@
- var _g_ver_blApp = "v0.1. 225";
+ var _g_ver_blApp = "v0.2. 11";
 
 function _myJobClass()
 {
+	this.blrToolBar = function(b,d){
+		if(!d.tb){
+			var tb = blo0.blDiv(d,d.id + "tb","",blGrey[2]);
+			d.tb = tb;
+			tb.innerHTML = "#7";
+			tb.load = blo0.blBtn(tb,tb.id + "btnLoad","loadAPI",blGrey[1]);
+			tb.load.onclick = function(){
+			  w3.getHttpObject("https://api.github.com/repos/littleflute/beautifullover.org/issues/3/comments", tb.load.loadApiOK);
+				tb.load.style.display = "none";
+			}
+			tb.load.loadApiOK = function (o) {
+
+			  for(i in o){
+			     var a = "var f = " + o[i].body;
+			      tb.load.b1 = blo0.blBtn(tb,tb.load.id + "b" + i,"b" + i,blGrey[1]); 
+			      tb.load.b1.onclick = function(){eval(a); return f;}();
+			  }
+			}
+			tb.load.click();
+		}		
+		_on_off_div(b,d);		
+		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
+	}	
+		
+		
 	this.blrIssue6C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
