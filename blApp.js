@@ -1,7 +1,7 @@
   
 function _myJobClass()
 {
-	this.v = "v0.0.111";
+	this.v = "v0.0.112";
 	this.blrIssue6C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
@@ -39,6 +39,8 @@ function _myJobClass()
 		d.style.background = blGrey[5];
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	}
+	bl$("blrIssue6C").click();	bl$("blrIssue6C").click();
+	bl$("blrAbout").click();	bl$("blrAbout").click();
 }
 function CBlAppClass()
 {
