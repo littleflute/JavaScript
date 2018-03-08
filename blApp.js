@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 23";
+ var _g_ver_blApp = "v0.2. 24";
 
 function _myJobClass()
 {
@@ -77,6 +77,8 @@ function CBlAppClass()
 
 	mfUI.b1.onclick = function(){
 		_on_off_div(this,mfUI.v);
+		var b = this;
+		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	}
  	mfUI.b1.click();   
 	bl$("blrToolBar").click();	 
