@@ -1,7 +1,7 @@
   
 function _myJobClass()
 {
-	this.v = "v0.0.25";
+	this.v = "v0.0.31";
 	this.blrIssue3Comments = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
@@ -20,10 +20,17 @@ function _myJobClass()
 		}
 		_on_off_div(b,d);
 	}
+	this.blrAboutMe= function(b,d){		
+		var s = ""; 
+		s += _blhMakeLink('blclass.js ','https://littleflute.github.io/JavaScript/blApp.js','color:skyblue;','_blank');
+		s += _blhMakeLink(' blclass.js*','https://github.com/littleflute/JavaScript/edit/master/blApp.js','color:skyblue;','_blank');
+		d.innerHTML = s;
+		_on_off_div(b,d);
+	}
 }
 function CBlAppClass()
 {
-	var mfUI = blo0.blMDiv(document.body, "id_div_CXdMainFrame" , "blApp: v0.1. 221 " , 0,0,150,50, blColor[2]);  
+	var mfUI = blo0.blMDiv(document.body, "id_div_CXdMainFrame" , "blApp: v0.1. 222 " , 0,0,150,50, blColor[2]);  
 	mfUI.style.position = "fixed"; 
 	mfUI.b1 = blo0.blBtn(mfUI,mfUI.id+"b1","+",this.v,blGrey[0]);
 	mfUI.v 	= blo0.blDiv(mfUI,mfUI.id + "v" , "mfUI.v" ,0,150,190,20,blColor[1]);   
