@@ -1,7 +1,7 @@
   
 function _myJobClass()
 {
-	this.v = "v0.0.113";
+	this.v = "v0.0.114";
 	this.blrIssue6C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
@@ -39,8 +39,7 @@ function _myJobClass()
 		d.style.background = blGrey[5];
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	}
-	bl$("blrIssue6C").click();	bl$("blrIssue6C").click();
-	bl$("blrAbout").click();	bl$("blrAbout").click();
+	
 }
 function CBlAppClass()
 {
@@ -55,6 +54,9 @@ function CBlAppClass()
 		_on_off_div(this,mfUI.v);
 	}
  	mfUI.b1.click();  	mfUI.b1.click(); 
+	bl$("blrIssue6C").click();	bl$("blrIssue6C").click();
+	bl$("blrAbout").click();	bl$("blrAbout").click();
 }
  
 var f = new CBlAppClass;    
+
