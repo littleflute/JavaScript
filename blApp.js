@@ -1,7 +1,7 @@
   
 function _myJobClass()
 {
-	this.v = "v0.0.51";
+	this.v = "v0.0.52";
 	this.blrIssue6C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
@@ -16,7 +16,7 @@ function _myJobClass()
 				}
 
 			}
-			w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/3/comments", _loadIssue6Comments);		
+			w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/6/comments", _loadIssue6Comments);		
 		}
 		_on_off_div(b,d);
 	}
@@ -34,6 +34,7 @@ function _myJobClass()
 		s += "</a>"; 
 		d.innerHTML = s;
 		_on_off_div(b,d);
+		d.style.background = blGrey[5];
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	}
 }
