@@ -2,7 +2,7 @@ function api3() {
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 134";  
+    this.v = "v0.0. 135";  
    var _TimeFun = function(){	 				 	
        var p = bl$("id_mp3Player"); 	
       _nTime ++;
