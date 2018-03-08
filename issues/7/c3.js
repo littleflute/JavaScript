@@ -2,7 +2,10 @@ function api3() {
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 145";  
+    this.v = "v0.0. 151";  
+  var _makeMp3List2Div = function(d,txt){
+      d.innerHTML = txt;
+  }
    var _TimeFun = function(){	 				 	
        var p = bl$("id_mp3Player"); 	
       _nTime ++;
@@ -29,7 +32,7 @@ function api3() {
 					 var btn = blo0.blBtn(d.v,d.v.id + "_btn_"+i, i+1,blColor[i]);
 					 btn.txt = o[i].body; 
 					 btn.onclick = function(_this){
-					        return function (){d.v4List.innerHTML = _this.txt};
+					        return function (){_makeMp3List2Div(d.v4List,_this.txt);};
 					 }(btn);
 				}
 
