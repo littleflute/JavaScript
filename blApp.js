@@ -1,10 +1,10 @@
   
 function _myJobClass()
 {
-	this.v = "v0.0.44";
+	this.v = "v0.0.45";
 	this.blrIssue6C = function(b,d){
 		if(!d.v){
-			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[0]);
+			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
 			d.v.innerHTML = "_loadIssue6Comments <br>"; 
 			function _loadIssue6Comments(o) {
 				for(i in o){
@@ -34,7 +34,7 @@ function _myJobClass()
 		s += "</a>"; 
 		d.innerHTML = s;
 		_on_off_div(b,d);
-		d.style.background = blGrey[0];// d.style.background=="red"?blGrey[5]:blColor[4];
+		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	}
 }
 function CBlAppClass()
