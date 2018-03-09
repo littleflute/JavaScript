@@ -2,7 +2,7 @@ function api3() {
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 222";  
+    this.v = "v0.0. 223";  
 var _play = function(d){
   var p = bl$("id_mp3Player"); 	
  p.src = d.innerHTML;
@@ -59,6 +59,13 @@ p.play();
     }//this.blrMp3List 
 this.blrAboutI7C3= function(b,d){		
 		var s = "blrAboutI7C3<br>"; 
+
+		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/issues/7'"
+		s += " style='color:blue;'";
+		s +=">";
+		s += "#7*  ";
+		s += "</a>"; 
+
 		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/7/c3.js'"
 		s += " style='color:blue;'";
 		s +=">";
