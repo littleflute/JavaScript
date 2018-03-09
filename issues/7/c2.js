@@ -1,6 +1,6 @@
 function api2() {
     function _api2JobClass(){
-        this.v = "v0.0. 24";
+        this.v = "v0.0. 25";
 this.blrIssue8C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
@@ -46,7 +46,7 @@ this.blrAboutI7C2= function(b,d){
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	}//this.blrAboutI7C2
     }
-var v = this.parentElement;
+var v = document.body;//this.parentElement;
 var d = blo0.blMDiv(v,v.id+"api2","api2",101,10,500,400,blGrey[5]);
 if(!d.v){
     d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
