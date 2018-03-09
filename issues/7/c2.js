@@ -1,10 +1,12 @@
 function api2() {
     function _api2JobClass(){
-        this.v = "v0.0. 43";
+        this.v = "v0.0. 51";
 this.blrRunJS = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
 			d.v.ta = blo0.blTextarea(d.v,d.v.id+"ta","alert(1);",blGrey[4]);
+                        d.v.ta.style.width="95%"; 
+                        d.v.ta.style.height="150px"; 
 			d.v.btnRun= blo0.blBtn(d.v,d.v.id+"btnRun","run;",blColor[4]);
 			d.v.btnRun.onclick= function(){
 			    eval(d.v.ta.value);
