@@ -1,6 +1,6 @@
 function api2() {
     function _api2JobClass(){
-        this.v = "v0.0. 23";
+        this.v = "v0.0. 24";
 this.blrIssue8C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
@@ -21,6 +21,30 @@ this.blrIssue8C = function(b,d){
 		
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	} 
+this.blrAboutI7C2= function(b,d){		
+		var s = "blrAboutI7C3<br>"; 
+
+		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/issues/7'"
+		s += " style='color:blue;'";
+		s +=">";
+		s += "#7*  ";
+		s += "</a>"; 
+
+		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/7/c2.js'"
+		s += " style='color:blue;'";
+		s +=">";
+		s += " c2.js*  ";
+		s += "</a>"; 
+		s += "<a target='_blank'  href='https://littleflute.github.io/JavaScript/issues/7/c2.js'";
+		s += " style='color:yellow;'";
+		s +=">";
+		s += " c2.js ";
+		s += "</a>"; 
+		d.innerHTML = s;
+		_on_off_div(b,d);
+		d.style.background = blGrey[5];
+		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
+	}//this.blrAboutI7C2
     }
 var v = this.parentElement;
 var d = blo0.blMDiv(v,v.id+"api2","api2",101,10,500,400,blGrey[5]);
