@@ -1,6 +1,6 @@
 function api2() {
     function _api2JobClass(){
-        this.v = "v0.0. 124";
+        this.v = "v0.0. 131";
 this.blrRunJS = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","",blGrey[5]);
@@ -14,8 +14,10 @@ this.blrRunJS = function(b,d){
 
 			function _loadIssue10Comments(o) {
 				var _i = 0;
-				 
-				var _v = blo0.blDiv(d.v,d.v.id+"_v", "_v", blGrey[1]);
+				var _s = "<a target='_balnk' href ='";
+				_s += "https://github.com/littleflute/JavaScript/issues/10'";
+				_s += ">#10</a>"; 
+				var _v = blo0.blDiv(d.v,d.v.id+"_v", _s, blGrey[1]);
 				for(i in o){
 					_i++;
 					var a = o[i].body;
