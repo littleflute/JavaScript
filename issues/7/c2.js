@@ -1,6 +1,6 @@
 function api2() {
     function _api2JobClass(){
-        this.v = "v0.0. 131";
+        this.v = "v0.0. 133";
 this.blrRunJS = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","",blGrey[5]);
@@ -79,7 +79,9 @@ this.blrAboutI7C2= function(b,d){
 	}//this.blrAboutI7C2
     }
 var v = document.body;//this.parentElement;
-var d = blo0.blMDiv(v,v.id+"api2","api2",101,10,500,400,blGrey[5]);
+var strTile = "api2:";
+strTile += "<div id='title4api2'>title4api2</div>";
+var d = blo0.blMDiv(v,v.id+"api2", strTile ,101,10,500,400,blGrey[5]);
 if(!d.v){
     d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
     blo0.blShowObj2Div(d.v, new _api2JobClass);
