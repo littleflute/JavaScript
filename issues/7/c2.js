@@ -1,6 +1,6 @@
 function api2() {
     function _api2JobClass(){
-        this.v = "v0.0. 113";
+        this.v = "v0.0. 124";
 this.blrRunJS = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","",blGrey[5]);
@@ -11,11 +11,28 @@ this.blrRunJS = function(b,d){
 			d.v.btnRun.onclick= function(){
 			    eval(d.v.ta.value);
 			}
+
+			function _loadIssue10Comments(o) {
+				var _i = 0;
+				 
+				var _v = blo0.blDiv(d.v,d.v.id+"_v", "_v", blGrey[1]);
+				for(i in o){
+					_i++;
+					var a = o[i].body;
+					var btnJS = blo0.blBtn(_v, _v.id+"btnJS"+i,_i,blGrey[2]);
+					btnJS.onclick = function(_txt){
+				               return function(){d.v.ta.value = _txt;}
+				        }(a);
+				}
+
+			}
+			var _src = "https://api.github.com/repos/littleflute/JavaScript/issues/10/comments";
+			w3.getHttpObject(_src, _loadIssue10Comments);	
                  }
 		_on_off_div(b,d);		
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];                  
 }//this.blrRunJS
-
+this.bll1="--1--";
 this.blrIssue8C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
