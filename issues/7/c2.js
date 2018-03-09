@@ -1,6 +1,19 @@
 function api2() {
     function _api2JobClass(){
-        this.v = "v0.0. 25";
+        this.v = "v0.0. 43";
+this.blrRunJS = function(b,d){
+		if(!d.v){
+			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
+			d.v.ta = blo0.blTextarea(d.v,d.v.id+"ta","alert(1);",blGrey[4]);
+			d.v.btnRun= blo0.blBtn(d.v,d.v.id+"btnRun","run;",blColor[4]);
+			d.v.btnRun.onclick= function(){
+			    eval(d.v.ta.value);
+			}
+                 }
+		_on_off_div(b,d);		
+		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];                  
+}//this.blrRunJS
+
 this.blrIssue8C = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
@@ -17,13 +30,11 @@ this.blrIssue8C = function(b,d){
 			}
 			w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/8/comments", _loadIssue8Comments);		
 		}
-		_on_off_div(b,d);
-		
+		_on_off_div(b,d);		
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	} 
 this.blrAboutI7C2= function(b,d){		
 		var s = "blrAboutI7C3<br>"; 
-
 		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/issues/7'"
 		s += " style='color:blue;'";
 		s +=">";
