@@ -2,7 +2,7 @@ function api3() {
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 223";  
+    this.v = "v0.0. 224";  
 var _play = function(d){
   var p = bl$("id_mp3Player"); 	
  p.src = d.innerHTML;
@@ -85,7 +85,7 @@ this.blrAboutI7C3= function(b,d){
      setInterval(_TimeFun , 100);	
   }//_api3JobClass
 
-var v = this.parentElement;
+var v = document.body;//this.parentElement;
 var d = blo0.blMDiv(v,v.id+"api3","api3",101,10,500,400,blGrey[6]);
 if(!d.v){
   d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
