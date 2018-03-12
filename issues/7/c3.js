@@ -2,7 +2,7 @@ function api3() {
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 231";  
+    this.v = "v0.0. 232";  
 var _play = function(d){
   var p = bl$("id_mp3Player"); 	
  p.src = d.innerHTML;
@@ -10,7 +10,8 @@ p.play();
 }
   var _makeMp3List2Div = function(d,txt){
       var _f = function (o){
-        alert(o.body);
+        eval(o.body);
+        _parseFun (d,txt);
       }
       w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/9", _f);	
   }
