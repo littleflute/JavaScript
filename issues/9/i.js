@@ -2,7 +2,7 @@ var _parseFun = function (d,txt){
       var str = "var a =" +  txt;  
      eval(str);
      d.innerHTML = "";
-     var s = "<a href='https://github.com/littleflute/JavaScript/issues/9' target='_blank'>#9 v0.0. 25<a/> - "; 
+     var s = "<a href='https://github.com/littleflute/JavaScript/issues/9' target='_blank'>#9 v0.0. 43<a/> - "; 
     s += "<a href='https://github.com/littleflute/JavaScript/edit/master/issues/9/i.js' target='_blank'>i.js* <a/> - ";
     s += "<a href='https://littleflute.github.io/JavaScript/issues/9/i.js' target='_blank'>i.js<a/>";
      blo0.blDiv(d,d.id+"_#9_", s,blColor[4]);
@@ -15,9 +15,14 @@ var _parseFun = function (d,txt){
                 return function(){ 
                    if(!p.dNow) p.dNow= null;
                    if(_this!= p.dNow){
-                     p.src = _this.innerHTML; p.dNow = _this;
+                     p.src = _this.innerHTML;  
+                    if(p.dNow) p.dNow.style.background = blGrey[5]; 
+                     p.dNow = _this;
                      p.play();
-                     _this.style.background = blGrey[0];
+                     _this.style.background = blGrey[0]; 
+                   }
+                   else{
+                     ;
                    }
                 }
            }(dSong )
