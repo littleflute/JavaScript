@@ -2,11 +2,12 @@ var _parseFun = function (d,txt){
       var str = "var a =" +  txt;  
      eval(str);
      d.innerHTML = "";
-     var s = "<a href='https://github.com/littleflute/JavaScript/issues/9' target='_blank'>#9 v0.0. 45<a/> - "; 
+     var s = "<a href='https://github.com/littleflute/JavaScript/issues/9' target='_blank'>#9 v0.0. 52<a/> - "; 
     s += "<a href='https://github.com/littleflute/JavaScript/edit/master/issues/9/i.js' target='_blank'>i.js* <a/> - ";
     s += "<a href='https://littleflute.github.io/JavaScript/issues/9/i.js' target='_blank'>i.js<a/>";
      blo0.blDiv(d,d.id+"_#9_", s,blColor[4]);
-     blo0.blDiv(d,d.id+"_title_", a.title,blColor[4]);
+     var t = blo0.blDiv(d,d.id+"_title_", a.title,blColor[4]);
+     t.v = blo0.blDiv(t,t.id+"v", "v",blColor[5]);
  
      for(i in a.songs){
            var p = bl$("id_mp3Player");
