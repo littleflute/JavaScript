@@ -2,23 +2,17 @@ function api3() {
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 224";  
+    this.v = "v0.0. 231";  
 var _play = function(d){
   var p = bl$("id_mp3Player"); 	
  p.src = d.innerHTML;
 p.play();
 }
   var _makeMp3List2Div = function(d,txt){
-     d.innerHTML = "";
-     var s = "<a href='https://github.com/littleflute/JavaScript/issues/9' target='_blank'>#9<a/>";
-     blo0.blDiv(d,d.id+"_#9_", s,blGrey[0]);
-      var a = txt.split(";");
-     for(i in a){
-           var dSong = blo0.blDiv(d,d.id+"_mp3_"+i, a[i],blColor[i]);
-           dSong .onclick = function(_this){
-                return function(){ _play(_this);}
-           }(dSong )
+      var _f = function (o){
+        alert(o.body);
       }
+      w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/9", _f);	
   }
    var _TimeFun = function(){	 				 	
        var p = bl$("id_mp3Player"); 	
@@ -49,7 +43,6 @@ p.play();
 					        return function (){_makeMp3List2Div(d.v4List,_this.txt);};
 					 }(btn);
 				}
-
 			}
 			w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/9/comments", _loadIssue9Comments);	
              }
