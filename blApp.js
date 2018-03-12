@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 33";
+ var _g_ver_blApp = "v0.2. 34";
 
 function _myJobClass()
 {
@@ -59,7 +59,7 @@ function _myJobClass()
 		s +=">";
 		s += " blApp.js ";
 		s += "</a><br>"; 
-		s += "<a target='_blank'  href='http://www.beautifullover.org";
+		s += "<a target='_blank'  href='http://www.beautifullover.org'";
 		s += " style='color:yellow;'";
 		s +=">";
 		s += " beautifullover ";
