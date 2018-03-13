@@ -3,7 +3,7 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 244 " + _listURL;   
+    this.v = "v0.0. 245" + _listURL;   
   var _makeMp3List2Div = function(d,txt){
       var _f = function (o){
         eval(o.body);
@@ -32,7 +32,7 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
                  d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]); 
 
                  d.v4List = blo0.blDiv(d,d.id+"v4List ","v4List ",blColor[4]);
-                 function _loadIssue9Comments(o) {
+                 function _loadListComments(o) {
 				for(i in o){ 
 					 var btn = blo0.blBtn(d.v,d.v.id + "_btn_"+i, i+1,blColor[i]);
 					 btn.txt = o[i].body; 
@@ -41,7 +41,7 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
 					 }(btn);
 				}
 			}
-			w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/9/comments", _loadIssue9Comments);	
+			w3.getHttpObject(_listURL  + "/comments", _loadListComments);	
              }
 
 		_on_off_div(b,d);		
