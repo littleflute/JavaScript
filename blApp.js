@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 45";
+ var _g_ver_blApp = "v0.2. 51";
 
 function _myJobClass()
 {
@@ -69,6 +69,13 @@ function _myJobClass()
 		s +=">";
 		s += " beautifullover ";
 		s += "</a>"; 
+		
+		s += "<a target='_blank'  href='https://www.w3schools.com/lib/w3.js'";
+		s += " style='color:yellow;'";
+		s +=">";
+		s += " w3.js ";
+		s += "</a>"; 
+		
 		d.innerHTML = s;
 		_on_off_div(b,d);
 		d.style.background = blGrey[5];
