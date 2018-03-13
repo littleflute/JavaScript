@@ -1,14 +1,15 @@
-function api3() {
+function api3(_listURL) {
+if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/issues/9";}
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 233";  
+    this.v = "v0.0. 244 " + _listURL;   
   var _makeMp3List2Div = function(d,txt){
       var _f = function (o){
         eval(o.body);
         _parseFun (d,txt);
       }
-      w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/9", _f);	
+      w3.getHttpObject(_listURL, _f);	
   }
    var _TimeFun = function(){	 				 	
        var p = bl$("id_mp3Player"); 	
