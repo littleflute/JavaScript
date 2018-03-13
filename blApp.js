@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 52";
+ var _g_ver_blApp = "v0.2. 53";
 
 function _myJobClass()
 {
@@ -6,7 +6,7 @@ function _myJobClass()
 		if(!d.tb){
 			var tb = blo0.blDiv(d,d.id + "tb","",blGrey[3]);
 			d.tb = tb;
-			tb.innerHTML = "#7";
+			tb.innerHTML = "<a target='_blank' href='https://github.com/littleflute/JavaScript/issues/7'>#7</a>";
 			tb.load = blo0.blBtn(tb,tb.id + "btnLoad","loadAPI",blGrey[5]);
 			tb.load.onclick = function(){
 			  w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/7/comments", tb.load.loadApiOK);
