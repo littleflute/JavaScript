@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 34";
+ var _g_ver_blApp = "v0.2. 41";
 
 function _myJobClass()
 {
@@ -14,10 +14,13 @@ function _myJobClass()
 			}
 			tb.load.loadApiOK = function (o) {
 
-			  for(i in o){
-			     var a = "var f = " + o[i].body;
+			  for(i in o){			     
 			      tb.load.b1 = blo0.blBtn(tb,tb.load.id + "b" + i,"b" + i,blGrey[5]); 
-			      tb.load.b1.onclick = function(){eval(a); return f;}();
+			      tb.load.b1.onclick = function(_js){
+				      var a = "var f = " + _js;
+				      eval(a); 
+				      f();
+			      }(o[i].body);
 			  }
 			}
 			tb.load.click();
