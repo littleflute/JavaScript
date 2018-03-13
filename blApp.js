@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 42";
+ var _g_ver_blApp = "v0.2. 43";
 
 function _myJobClass()
 {
@@ -17,9 +17,11 @@ function _myJobClass()
 			  for(i in o){			     
 			      tb.load.b1 = blo0.blBtn(tb,tb.load.id + "b" + i,"b" + i,blGrey[5]); 
 			      tb.load.b1.onclick = function(_js){
-				      var a = "var f = " + _js;
-				      eval(a); 
-				      f();
+				      return function(){
+					      var a = "var f = " + _js;
+					      eval(a); 
+					      f();
+				      }
 			      }(o[i].body);
 			  }
 			}
