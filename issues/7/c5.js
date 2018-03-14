@@ -1,7 +1,7 @@
 function _blSet ( _p ) {//api5
     if(!_p){_p ={"v":"v0.0.1"};}
     function _setClass ( _o) {
-        this.v = "v0.0. 115";
+        this.v = "v0.0. 121";
         this.blrSetList= function(b,d){
             if(!d.v){
                  d.v = blo0.blDiv(d,d.id+"v","v" ,blGrey[1]); 
@@ -25,6 +25,7 @@ var d = blo0.blMDiv(v,v.id+"_blSet","_blSet",351,10,500,400,blGrey[0]);
 d.v = blo0.blDiv(d,d.id+"v","v" ,blGrey[1]);
 blo0.blShowObj2Div(d.v, new _setClass ( _p ) ); 
 if(bl$("blrAboutI7C5")){bl$("blrAboutI7C5").click();}
+if(bl$("blrSetList")){bl$("blrSetList").click();}
 
 var b = bl$("blrToolBarDivtbbtnLoadb4");_on_off_div(b,d); 
 b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
