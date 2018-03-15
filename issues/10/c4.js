@@ -1,20 +1,23 @@
 //js4:
 function _jobClass( _as ){
-    var _nTime = 0; _vTimer = null;var _t = null;  
-    this.v="v0.0. 111";
+    var _nTime = 0;  
+    this.v="v0.0. 123";
     this.blrJS4Go = function(b,d){	 				 	
        if(!d.v){d.v = blo0.blDiv(d,d.id+"v","v","grey"); }
        _on_off_div(b,d);       b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];	 
    }
     this.blrTimer = function(b,d){  				 	
-        if(!_t && !_as.plx){
-           _nTime =0; _t=setInterval(_TimeFun , 100);         
-        }		 	
-       _on_off_div(b,d);       b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];	         _vTimer = d;
+        if(!_as.plx.timer){
+           _nTime =0; 
+           _as.plx.timer =setInterval(_TimeFun , 100);         
+           
+        }		 	_as.plx.timverV = d;
+       _on_off_div(b,d);       b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];	        
    }
     var _TimeFun = function(){	  
       _nTime ++;
-     if(_vTimer ) _vTimer.innerHTML = _nTime + ": " + a.currentTime + "/" + a.duration;	 ;;	 
+      var a = _as[0];
+      _as.plx.timverV.innerHTML = _nTime + ": " + a.currentTime + "/" + a.duration;	 ;;	 
    }
     
 this.blrAboutPlx4= function(b,d){		
