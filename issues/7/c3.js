@@ -3,7 +3,7 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 245" + _listURL;   
+    this.v = "v0.0. 251" + _listURL;   
   var _makeMp3List2Div = function(d,txt){
       var _f = function (o){
         eval(o.body);
@@ -13,8 +13,12 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
   }
    var _TimeFun = function(){	 				 	
        var p = bl$("id_mp3Player"); 	
+      if(!p.users) p.users = [];
       _nTime ++;
-     if(_vTimer ) _vTimer.innerHTML = _nTime +  ": " + p.currentTime + "/" + p.duration;	 ;	 
+      if(_vTimer ) _vTimer.innerHTML = _nTime +  ": " + p.currentTime + "/" + p.duration;
+      for(i in p.users){
+           p.users[i].currentTimeFun();
+      }	 	 
    }	 
     this.blrMp3Player = function(b,d){
         if(!d.v){
