@@ -1,22 +1,20 @@
 //js4:
 function _jobClass( _as ){ 
-    this.v="v0.0. 125";
-    this.blrJS4Go = function(b,d){	 				 	
-       if(!d.v){d.v = blo0.blDiv(d,d.id+"v","v","grey"); }
-       _on_off_div(b,d);       b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];	 
-   }
+    this.v="v0.0. 134";
+
     this.blrTimer = function(b,d){  				 	
         if(!_as.plx.timer){ 
-           _as.plx.timer =setInterval(_TimeFun , 100);       
-           _as.plx.timer.n = 0;  
+           _as.plx.timer =setInterval(_TimeFun , 100);        
            
-        }		 	_as.plx.timverV = d;
+        }		 	
+       _as.plx.timverV = d;
        _on_off_div(b,d);       b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];	        
    }
-    var _TimeFun = function(){	  
-      _as.plx.timer.n++;
+    var _TimeFun = function(){	      
       var a = _as[0];
-      _as.plx.timverV.innerHTML = _as.plx.timer.n + ": " + a.currentTime + "/" + a.duration;	 ;;	 
+      if(!a.n) a.n = 0;
+      a.n ++;
+      _as.plx.timverV.innerHTML = a.n + ": " + a.currentTime + "/" + a.duration;	 ;;	 
    }
     
 this.blrAboutPlx4= function(b,d){		
@@ -40,6 +38,6 @@ if(!m.plx){
 }
 var j = new _jobClass(m);
 blo0.blShowObj2Div(m.plx.v,j);
-bl$("blrJS4Go").click();bl$("blrTimer").click();
+bl$("blrTimer").click();
 bl$("blrAboutPlx4").click();
 //_on_off_div(null,m.plx);
