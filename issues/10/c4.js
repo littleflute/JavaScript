@@ -1,7 +1,7 @@
 //js4:
 function _jobClass(a){
     var _nTime = 0; _vTimer = null;var _t = null;  
-    this.v="v0.0. 41";
+    this.v="v0.0. 43";
     this.blrJS4Go = function(b,d){	 				 	
        if(!d.v){d.v = blo0.blDiv(d,d.id+"v","v","grey"); }
        _on_off_div(b,d);
@@ -18,6 +18,18 @@ function _jobClass(a){
      if(_vTimer ) _vTimer.innerHTML = _nTime + ": " + a.currentTime + "/" + a.duration;	 ;;	 
    }
     
+this.blrAboutPlx4= function(b,d){		
+		var s = "blrAboutPlx4<br>";  
+
+		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/10/c4.js'"
+		s += " style='color:blue;'";		s +=">";		s += " c4.js*  ";		s += "</a>"; 
+		s += "<a target='_blank'  href='https://littleflute.github.io/JavaScript/issues/10/c4.js'";
+		s += " style='color:yellow;'";		s +=">";		s += " c4.js ";		s += "</a>"; 
+		d.innerHTML = s;
+		_on_off_div(b,d);
+		d.style.background = blGrey[5];
+		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
+	}//this.blrAboutPlx4
 }
 var m = document.getElementsByTagName("audio");
 if(!m.plx){
