@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 153";
+ var _g_ver_blApp = "v0.2. 155";
 
 function _myJobClass()
 {
