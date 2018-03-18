@@ -1,5 +1,6 @@
 function _myJobClass()
 {
+        this.bllv = "v0.1.11";
 	this.blrToolBar = function(b,d){
 		if(!d.tb){
 			var tb = blo0.blDiv(d,d.id + "tb","",blGrey[3]);
