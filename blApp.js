@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 123";
+ var _g_ver_blApp = "v0.2. 124";
 
 function _myJobClass()
 {
@@ -90,7 +90,7 @@ function CBlAppClass()
 	if(_btnApp){
 	    _btnApp.onclick = function(){
 		    var d = _btnApp.parentElement;
-		    mfUI = blo0.blMDiv(d, d.id + "_v_4_blApp" , "blApp: " + _g_ver_blApp, 0,0,150,50, blColor[3]);   
+		    mfUI = blo0.blMDiv(d, "id_div_CXdMainFrame" , "blApp: " + _g_ver_blApp, 0,0,150,50, blColor[3]);   
 		    return function(){
 			    _on_off_div(this,mfUI);
 		    }
