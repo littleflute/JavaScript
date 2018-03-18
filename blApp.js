@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 141";
+ var _g_ver_blApp = "v0.2. 143";
 
 function _myJobClass()
 {
@@ -93,8 +93,11 @@ function CBlAppClass()
 		    mfUI = blo0.blMDiv(d, "id_div_CXdMainFrame" , "blApp: " + _g_ver_blApp, 0,0,150,50, blColor[3]);   
 		    return function(){
 			    _on_off_div(this,mfUI);
+			    var b = this;
+			    b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 		    }
 	    }();
+	    _btnApp.click();	
 	}
 	else{
 	      mfUI = blo0.blMDiv(document.body, "id_div_CXdMainFrame" , "blApp: " + _g_ver_blApp , 0,0,150,50, blColor[2]);  
