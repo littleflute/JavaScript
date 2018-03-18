@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 151";
+ var _g_ver_blApp = "v0.2. 152";
 
 function _myJobClass()
 {
@@ -126,4 +126,4 @@ function _loadIssue6(o) {
 	eval(o.body);
 	//var f = new CBlAppClass;    
 }
-w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/6/comments", _loadIssue6);	
+w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/6", _loadIssue6);	
