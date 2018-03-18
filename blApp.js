@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 134";
+ var _g_ver_blApp = "v0.2. 135";
 
 function _myJobClass()
 {
@@ -94,7 +94,7 @@ function CBlAppClass()
 		    return function(){
 			    _on_off_div(this,mfUI);
 		    }
-	    }
+	    }();
 	}
 	else{
 	      mfUI = blo0.blMDiv(document.body, "id_div_CXdMainFrame" , "blApp: " + _g_ver_blApp , 0,0,150,50, blColor[2]);  
