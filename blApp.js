@@ -1,4 +1,4 @@
- var _g_ver_blApp = "v0.2. 112";
+ var _g_ver_blApp = "v0.2. 113";
 
 function _myJobClass()
 {
@@ -87,8 +87,14 @@ function CBlAppClass()
 {
 	var _btnApp = bl$("id_btn_4_blApp");
 	if(_btnApp){
-		var d = _btnApp.parentElement;
-	    var mfUI = blo0.blMDiv(d, d.id + "_v_4_blApp" , "blApp: " + _g_ver_blApp, 0,0,150,50, blColor[3]);  	
+	    _btnApp.onclick = function(){
+		    var d = _btnApp.parentElement;
+		    d.v = blo0.blMDiv(d, d.id + "_v_4_blApp" , "blApp: " + _g_ver_blApp, 0,0,150,50, blColor[3]);  	
+		    alert(d.v.id);
+	    }
+	}
+	else{
+		alert(_btnApp);
 	}
 			
 	var mfUI = blo0.blMDiv(document.body, "id_div_CXdMainFrame" , "blApp: " + _g_ver_blApp , 0,0,150,50, blColor[2]);  
