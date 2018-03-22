@@ -1,7 +1,11 @@
 //js1: _loadIssue11 
-var s= "v0.0.11 ";
+var s= "v0.0. 21 - ";
 s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/10/c1.js'"
 s += " style='color:blue;'";		s +=">"; s += "c1.js* ";
+s += "<a target='_blank' href='https://littleflute.github.io/JavaScript/issues/10/c1.js'"
+s += " style='color:green;'";		s +=">"; s += "c1.js ";
+
+
 var d = blo0.blMDiv(document.body,"id_mdiv_loadIssue11", s,
             300,100,500,400,blColor[1]);
 if(!d.v){
