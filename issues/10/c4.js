@@ -1,7 +1,25 @@
-//js4:
+//js4: Timer
 function _jobClass( _as ){ 
-    this.v="v0.0. 134";
-
+    this.v="v0.0. 211";
+    this.blrTempo = function(b,d){  				 	
+        if(!d.v){
+           d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
+           d.v1 = blo0.blDiv(d,d.id+"v1","v1",blColor[4]);
+           d.v.b0 = blo0.blBtn(d.v,d.v.id+"b0","b0",blGrey[0]); 
+           d.v.b1 = blo0.blBtn(d.v,d.v.id+"b1","b1",blGrey[1]); 
+           var t1 = 0, t2 = 0;
+           d.v.b0.onclick = function(){ 
+                t1 = new Date();d.v1.innerHTML = "";
+           }
+           d.v.b1.onclick = function(){ 
+                t2 = new Date();
+                var ms = t2.getTime() - t1.getTime();
+                var fpm = 10/ms * 60*1000;
+                var s = ms + " :  fpm=" + fpm;
+                var vt = blo0.blDiv(d.v1,d.v1.id+t2,s,blColor[4]);
+           }
+        }        
+   }
     this.blrTimer = function(b,d){  				 	
         if(!_as.plx.timer){ 
            _as.plx.timer =setInterval(_TimeFun , 100);        
