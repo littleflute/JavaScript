@@ -1,6 +1,8 @@
 //
 function blIsseuClass(_d){
-    this.v = "v0.0. 31 - ";
+   var _toolBar = blo0.blDiv (_d,  _d.id + "_toolBar_4_issue11", "_toolBar_4_issue11", blGrey[1]);
+   _d.view = blo0.blDiv (_d,  _d.id + "view", "view ", blGrey[2]);
+    this.v = "v0.0. 34- ";
     this.blr_src_blIssueClass = function(b,d){	
         if(!d.v){
              d.v = blo0.blDiv(d, d.id + "v", "", blGrey[0]);
@@ -33,5 +35,5 @@ function blIsseuClass(_d){
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	}//this.blr_about_blIssueClass 
 
-    blo0.blShowObj2Div(_d,this);
+    blo0.blShowObj2Div(_d.view ,this); 
 }
