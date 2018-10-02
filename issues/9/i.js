@@ -2,7 +2,7 @@ var _parseFun = function (d,txt){
       var str = "var a =" +  txt;  
      eval(str);
      d.innerHTML = "";
-     var s = "<a href='https://github.com/littleflute/JavaScript/issues/9' target='_blank'>#9 v0.0. 53<a/> - "; 
+     var s = "<a href='https://github.com/littleflute/JavaScript/issues/9' target='_blank'>#9 v0.0. 114<a/> - "; 
     s += "<a href='https://github.com/littleflute/JavaScript/edit/master/issues/9/i.js' target='_blank'>i.js* <a/> - ";
     s += "<a href='https://littleflute.github.io/JavaScript/issues/9/i.js' target='_blank'>i.js<a/>";
      blo0.blDiv(d,d.id+"_#9_", s,blColor[4]);
@@ -11,7 +11,9 @@ var _parseFun = function (d,txt){
  
      for(i in a.songs){
            var p = bl$("id_mp3Player");
-           var dSong = blo0.blDiv(d,d.id+"_mp3_"+i, a.songs[i].mp3,blGrey[5]);
+          var id4Song = i/2+3;
+           var dSong = blo0.blDiv(d,d.id+"_mp3_"+i, a.songs[i].mp3,blGrey[id4Song]);
+           dSong.id = id4Song;
            dSong.style.border = "2px solid blue;";
            dSong .onclick = function(_this, _s ){ 
                 return function(){ 
@@ -33,7 +35,7 @@ var _parseFun = function (d,txt){
                 return function(){
                    if(!p.dNow) p.dNow= null;
                    if(_this!= p.dNow){ 
-                     _this.style.background = blGrey[3];
+                     _this.style.background = "brown";//blGrey[_this.id-1];
                    }
                  }
            }(dSong )
@@ -41,7 +43,7 @@ var _parseFun = function (d,txt){
                 return function(){
                    if(!p.dNow) p.dNow= null;
                    if(_this != p.dNow){ 
-                     _this.style.background = blGrey[5];
+                     _this.style.background = blGrey[_this.id];
                    }
                  }
            }(dSong )
