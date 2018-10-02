@@ -3,7 +3,7 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 251" + _listURL;   
+    this.v = "v0.0. 311" + _listURL;   
   var _makeMp3List2Div = function(d,txt){
       var _f = function (o){
         eval(o.body);
@@ -30,6 +30,8 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
             b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
         }
     }//this.blrMp3Player
+  
+ 
 
     this.blrMp3List = function(b,d){ 
             if(!d.v){
@@ -51,6 +53,21 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
 		_on_off_div(b,d);		
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
     }//this.blrMp3List 
+
+   this.bllVOA = "VOA";
+  this.blrVOA = function(b,d){
+           if(!d.v){
+                 d.v = blo0.blDiv(d, "id_div_4_VOA", "v" ,blGrey[2]); 
+                 function _RunJS(o) {
+				d.v.innerHTML = o.body; eval(o.body);
+			}var url = "https://api.github.com/repos/littleflute/JavaScript/issues/13";
+			w3.getHttpObject("https://api.github.com/repos/littleflute/voa/issues/1", _RunJS);	
+           }
+	  _on_off_div(b,d);	
+		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];	
+  }
+
+   this.bllAbout = "About";
 this.blrAboutI7C3= function(b,d){		
 		var s = "blrAboutI7C3<br>"; 
 
