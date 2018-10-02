@@ -3,7 +3,7 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
   function _api3JobClass(){
    var _nTime = 0;
    var _vTimer = null;
-    this.v = "v0.0. 312" + _listURL;   
+    this.v = "v0.0. 323" + _listURL;   
   var _makeMp3List2Div = function(d,txt){
       var _f = function (o){
         eval(o.body);
@@ -22,7 +22,7 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
    }	 
     this.blrMp3Player = function(b,d){
         if(!d.v){
-            d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
+            d.v = blo0.blDiv(d,d.id+"v","v",blGrey[3]);
            _vTimer  = blo0.blDiv(d,d.id+"_vTimer ","_vTimer ",blColor[4]);
 
              var _f = "https://littleflute.github.io/bat/mp3/MereChristianity/cd1/00_Preface.mp3";
@@ -35,7 +35,7 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
 
     this.blrMp3List = function(b,d){ 
             if(!d.v){
-                 d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]); 
+                 d.v = blo0.blDiv(d,d.id+"v","v",blGrey[3]); 
 
                  d.v4List = blo0.blDiv(d,d.id+"v4List ","v4List ",blColor[4]);
                  function _loadListComments(o) {
@@ -69,6 +69,14 @@ if(!_listURL){_listURL = "https://api.github.com/repos/littleflute/JavaScript/is
 
    this.bllAbout = "About";
 this.blrAboutI7C3= function(b,d){		
+        if(!d.v){
+                 d.v0 = blo0.blDiv(d, "id_div_4_blrAboutI7C3_v0", "v0" ,blGrey[2]); 
+                d.v0.b1 = blo0.blBtn(d.v0,d.v0.id + "_btn1",  "blGrey[5]", blGrey[5]);
+               d.v0.b1.onclick = function(){ d.parentElement.style.background = blGrey[5]; }
+               d.v0.b1.onclick();
+
+
+                 d.v = blo0.blDiv(d, "id_div_4_blrAboutI7C3", "blrAboutI7C3" ,blGrey[2]); 
 		var s = "blrAboutI7C3<br>"; 
 
 		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/issues/7'"
@@ -87,7 +95,8 @@ this.blrAboutI7C3= function(b,d){
 		s +=">";
 		s += " c3.js ";
 		s += "</a>"; 
-		d.innerHTML = s;
+		d.v.innerHTML = s;
+  }
 		_on_off_div(b,d);
 		d.style.background = blGrey[5];
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
