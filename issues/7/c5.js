@@ -1,5 +1,5 @@
 function _blSet ( _p ) {//api5
-    if(!_p){_p ={"v":"v0.0.4"};}
+    if(!_p){_p ={"v":"v0.0.5"};}
     function _setClass ( _o) {
         this.v = "v0.0. 124";
         this.blrSetList= function(b,d){
@@ -15,8 +15,8 @@ function _blSet ( _p ) {//api5
 
        this.blr_Issue13 = function(b,d){	
          if(!d.v){
-             d.vIssue13 = blo0.blDiv(d, d.id + "vIssue13", "", blGrey[5]); 
              d.vIssue13Cs = blo0.blDiv(d, d.id + "vIssue13Cs", "", blGrey[1]); 
+             d.vIssue13 = blo0.blDiv(d, d.id + "vIssue13", "", blGrey[5]); 
              function _loadIssue13 (o) { 
                                    d.vIssue13.innerHTML = o.body;	
              }
