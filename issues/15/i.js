@@ -4,13 +4,13 @@ plx.innerHTML = "i15";
 var v = bl$("id_div_4_i13_plx");
 var d1 = blo0.blDiv(v, v.id + "_d1",  "d1", blGrey[0]); 
 var s = '<div class="XDheader"><div class="XDheader-right" id="XDid_div_title">';
- s += '<a href= "https://github.com/littleflute/JavaScript/issues/15" target="_blank">#15_v0.1. 1</a> ';
-s += "<a class='xd' target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/Issues/15/i.js'"
+ s += '<a href= "https://github.com/littleflute/JavaScript/issues/15" target="_blank">#15_v0.1. 12</a> ';
+s += "<a class='xd' target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/15/i.js'"
 s +=">";		s += " i15.js*  ";		s += "</a> "; 
-		s += "  <a class='xd'    target='_blank'  href='https://littleflute.github.io/JavaScript/Issues/15/i.js'";
+		s += "  <a class='xd'    target='_blank'  href='https://littleflute.github.io/JavaScript/issues/15/i.js'";
  
 		s +=">";
-		s += " i126.js ";
+		s += " i15.js ";
 		s += "</a>"; 
  s += '</div></div>';
 d1.innerHTML = s;
@@ -26,4 +26,4 @@ d1.innerHTML = s;
                      }(_b, o[i].body);  
         }
 }
-w3.getHttpObject("https://api.github.com/repos/littleflute/english/issues/126/comments", _comments);	
+w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/15/comments", _comments);	
