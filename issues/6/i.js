@@ -1,6 +1,6 @@
 function _myJobClass()
 {
-        this.bllv = "v0.1. 12";
+        this.bllv = "v0.1. 22";
 	this.blrToolBar = function(b,d){
 		if(!d.tb){
 			var tb = blo0.blDiv(d,d.id + "tb","",blGrey[3]);
@@ -35,15 +35,15 @@ function _myJobClass()
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[5]);
 			d.v.innerHTML = "blrIssue6C <br>"; 
+                        d.v1 = blo0.blDiv(d,d.id+"v1","v1",blGrey[3]);
 			function _loadIssue6Comments(o) {
 				for(i in o){
-					var a = o[i].body;
-					var b = a.split("~~~html");
-					var c = b[1].split("~~~"); 
-					d.v.innerHTML += c[0]; 
-					d.v.innerHTML += "<br>";
+					var _b = blo0.blBtn(d.v , d.v.id + "_btn_" + i, i, blGrey[i]);
+                                        _b.v = d.v1;
+                                       _b.onclick = function(_this, _txt){
+                                                     return function(){ _this.v.innerHTML = _txt; eval(_txt);}
+                                         }(_b, o[i].body); 
 				}
-
 			}
 			w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/6/comments", _loadIssue6Comments);		
 		}
