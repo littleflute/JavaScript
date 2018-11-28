@@ -1,6 +1,6 @@
 function _blVPlayer ( _p ) {//api4
     function _vplayerClass ( _o) {
-        this.v = "v0.0. 52";
+        this.v = "v0.0. 53";
         this.blrList= function(b,d){
             if(!d.v){
                  d.v = blo0.blDiv(d,d.id+"v","v" ,blGrey[1]); 
@@ -9,6 +9,7 @@ function _blVPlayer ( _p ) {//api4
             }
            _on_off_div(b,d); 		d.style.background = blGrey[5]; 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
         }
+       this.bll2= "--2--"; 
         this.blrAboutI7C4= function(b,d){		var s = "blrAboutI7C4<br>"; 
 		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/issues/7'"
 		s += " style='color:blue;'"; 		s +=">"; 		s += "#7*  "; 		s += "</a>"; 
