@@ -1,6 +1,6 @@
 function _blVPlayer ( _p ) {//api4
     function _vplayerClass ( _o) {
-        this.v = "v0.0. 54";
+        this.v = "v0.0. 55";
         this.blrList= function(b,d){
             if(!d.v){
                  d.v = blo0.blDiv(d,d.id+"v","v" ,blGrey[1]); 
@@ -31,5 +31,5 @@ if(bl$("blrAboutI7C4")){bl$("blrAboutI7C4").click();}
 
 var b = bl$("blrToolBarDivtbbtnLoadb3");_on_off_div(b,d); 
 b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
-b.innerHTML = "[blVPlayer]";
+b.innerHTML = "[api4]";
 }
