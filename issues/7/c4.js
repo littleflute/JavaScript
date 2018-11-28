@@ -1,6 +1,6 @@
 function _blVPlayer ( _p ) {//api4
     function _vplayerClass ( _o) {
-        this.v = "v0.0. 53";
+        this.v = "v0.0. 54";
         this.blrList= function(b,d){
             if(!d.v){
                  d.v = blo0.blDiv(d,d.id+"v","v" ,blGrey[1]); 
@@ -22,7 +22,7 @@ function _blVPlayer ( _p ) {//api4
 	}//this.blrAboutI7C4
     }
 var v = document.body;
-var d = blo0.blMDiv(v,v.id+"_blVPlayer ","_blVPlayer",151,10,500,400,blGrey[0]);
+var d = blo0.blMDiv(v,v.id+"_api4","_api4",151,10,500,400,blGrey[0]);
  
 d.v = blo0.blDiv(d,d.id+"v","v" ,blGrey[1]);
 blo0.blShowObj2Div(d.v, new _vplayerClass ( _p ) );
