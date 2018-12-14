@@ -1,6 +1,6 @@
 function _myJobClass()
 {
-        this.bllv = "v0.1. 22";
+        this.bllv = "v0.1. 24";
 	this.blrToolBar = function(b,d){
 		if(!d.tb){
 			var tb = blo0.blDiv(d,d.id + "tb","",blGrey[3]);
@@ -89,7 +89,7 @@ function CBlAppClass()
 	if(_btnApp){
 	    _btnApp.onclick = function(){
 		    var d = _btnApp.parentElement;
-		    mfUI = blo0.blMDiv(d, "id_div_CXdMainFrame" , "blApp: " + _g_ver_blApp, 0,0,150,50, blColor[3]);   
+		    mfUI = blo0.blMDiv(d, "id_div_CXdMainFrame" , "blApp: " + _g_ver_blApp, 0,0,150,50, blGrey[0]);   
 		    return function(){
 			    _on_off_div(this,mfUI);
 			    var b = this;
