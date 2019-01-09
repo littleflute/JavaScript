@@ -1,13 +1,15 @@
 function _blVPlayer ( _p ) {//api4
     function _vplayerClass ( _o) {
-        this.v = "v0.0. 55";
+        this.v = "v0.0. 113";
         this.blrList= function(b,d){
             if(!d.v){
-                 d.v = blo0.blDiv(d,d.id+"v","v" ,blGrey[1]); 
-                 blo0.blShowObj2Div(d.v, _o);
-                 ;
+                 d.v = blo0.blDiv(d, "id_div_4_api4","v" ,blGrey[1]);  
+                 function _loadIssue20 (o) {          eval(o.body);    	             }
+                 var url = "https://api.github.com/repos/littleflute/JavaScript/issues/20"; 
+                  w3.getHttpObject(url, _loadIssue20 );
             }
-           _on_off_div(b,d); 		d.style.background = blGrey[5]; 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
+           _on_off_div(b,d); 		d.style.background = blGrey[5]; 		
+          b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
         }
        this.bll2= "--2--"; 
         this.blrAboutI7C4= function(b,d){		var s = "blrAboutI7C4<br>"; 
