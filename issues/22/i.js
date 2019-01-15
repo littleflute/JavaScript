@@ -9,6 +9,18 @@ var s = myV.nLoadTime + "<br>";
 		s += " style='color:blue;'";		s +=">";		s += " i.js*  ";		s += "</a>"; 
 		s += "<a target='_blank'  href='https://littleflute.github.io/JavaScript/issues/22/i.js'";
 		s += " style='color: yellow;'";		s +=">";		s += " i.js ";		s += "</a>"; 
+
+		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/22/c1.js'"
+		s += " style='color:blue;'";		s +=">";		s += " c1.js*  ";		s += "</a>"; 
+		s += "<a target='_blank'  href='https://littleflute.github.io/JavaScript/issues/22/c1js'";
+		s += " style='color: yellow;'";		s +=">";		s += " c1.js ";		s += "</a>"; 
+
+
+		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/22/c2.js'"
+		s += " style='color:blue;'";		s +=">";		s += " c2.js*  ";		s += "</a>"; 
+		s += "<a target='_blank'  href='https://littleflute.github.io/JavaScript/issues/22/c2.js'";
+		s += " style='color: yellow;'";		s +=">";		s += " c2.js ";		s += "</a>"; 
+
 		s += "<a target='_blank'  href='https://littleflute.github.io/blog/docs/2017/04/15/'";
 		s += " style='color: green;'";		s +=">";		s += " ref ";		s += "</a>";  
 		s += " <div id='id_div_tb_4_i22'>tb</div>";  
