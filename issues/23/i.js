@@ -150,7 +150,7 @@ function blClass()
 }//END blClass
 
 //*
-var xm		= document.getElementById("xdMainDiv"); 
+var xm		= document.getElementById( "xdMainDiv" ); 
  
 xm.blObj	= new blClass;
 xm.run		= function(v){
@@ -184,126 +184,122 @@ xm.run		= function(v){
 	}(this);
     bMoveDiv.onclick = function(this_)
     { 
-		return function(){
+	return function(){
         	var o = this_.blObj;
-            var main = o.blDiv ( document.body,"moveDivTest","moveDivTest");
-            var style ="position: absolute;";
-			style += "z-index: 9;";
-			style += "background-color: #f1f1f1;";
-			style += "text-align: center;";
-			style += "border: 1px solid #d3d3d3;";
-			style += "left: 400px";
-			style += "top: 140px";
-            main.style =style;
-			var title = o.blDiv(main,"moveDivTestHeader","header");
-			style ="padding: 10px;";
-			style += "z-index: 10;";
-			style += "cursor: move;";
-			style += "text-align: center;";
-			style += "border: 1px solid #fff;";
-			style += "background-color: #2196F3;";
-			title.style =style;
-			var mi0 = o.blDiv(main,"mi0","mi0");
-			var ClickMsg = o.blDiv(mi0,"ClickMsg","ClickMsg");
-			var goMsg = o.blDiv(mi0,"goMsg","goMsg");
-            var goText = o.blTextField(mi0,"goText","A1");
-			var btnGo = o.blBtn(mi0,"btnGo","Go","green");
-			btnGo.onclick = function(){  
-                var s = goText.value; 
-                var getY = function(c)
+		var main = o.blDiv ( document.body,"moveDivTest","moveDivTest");
+        	var style ="position: absolute;";
+		style += "z-index: 9;";
+		style += "background-color: #f1f1f1;";
+		style += "text-align: center;";
+		style += "border: 1px solid #d3d3d3;";
+		style += "left: 400px";
+		style += "top: 140px";
+        	main.style =style;
+		var title = o.blDiv(main,"moveDivTestHeader","header");
+		style ="padding: 10px;";
+		style += "z-index: 10;";
+		style += "cursor: move;";
+		style += "text-align: center;";
+		style += "border: 1px solid #fff;";
+		style += "background-color: #2196F3;";
+		title.style =style;
+		var mi0 = o.blDiv(main,"mi0","mi0");
+		var ClickMsg = o.blDiv(mi0,"ClickMsg","ClickMsg");
+		var goMsg = o.blDiv(mi0,"goMsg","goMsg");
+		var goText = o.blTextField(mi0,"goText","A1");
+		var btnGo = o.blBtn(mi0,"btnGo","Go","green");
+		btnGo.onclick = function(){  
+                	var s = goText.value; 
+	                var getY = function(c)
     			{
-                	if(c=='a') return 0;
-                    if(c=='b') return 1;
-                    if(c=='c') return 2;
-                    if(c=='d') return 3;
-                    if(c=='e') return 4;
-                    if(c=='f') return 5;
-                    if(c=='g') return 6;
-                    if(c=='h') return 7;
-                    if(c=='i') return 8;
-                }
-                var x = [195,179,163,147,131,115,99,83,67,51];
+	                	if(c=='a') return 0;
+        		        if(c=='b') return 1;
+		                if(c=='c') return 2;
+                		if(c=='d') return 3;
+		                if(c=='e') return 4;
+                		if(c=='f') return 5;
+		                if(c=='g') return 6;
+                		if(c=='h') return 7;
+		                if(c=='i') return 8;
+                	}
+	                var x = [195,179,163,147,131,115,99,83,67,51];
     			var go = function(c1,c2,c3,c4){ 
         			var g1 = x[c2]+getY(c1); 
         			var g2 = x[c4]+getY(c3); 
-                    var g1 = board.flipped(g1);
-                    var g2 = board.flipped(g2); 
-            		board.imgSquares[g1].onmousedown(); 
-            		board.imgSquares[g2].onmousedown(); 
+        		        var g1 = board.flipped(g1);
+                    		var g2 = board.flipped(g2); 
+	            		board.imgSquares[g1].onmousedown(); 
+        	    		board.imgSquares[g2].onmousedown(); 
     			} 
-                go(s[0],s[1],s[2],s[3]);                  
-			}
-			var mi1 = o.blDiv(main,"mi1","mi1");
-			var mi2 = o.blDiv(main,"mi2","mi2");
-			var btn1 = o.blBtn(mi2,"Hu_PC","Hu_PC","gray");
-			btn1.onclick = function(){ 
-                 board.computer = 1; 
-				 board.restart(STARTUP_FEN[0]);
-                 this.style.backgroundColor="#f1a";
-                 btn4.style.backgroundColor="green";
-                 btn2.style.backgroundColor="green";
-                 btn3.style.backgroundColor="green";
-  				 ml.options.length = 1;
-                 ml.selectedIndex = 0;
-			}
-			var btn2 = o.blBtn(mi2,"PC_Hu","PC_Hu","gray");
-			btn2.onclick = function(){  
-                 board.computer = 0; 
-				 board.restart(STARTUP_FEN[0]);
-                 this.style.backgroundColor="#f1a";
-                 btn1.style.backgroundColor="green";
-                 btn4.style.backgroundColor="green";
-                 btn3.style.backgroundColor="green";
-  				 ml.options.length = 1;
-                 ml.selectedIndex = 0;
-			}
-			var btn3 = o.blBtn(mi2,"Hr_Hb","Hr_Hb","gray");
-			btn3.onclick = function(){   
-                 board.computer = -1; 
-				 board.restart(STARTUP_FEN[0]);
-                 this.style.backgroundColor="#f1a";
-                 btn1.style.backgroundColor="green";
-                 btn2.style.backgroundColor="green";
-                 btn4.style.backgroundColor="green";
-  				 ml.options.length = 1;
-                 ml.selectedIndex = 0;
-			}
+                	go(s[0],s[1],s[2],s[3]);                  
+		}
+		var mi1 = o.blDiv(main,"mi1","mi1");
+		var mi2 = o.blDiv(main,"mi2","mi2");
+		var btn1 = o.blBtn(mi2,"Hu_PC","Hu_PC","gray");
+		btn1.onclick = function(){ 
+                	board.computer = 1; 
+			board.restart(STARTUP_FEN[0]);
+	                this.style.backgroundColor="#f1a";
+        	        btn4.style.backgroundColor="green";
+                	btn2.style.backgroundColor="green";
+	                btn3.style.backgroundColor="green";
+  			ml.options.length = 1;
+	                ml.selectedIndex = 0;
+		}
+		var btn2 = o.blBtn(mi2,"PC_Hu","PC_Hu","gray");
+		btn2.onclick = function(){  
+        	        board.computer = 0; 
+			board.restart(STARTUP_FEN[0]);
+           		this.style.backgroundColor="#f1a";
+	                btn1.style.backgroundColor="green";
+        	        btn4.style.backgroundColor="green";
+                	btn3.style.backgroundColor="green";
+  			ml.options.length = 1;
+	                ml.selectedIndex = 0;
+		}
+		var btn3 = o.blBtn(mi2,"Hr_Hb","Hr_Hb","gray");
+		btn3.onclick = function(){   
+                	board.computer = -1; 
+			board.restart(STARTUP_FEN[0]);
+	               	this.style.backgroundColor="#f1a";
+	                btn1.style.backgroundColor="green";
+                 	btn2.style.backgroundColor="green";
+                 	btn4.style.backgroundColor="green";
+  			ml.options.length = 1;
+                 	ml.selectedIndex = 0;
+		}
     		o.blMakeDivMovable(main);
     
-			var btn4 = o.blBtn(mi2,"Hb_Hr","Hb_Hr","gray");
-			btn4.onclick = function(){   
-                 board.computer = -2; 
-				 board.restart(STARTUP_FEN[0]);
-                 this.style.backgroundColor="#f1a";
-                 btn1.style.backgroundColor="green";
-                 btn2.style.backgroundColor="green";
-                 btn3.style.backgroundColor="green";
-  				 ml.options.length = 1;
-                 ml.selectedIndex = 0;
-
-			}
+		var btn4 = o.blBtn(mi2,"Hb_Hr","Hb_Hr","gray");
+		btn4.onclick = function(){   
+                	board.computer = -2; 
+			board.restart(STARTUP_FEN[0]);
+        	        this.style.backgroundColor="#f1a";
+                	btn1.style.backgroundColor="green";
+	                btn2.style.backgroundColor="green";
+        	        btn3.style.backgroundColor="green";
+  			ml.options.length = 1;
+	                ml.selectedIndex = 0;
+		}
     		o.blMakeDivMovable(main);
-            var myMoveList = o.blSelect(mi0,"ml",10);
-            main.style.left = "320px";
-            main.style.top = "100px";
-    
+	        var myMoveList = o.blSelect(mi0,"ml",10);
+        	main.style.left = "320px";
+	        main.style.top = "100px";    
         };
     }(this);
     
  	BOARD_WIDTH 	= BOARD_WIDTH/2;
  	BOARD_HEIGHT 	= BOARD_HEIGHT/2;
  	SQUARE_SIZE	= SQUARE_SIZE/2;
-    THINKING_LEFT = (BOARD_WIDTH - THINKING_SIZE) >> 1;
- THINKING_TOP = (BOARD_HEIGHT - THINKING_SIZE) >> 1;
+	THINKING_LEFT = (BOARD_WIDTH - THINKING_SIZE) >> 1;
+	THINKING_TOP = (BOARD_HEIGHT - THINKING_SIZE) >> 1;
 
 	var d = this.blObj.blDiv ( this,"xddbgDiv","xddbgDiv");
-	d.v	= "xd1_v0.3.7"; 
-    var myBoard = this.blObj.blDiv(this,"container",""); 
-    
+	d.innerHTML	= "xdDbgDiv_v0.3. 11 "; 
+    var myBoard = this.blObj.blDiv(this,"container","");     
 } 
-xm.run("#i23: v1.1.4");
-//*/
- //*
+xm.run("#i23: v1.1.5 "); 
+
 var xdObjBoard 	= new Board(container, "https://littleflute.github.io/cchess0/cchess/images/", "https://littleflute.github.io/cchess0/cchess/sounds/");
 var board = xdObjBoard;
 
