@@ -158,7 +158,7 @@ xm.run		= function(v){
 	var bOnOff = this.blObj.blBtn ( this,"bOnOff","On/Off"); 
 	var bTest1 = this.blObj.blBtn ( this,"bTest1","bTest1"); 
 	var bMoveDiv = this.blObj.blBtn ( this,"bMoveDiv","bMoveDiv"); 
-	var htmlTitle = 'xd cchess <a target = "_blank" href="https://github.com/littleflute/JavaScript/issues/23">'+v_run+'</a>'; 
+	var htmlTitle = ' <a target = "_blank" href="https://github.com/littleflute/JavaScript/issues/23">'+v_run+'</a>'; 
     htmlTitle += ' <a target="_blank" href="https://littleflute.github.io/JavaScript/issues/23/i.js">i.js</a>';
     htmlTitle += ' <a target="_blank" href="https://github.com/littleflute/JavaScript/edit/master/issues/23/i.js">i.js*</a>';
     htmlTitle += ' <a href="..">[..]</a>';
@@ -301,7 +301,7 @@ xm.run		= function(v){
     var myBoard = this.blObj.blDiv(this,"container",""); 
     
 } 
-xm.run("#i23: v1.1.3");
+xm.run("#i23: v1.1.4");
 //*/
  //*
 var xdObjBoard 	= new Board(container, "https://littleflute.github.io/cchess0/cchess/images/", "https://littleflute.github.io/cchess0/cchess/sounds/");
