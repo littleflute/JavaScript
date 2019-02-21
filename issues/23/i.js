@@ -1,4 +1,4 @@
-var strRun = "#i23: v1.1.12 ";
+var strRun = "#i23: v1.1. 13 ";
 var STARTUP_FEN = [
   "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",
   "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKAB1R w",
@@ -407,8 +407,11 @@ c.style.background = "url('https://littleflute.github.io/cchess0/cchess/images/b
          var d = bl$("id_xddbgDiv");
         d.v = blo0.blDiv(d,d.id+"v","v",blGrey[2]);
         d.v1 = blo0.blDiv(d,d.id+"v1","v1",blGrey[3]);
-	 for(i in o){ //o[i].body
-                    var _b = blo0.blBtn(d.v , d.v.id + "_btn_" + i, i, blColor[i]);    _b.v = d.v1;
+	 for(i in o){ //o[i].body 
+                   var html = i;
+                   if(0==i) html = "Start";
+                   if(1==i) html = "Next";
+                    var _b = blo0.blBtn(d.v , d.v.id + "_btn_" + i,  html , blColor[i]);    _b.v = d.v1;
                     _b.onclick = function(_this, _txt){
                          return function(){ eval(_txt); }
                      }(_b, o[i].body);  
