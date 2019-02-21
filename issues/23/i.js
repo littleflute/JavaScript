@@ -1,3 +1,4 @@
+var strRun = "#i23: v1.1.12 ";
 var STARTUP_FEN = [
   "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",
   "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKAB1R w",
@@ -294,11 +295,11 @@ xm.run		= function(v){
 	THINKING_LEFT = (BOARD_WIDTH - THINKING_SIZE) >> 1;
 	THINKING_TOP = (BOARD_HEIGHT - THINKING_SIZE) >> 1;
 
-	var d = this.blObj.blDiv ( this,"xddbgDiv","xddbgDiv");
-	d.innerHTML	= "xdDbgDiv_v0.3. 11 "; 
+	var d = this.blObj.blDiv ( this,"id_xddbgDiv","xddbgDiv");
+	d.innerHTML	= "xdDbgDiv_v0.3. 12 "; 
     var myBoard = this.blObj.blDiv(this,"container","");     
 } 
-xm.run("#i23: v1.1.5 "); 
+xm.run( strRun ); 
 
 var xdObjBoard 	= new Board(container, "https://littleflute.github.io/cchess0/cchess/images/", "https://littleflute.github.io/cchess0/cchess/sounds/");
 var board = xdObjBoard;
@@ -398,8 +399,20 @@ board.drawSquare = function(sq, selected) {
 board.flipped = function(sq) {
   return (this.computer == -2 ||this.computer == 0 )? SQUARE_FLIP(sq) : sq; 
 }
-
-//  */
- 
+//-------------------------------------------------
 var c		= document.getElementById("container"); 
 c.style.background = "url('https://littleflute.github.io/cchess0/cchess/images/board1_2.jpg')";
+
+ function _comments(o) {
+         var d = bl$("id_xddbgDiv");
+        d.v = blo0.blDiv(d,d.id+"v","v",blGrey[2]);
+        d.v1 = blo0.blDiv(d,d.id+"v1","v1",blGrey[3]);
+	 for(i in o){ //o[i].body
+                    var _b = blo0.blBtn(d.v , d.v.id + "_btn_" + i, i, blColor[i]);    _b.v = d.v1;
+                    _b.onclick = function(_this, _txt){
+                         return function(){ eval(_txt); }
+                     }(_b, o[i].body);  
+        }
+}
+w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/23/comments", _comments);	
+
