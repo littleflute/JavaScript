@@ -1,4 +1,6 @@
-var strRun = "#i23: v1.1. 15 ";
+//https://littleflute.github.io/cchess/play/ii.html?f=9/3PPc3/3kb1n1P/5C2c/9/6R2/4P1C2/9/3r1p3/4K4%20w&id=303
+
+var strRun = "#i23: v1.1. 22 ";
 var g_FEN = "3rk4/5C3/5R3/9/9/9/9/9/5K2c/3p5 w";
 var STARTUP_FEN = [
   "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",
@@ -260,9 +262,10 @@ xm.run		= function(v){
 	                ml.selectedIndex = 0;
 		}
 		var btn3 = o.blBtn(mi2,"Hr_Hb","Hr_Hb","gray");
+                btn3.fen = g_FEN;
 		btn3.onclick = function(){   
                 	board.computer = -1; 
-			board.restart( g_FEN);
+			board.restart( this.fen );
 	               	this.style.backgroundColor="#f1a";
 	                btn1.style.backgroundColor="green";
                  	btn2.style.backgroundColor="green";
@@ -420,3 +423,4 @@ c.style.background = "url('https://littleflute.github.io/cchess0/cchess/images/b
 }
 w3.getHttpObject("https://api.github.com/repos/littleflute/JavaScript/issues/23/comments", _comments);	
 
+//https://littleflute.github.io/cchess/play/ii.html?f=9/3PPc3/3kb1n1P/5C2c/9/6R2/4P1C2/9/3r1p3/4K4%20w&id=303
