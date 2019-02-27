@@ -1,6 +1,6 @@
 //js4: Timer
 function _jobClass( _as ){ 
-    this.v="v0.0. 211";
+    this.v="v0.0. 212";
     this.blrTempo = function(b,d){  				 	
         if(!d.v){
            d.v = blo0.blDiv(d,d.id+"v","v",blColor[0]);
@@ -58,4 +58,4 @@ var j = new _jobClass(m);
 blo0.blShowObj2Div(m.plx.v,j);
 bl$("blrTimer").click();
 bl$("blrAboutPlx4").click();
-//_on_off_div(null,m.plx);
+_on_off_div(null,m.plx);
