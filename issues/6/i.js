@@ -1,6 +1,6 @@
 function _myJobClass()
 {
-        this.bllv = "v0.1. 24";
+        this.bllv = "v0.1. 25";
 	this.blrToolBar = function(b,d){
 		if(!d.tb){
 			var tb = blo0.blDiv(d,d.id + "tb","",blGrey[3]);
@@ -51,6 +51,7 @@ function _myJobClass()
 		
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	}
+        this.bll4About = "";
 	this.blrAbout= function(b,d){		
 		var s = "blrAboutMe<br>"; 
 		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/blApp.js'"
