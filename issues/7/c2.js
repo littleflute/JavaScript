@@ -1,7 +1,7 @@
 function api2() {
-    function _api2JobClass(){
-        this.v = "v0.0. 133";
-this.blrRunJS = function(b,d){
+    function _api2JobClass(){        
+        this.bll0=  "<div id = 'id_div_4_api2_v' title = 'id: id_div_4_api2_v'>v0.1. 13</div>";
+        this.blrRunJS = function(b,d){
 		if(!d.v){
 			d.v = blo0.blDiv(d,d.id+"v","",blGrey[5]);
 			d.v.ta = blo0.blTextarea(d.v,d.v.id+"ta","alert(1);",blGrey[3]);
@@ -10,6 +10,24 @@ this.blrRunJS = function(b,d){
 			d.v.btnRun= blo0.blBtn(d.v,d.v.id+"btnRun","run;",blColor[4]);
 			d.v.btnRun.onclick= function(){
 			    eval(d.v.ta.value);
+			}
+			d.v.btnRunForever= blo0.blBtn(d.v,d.v.id+"btnRunForever","run...","grey");
+                        d.v.btnRunForever.t= null;
+
+			d.v.btnRunForever.onclick= function(){
+
+			   function _timerFun(){ 
+			         d.v.btnRun.click();
+			   }
+			    if(!this.t){
+			        this.t = setInterval(_timerFun,100); 
+			        this.style.background = "green";
+			    }
+			    else{
+                                clearInterval(this.t);
+			        this.t = null;
+			        this.style.background = "grey";
+			    } 
 			}
 
 			function _loadIssue10Comments(o) {
@@ -26,7 +44,6 @@ this.blrRunJS = function(b,d){
 				               return function(){d.v.ta.value = _txt;}
 				        }(a);
 				}
-
 			}
 			var _src = "https://api.github.com/repos/littleflute/JavaScript/issues/10/comments";
 			w3.getHttpObject(_src, _loadIssue10Comments);	
@@ -54,24 +71,13 @@ this.blrIssue8C = function(b,d){
 		_on_off_div(b,d);		
 		b.style.background = b.style.background=="red"?blGrey[5]:blColor[4];
 	} 
+this.bll2="";
 this.blrAboutI7C2= function(b,d){		
-		var s = "blrAboutI7C3<br>"; 
-		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/issues/7'"
-		s += " style='color:blue;'";
-		s +=">";
-		s += "#7*  ";
-		s += "</a>"; 
-
+		var s = "blrAboutI7C2<br>";  
 		s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/7/c2.js'"
-		s += " style='color:blue;'";
-		s +=">";
-		s += " c2.js*  ";
-		s += "</a>"; 
+		s += " style='color:blue;'";		s +=">";		s += " c2.js*  ";		s += "</a>"; 
 		s += "<a target='_blank'  href='https://littleflute.github.io/JavaScript/issues/7/c2.js'";
-		s += " style='color:yellow;'";
-		s +=">";
-		s += " c2.js ";
-		s += "</a>"; 
+		s += " style='color:yellow;'";		s +=">";		s += " c2.js ";		s += "</a>"; 
 		d.innerHTML = s;
 		_on_off_div(b,d);
 		d.style.background = blGrey[5];
