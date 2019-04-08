@@ -1,4 +1,4 @@
-### [v0.1.15](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/)
+### [v0.1.21](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/)
 <div id = "id_div_4_plx">
   <button id = "id_btn_4_blApp">+blApp</button> 
 </div> 
@@ -10,6 +10,7 @@
 
 ### <a tartget="_blank" href = "blClassTest.html">blClassTest.html</a> - <a tartget="_blank" href = "https://github.com/littleflute/JavaScript/edit/master/blClassTest.html">blClassTest.htm 
 
+## Books : [【pro-html5-games】](https://littleflute.github.io/pro-html5-games/)
 <script src="w3.js"></script>
 <script src="blclass.js" ></script>
 <script src="blApp.js"></script>
