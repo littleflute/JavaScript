@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<!-- saved from url=(0053)http://www.walterzorn.com/jsgraphics/jsgraphics_e.htm -->
+<!doctype html> 
 <HTML>
 <HEAD>
 <TITLE>jsgraphics.html</TITLE>
@@ -12,7 +11,7 @@
 
 </HEAD>
 <BODY bgColor=FloralWhite > 
-<div id="blPageV">v0.0. 25 <button id="id_btn_4_blApp">++++++++++++++++++++++blApp++++++++++++++++++</button> </div>
+<div id="blPageV">v0.0. 52 <button id="id_btn_4_blApp">++++++++++++++++++++++blApp++++++++++++++++++</button> </div>
 <div id="xddbg"></div>
 <div id="idMedia"></div> 
 <script type="text/javascript" src="blclass.js"></script>
@@ -1096,7 +1095,10 @@ SET_DHTML(CURSOR_MOVE, KEYDOWN_RESIZE, "test", "stairsdemo");
 var d = blo0.blMDiv(document.body,"dtest"  , "dtest" ,
           300,100,500,400,blColor[1]);
 var d1 = blo0.blDiv(d, "dtest_d1", "d1", blColor[2]);
- 
+
+  function _loadIssue (o) {     eval(o.body);   }
+  var url = "https://api.github.com/repos/littleflute/JavaScript/issues/26";
+  w3.getHttpObject(url, _loadIssue ); 
 
 if(!d.jx) d.jx = new jsGraphics("dtest_d1");
 
