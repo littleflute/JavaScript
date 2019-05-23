@@ -1,6 +1,14 @@
 function _myJobClass()
 {
-        this.bllv = "v0.1. 25";
+        this.bllv = "v0.1. 35";
+        var d = bl$( 'id_div_4_blApp' );
+        var b1 = blo0.blBtn(d , "d.b1", "1",blGrey[2]);
+        b1.onclick = function(){ 
+           var w =  this.parentElement.parentElement;
+           w.style.background = " grey";
+           w.style.left = "500px";
+}
+
 	this.blrToolBar = function(b,d){
 		if(!d.tb){
 			var tb = blo0.blDiv(d,d.id + "tb","",blGrey[3]);
@@ -90,7 +98,7 @@ function CBlAppClass()
 	if(_btnApp){
 	    _btnApp.onclick = function(){
 		    var d = _btnApp.parentElement;
-		    mfUI = blo0.blMDiv(d, "id_div_CXdMainFrame" , "blApp: " + _g_ver_blApp, 0,0,150,50, blGrey[0]);   
+		    mfUI = blo0.blMDiv(d, "id_div_CXdMainFrame" ,   _g_ver_blApp, 0,0,150,50, blGrey[0]);   
 		    return function(){
 			    _on_off_div(this,mfUI);
 			    var b = this;
@@ -121,4 +129,6 @@ function CBlAppClass()
 }
  
  var f = new CBlAppClass;    
+
+
  
