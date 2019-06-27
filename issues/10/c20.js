@@ -1,5 +1,5 @@
 var s= "v0.0. 23 - ";
-s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/10/c1.js'"
+s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/10/c20.js'"
 s += " style='color:blue;'";		s +=">"; s += "c20.js* ";
 s += "<a target='_blank' href='https://littleflute.github.io/JavaScript/issues/10/c20.js'"
 s += " style='color:green;'";		s +=">"; s += "c20.js ";
