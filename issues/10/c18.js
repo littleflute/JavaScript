@@ -1,9 +1,11 @@
 //c18
-var s= "v0.0. 25 ";
+var s= "v0.0. 31";
 s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/10/c18.js'"
 s += " style='color:blue;'";		s +=">"; s += "c18.js* ";
 s += "<a target='_blank' href='https://littleflute.github.io/JavaScript/issues/10/c18.js'"
 s += " style='color:green;'";		s +=">"; s += "c18.js ";
+s += "<a target='_blank' href='https://littleflute.github.io/JavaScript/issues/10/c18Test.html'"
+s += " style='color:brown;'";		s +=">"; s += "c18Test.html";
 
 var md = blo0.blDiv(document.body, "idMD", s ,blGrey[0]);  
 if(!md.run){
