@@ -1,5 +1,5 @@
 //c18
-var s= "v0.0. 24 ";
+var s= "v0.0. 25 ";
 s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/10/c18.js'"
 s += " style='color:blue;'";		s +=">"; s += "c18.js* ";
 s += "<a target='_blank' href='https://littleflute.github.io/JavaScript/issues/10/c18.js'"
@@ -17,7 +17,7 @@ if(!md.run){
 	style += "top: 40px";
 	md .style =style;
 
-	var title = blo0.blDiv(md ,"moveDivHeader","header");
+	var title = blo0.blDiv(md , "idMD" + "Header", "Header");
 	style ="padding: 10px;";
 	style += "z-index: 10;";
 	style += "cursor: move;";
