@@ -1,5 +1,5 @@
 //c18
-var s= "v0.0. 31";
+var s= "v0.0. 32";
 s += "<a target='_blank' href='https://github.com/littleflute/JavaScript/edit/master/issues/10/c18.js'"
 s += " style='color:blue;'";		s +=">"; s += "c18.js* ";
 s += "<a target='_blank' href='https://littleflute.github.io/JavaScript/issues/10/c18.js'"
@@ -28,5 +28,7 @@ if(!md.run){
 	style += "background-color: #2196F3;";
 	title.style =style;
         blo0.blMakeDivMovable(md );
+       md.style.left = "400px";
+       md.style.top = "40px";
 }
 _on_off_div(this,md);
