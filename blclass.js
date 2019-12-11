@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.1.12"
+var g_ver_blClass = "blclass_v1.1.14"
 var _load_plx_btn = function(blo,oBoss,plxName,src, color ){
 			var idBtn	= oBoss.id + plxName + "btn";
 			var b		=  blo.blBtn(oBoss,idBtn,plxName,color);
@@ -120,8 +120,8 @@ function blClass ()
 	}
 	this.blrAboutMe= function(b,d){		
 		var s = ""; 
-		s += _blhMakeLink('blclass.js ','https://littleflute.github.io/vc6/XdHtml/blclass.js','color:skyblue;','_blank');
-		s += _blhMakeLink(' blclass.js*','https://github.com/littleflute/vc6/edit/master/XdHtml/blclass.js','color:skyblue;','_blank');
+		s += _blhMakeLink('blclass.js ','https://littleflute.github.io/JavaScript/blclass.js','color:skyblue;','_blank');
+		s += _blhMakeLink(' blclass.js*','https://github.com/littleflute/JavaScript/edit/master/blclass.js','color:skyblue;','_blank');
 		d.innerHTML = s;
 		_on_off_div(b,d);
 	}
