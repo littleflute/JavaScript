@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.1.14"
+var g_ver_blClass = "blclass_v1.1.21"
 var _load_plx_btn = function(blo,oBoss,plxName,src, color ){
 			var idBtn	= oBoss.id + plxName + "btn";
 			var b		=  blo.blBtn(oBoss,idBtn,plxName,color);
@@ -283,6 +283,7 @@ function blClass ()
 			md.style.width = w+"px";			
 			md.style.height = h+"px";
 		}
+	    	return md;
     }
     _blShowObj2Div_all = function (oBoss,obj,l) //blclassdbg 1039
     {	  
