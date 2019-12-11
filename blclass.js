@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.1.11"
+var g_ver_blClass = "blclass_v1.1.12"
 var _load_plx_btn = function(blo,oBoss,plxName,src, color ){
 			var idBtn	= oBoss.id + plxName + "btn";
 			var b		=  blo.blBtn(oBoss,idBtn,plxName,color);
@@ -111,7 +111,7 @@ function blClass ()
 		r += "</a>";   
 		return r;
 	}
-	this.blhMakeLink = function (txt,href,style,target) { return _blhMakeLink(txt,href,style,target); } 
+    this.blhMakeLink = function (txt,href,style,target) { return _blhMakeLink(txt,href,style,target); } 
     this.blrMax = function (b,d)
     {        
 		 d.parentElement.parentElement.style.left = 0+"px";
@@ -254,6 +254,35 @@ function blClass ()
 			y1 = 0; 
 		};  
         return r;
+    }
+    this.blMD = function(id,html,x,y,w,h,bkClr){
+	    	var md = this.blDiv(document.body, id, g_ver_blClass + ":" + html,bkClr);  
+		if(!md.run){
+		    md.run = true; 
+			var style ="position: absolute;";
+			style += "z-index: 9;";
+			style += "background-color: #f1f1f1;";
+			style += "text-align: center;";
+			style += "border: 1px solid #d3d3d3;";
+			style += "left: 400px";
+			style += "top: 40px";
+			md .style =style;
+
+			var title = blo0.blDiv(md , md.id + "Header", "Header");
+			style ="padding: 10px;";
+			style += "z-index: 10;";
+			style += "cursor: move;";
+			style += "text-align: center;";
+			style += "border: 1px solid #fff;";
+			style += "background-color: #2196F3;";
+			title.style =style;
+
+			blo0.blMakeDivMovable(md );
+			md.style.left = x+"px";
+			md.style.top = y+"px";
+			md.style.width = w+"px";			
+			md.style.height = h+"px";
+		}
     }
     _blShowObj2Div_all = function (oBoss,obj,l) //blclassdbg 1039
     {	  
