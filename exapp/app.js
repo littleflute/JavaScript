@@ -9,12 +9,14 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-const tag = "[app.js_v0.13]";
+const tag = "[app.js_v0.15]";
 console.log(tag + "$ DEBUG=exapp:* npm start" );
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+app.use('/static', express.static('public'));
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -57,5 +59,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
+app.get('/xd',function (req,res){
+	res.send(tag + ' Hello World! ' + Date());
+});
 
 module.exports = app;
