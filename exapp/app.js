@@ -9,6 +9,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+const tag = "[app.js_v0.13]";
+console.log(tag + "$ DEBUG=exapp:* npm start" );
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
