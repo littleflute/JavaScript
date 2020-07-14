@@ -1,7 +1,8 @@
-### [v0.1.24](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/)
+### [v0.1.25](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/)
 <div id = "id_div_4_plx">
   <button id = "id_btn_4_blApp">+blApp</button> 
 </div> 
+## [exapp/public/index.html](exapp/public/index.html)
 ## [xdgraph.html](xdgraph.html)
 
 - [w3Div](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default)-[runjs](runjs.html)
