@@ -1,4 +1,4 @@
-### [v0.1.25](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/)
+### [v0.1.31](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/) [issues](issues)
 <div id = "id_div_4_plx">
   <button id = "id_btn_4_blApp">+blApp</button> 
 </div> 
