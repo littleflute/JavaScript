@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.11"
+var g_ver_blClass = "blclass_v1.2.12"
 var _load_plx_btn = function(blo,oBoss,plxName,src, color ){
 			var idBtn	= oBoss.id + plxName + "btn";
 			var b		=  blo.blBtn(oBoss,idBtn,plxName,color);
@@ -54,6 +54,18 @@ var blColor	= ["red","tomato","gold","black","green","blue","lightblue","yellow"
 var blGrey	= ["Gainsboro","LightGray","Silver","DarkGray",
 			   "DimGray","Gray","LightSlateGray","SlateGray","DarkSlateGray","black"];
 
+var blon = function(b,d,c1,c2){
+	if(b.b){
+		b.b = false;
+		b.style.backgroundColor = c1;
+		d.style.display="none"; 
+	}
+	else{
+		b.b = true;
+		b.style.backgroundColor = c2;
+		d.style.display="block";
+	}
+}
 	var _blMove = function(o,x,y){o.style.left = x;o.style.top = y;};
 	function _on_off_div(b,d){if(d.style.display=="block"){d.style.display="none"; b.style.backgroundColor="red"; }else{d.style.display="block"; b.style.backgroundColor="green"; }};
 	function _on_off_bd_1(b,d){ 
@@ -535,4 +547,68 @@ function blClass ()
 	
 }//END: function blClass ()
  
- var blo0 = new blClass;
+var blo0 = new blClass;
+blo0.lsCVS = [];
+blo0.regCVS = function(o){
+	blo0.lsCVS.push(o);
+}
+blo0.blCanvase = function(d,w,h,color){
+	var cvs = document.createElement("canvas");
+	cvs.width = w;
+	cvs.height = h;
+	d.appendChild(cvs);
+	cvs.style.float = "left";
+
+	cvs.addEventListener('mousedown', function (e) {
+		var x = e.offsetX;
+		var y = e.offsetY;
+		var s = "["+x+","+y+"]";
+		alert(s);
+	})
+
+	
+	var f = function(_o,_ls,_cvs){
+		return function(){
+			_o.blRect(_cvs,0,0,_cvs.width,_cvs.height,color);
+			var n = blo0.lsCVS.length; 
+			var s = "["+n+"] ";
+			for(var i = 0; i < n; i++){
+				var r = _ls[i].draw(_cvs);
+				s += ":";
+				s += r;
+			}
+			s += Date();
+			_o.blText(_cvs,s,60,11,11,"white");
+		}
+	}(blo0,blo0.lsCVS,cvs);
+
+	var interval = setInterval(f, 20);
+	return cvs;
+}
+
+blo0.blRect = function(cvs,x,y,w,h,color){
+	var ctx = cvs.getContext("2d");
+	ctx.fillStyle = color;
+	ctx.fillRect(0,0,w,h);	
+}
+blo0.blText = function(cvs,txt,x,y,size,color){
+	var ctx = cvs.getContext("2d");
+	ctx.font = size + "px Arial";
+	ctx.fillStyle = color;
+	ctx.fillText(txt, x,y);
+	return cvs;
+}
+blo0.dbgBtn = function(tb,txt,c1,c2,callback){
+	var b = blo0.blBtn(tb,tb.id+txt,txt,c1);	
+	b.style.float = "right";
+	b.onclick = function(){
+		blon(b,null,c1,c2);
+	}
+	b.draw = function(cvs){
+		if(b.b){
+			callback(cvs);
+		}
+	}
+	blo0.regCVS(b);
+	
+}

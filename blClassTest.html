@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>blClass Test v0.12</title>
+<title>blClass Test v0.13</title>
 <script src="blclass.js"></script>
 </head>
 <body>
@@ -14,21 +14,51 @@
         var md = null;
         var x = screen.width*0.19;
         var y = screen.height*0.15;
-        var w = screen.width*0.5;
+        var w = 300;//screen.width*0.5;
         var h = screen.height*0.15;
         var to = {};
-        to.f1 = function(b,v){
-            v.innerHTML = b.id;
+        to.playground = function(b,v){
+            var c = "white";
+            if(!md.playground)
+            {
+                md.playground = blo0.blDiv(md,md.id+"playground","",c); 
+                var cvs = blo0.blCanvase(md.playground,555,444,"grey");      
+            	blo0.blText(cvs,"test",55,55,30,"green");          
+                b.b = false;                
+            } 
+            blon(b,md.playground,blGrey[0],c); 
         }
-        to.f2 = function(b,v){
-            v.innerHTML = b.id;
+        to.storyBoard = function(b,v){
+            var c = "skyblue"; 
+            if(!md.storyBoard)
+            {
+                md.storyBoard = blo0.blDiv(md.v,md.v.id+"storyBoard","storyBoard",c);
+                b.b = false;      
+
+                var tb = blo0.blDiv(md.storyBoard,md.storyBoard.id+"db","db",blGrey[0]);
+                var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
+                    blo0.blText(cvs,"storyBoard.dbg",50,80,20,c);
+                });
+            } 
+            blon(b,md.storyBoard,blGrey[0],c);
         }
-        to.f3 = function(b,v){
-            v.innerHTML = b.id;
+        to.server = function(b,v){
+            var c = "seagreen"; 
+            if(!md.server)
+            {
+                md.server = blo0.blDiv(md.v,md.v.id+"server","server",c);
+                b.b = false;        
+                var tb = blo0.blDiv(md.server,md.server.id+"db","db",blGrey[0]);
+                var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
+                    blo0.blText(cvs,"server.dbg",50,50,20,c);
+                });
+                var b2 = blo0.dbgBtn(tb,"b2","grey",c,function(cvs){
+                    //blo0.blText(cvs,"server.dbg",50,50,20,c);
+                });
+            } 
+            blon(b,md.server,blGrey[0],c);
         }
-        to.f4 = function(b,v){
-            v.innerHTML = b.id;
-        }
+        
         this.run = function(){
             var cs = blGrey;
             md = blo0.blMD("id_md","md4CTest",x,y,w,h,cs[0]);
