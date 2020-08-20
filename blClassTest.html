@@ -1,141 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>blClass Test</title>
-<script src="https://littleflute.github.io/JavaScript/blclass.js"></script>
+<title>blClass Test v0.12</title>
+<script src="blclass.js"></script>
 </head>
 <body>
 
 <script>
-function blClass0() { 
-    var _v 	= "v0.0.9";
-    var _by = "xd";
-    var _UI = function()
-    {       	
-    		var r = document.getElementById("d1");
-    		if(!r) {
-    			r 			= document.createElement("div"); 
-                var html 	=  "blClass UI：";
-                html		+= _v;
-                html		+= " by " + _by;
-        		r.innerHTML = html;
-                r.style.border = "1px red solid";
-        		document.body.appendChild(r); 
-    		} 
-            return r;
-    }
-    var _eDiv = function(boss,id,html) { 
-    	var r = document.getElementById(id);
-    	if(!r) {
-    		r 			= document.createElement("div");
-        	r.id 		= id; 
-            r.innerHTML = html;
-        	boss.appendChild(r); 
-    	}
-    	return r; 
-	}
-    var _eLoadRunJSFile = function(worker,href) {          
-            var xmlhttp;
-            if (window.XMLHttpRequest)
-            {// code for IE7+, Firefox, Chrome, Opera, Safari
-                xmlhttp=new XMLHttpRequest();
-            }
-            else
-            {// code for IE6, IE5
-                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xmlhttp.onreadystatechange=function()
-            {
-                if (xmlhttp.readyState==4 && xmlhttp.status==200)
-                {
-                   worker._2do(xmlhttp.responseText);
-                }
-            }
-            xmlhttp.open("GET",href,true);
-            xmlhttp.send(); 
-	}//End _eLoadRunJSFile
-    var _eRunJs = function(s){   
-            eval(s);
+    var t = new CTest();
+    t.run();
+
+    function CTest(){
+        var md = null;
+        var x = screen.width*0.19;
+        var y = screen.height*0.15;
+        var w = screen.width*0.5;
+        var h = screen.height*0.15;
+        var to = {};
+        to.f1 = function(b,v){
+            v.innerHTML = b.id;
         }
-
-    var _ShowObj2Div = function(o2Show,idDiv) {  
-    	var oBoss = document.getElementById(idDiv);
-    	if(!oBoss) {
-       		oBoss = document.createElement("div");
-       		oBoss.id = "divBlShowObj";
-       		oBoss.style.border = "green 1px solid";
-       		document.body.appendChild(oBoss);
-     	} 
-    	if(!oBoss){
-        	alert("boss error!");return;
-    	}
-    	oBoss.innerHTML = "";
-        var obj = o2Show;
-    	for(i in obj)
-    	{
-      		var b = document.createElement("button");
-      		b.id = b.innerHTML = i;
-      		if(i[0]=="b"&&i[1]=="l") b.style.backgroundColor = "yellow";
-      		oBoss.appendChild(b);
-      		var d = document.createElement("div");
-      		d.innerHTML = obj[i];
-      		d.style.border = "blue 1px solid";
-      		d.style.backgroundColor = "green";
-      		d.style.color = "yellow";
-      		oBoss.appendChild(d);
-    	}
-    }
-    this.blVerl = "0.0.3";
-    var body = null;
-    this.blRun = function()
-    { 
-        var uiMain = _UI();
-        var head = _eDiv(uiMain,"idHead","htmlHeadDiv"); 
-        body = _eDiv(uiMain,"idBodyDiv","htmlBodyDiv"); 
-        var bottom = _eDiv(uiMain,"idBottomDiv","htmlBottomDiv"); 
-        body.style.border = "1px blue solid";        
-      
-    }
-    this.p			= [];
-    this.n			= 0;
-    this.blLoadPlx = function(href)
-    {
-    	var r = null; 
-        body._2do = function(s)
-        { 
-        	var xd = _eDiv(this,"xd",s); 
-            var strJS =  s;// + "var blo = new blClass;";
-            //strJS += "blo.run();";
-            _eRunJs(strJS);
+        to.f2 = function(b,v){
+            v.innerHTML = b.id;
         }
-        _eLoadRunJSFile(body,href);
-        this.p[this.n] = blPlx; 
-        
-        this.n++;
+        to.f3 = function(b,v){
+            v.innerHTML = b.id;
+        }
+        to.f4 = function(b,v){
+            v.innerHTML = b.id;
+        }
+        this.run = function(){
+            var cs = blGrey;
+            md = blo0.blMD("id_md","md4CTest",x,y,w,h,cs[0]);
+            md.tb = blo0.blDiv(md,md.id+"tb","md.tb",cs[1]); 
+            md.v = blo0.blDiv(md,md.id+"v","md.v",cs[2]); 
+            var n = 0;
+            for(i in to){
+                var b = blo0.blBtn(md.tb,md.tb.id+"_btn_"+ i, i,cs[n]);
+                b.style.float = "left";
+                b.onclick = function(_this,_v,_i){
+                    return function(){
+                        to[_i](_this,_v);
+                    }
+                }(b,md.v,i);
+                n++;
+            } 
+        }
     }
-    this.blShowPlx = function(i)
-    { 
-    	var plx = this.p[i-1];
-        var oPlx = new plx;
-        _ShowObj2Div(oPlx,"idHead");
-    }
-    this.blNewPlx = function(i)
-    { 
-    	var plx = this.p[i-1];
-        var oPlx = new plx;
-        return oPlx;
-    }
-} 
-
-var o = new blClass0;
-o.blRun();
-o.blLoadPlx("https://littleflute.github.io/JavaScript/blclass.js");
-o.blShowPlx(1);
-var p1 = o.blNewPlx(1);
-p1.run();
-
-
 </script>
-
 </body>
 </html>
