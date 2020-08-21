@@ -38,9 +38,7 @@
                 var tb = blo0.blDiv(md.storyBoard,md.storyBoard.id+"db","db",blGrey[0]);
                 var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
                     blo0.blText(cvs,"storyBoard.dbg",50,80,20,c);
-                });
-                var sBtn = blo0.blBtn(tb,tb.id+"sBtn","+S",blGrey[0]); sBtn.style.float="right";
-                sBtn.onclick = function(){blo0.sc.addScript();}
+                }); 
             } 
             blon(b,md.storyBoard,blGrey[0],c);
         }
@@ -53,10 +51,7 @@
                 var tb = blo0.blDiv(md.server,md.server.id+"db","db",blGrey[0]);
                 var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
                     blo0.blText(cvs,"server.dbg",50,150,20,c);
-                });
-                var b2 = blo0.dbgBtn(tb,"b2","grey",c,function(cvs){
-                    //blo0.blText(cvs,"server.dbg",50,50,20,c);
-                });
+                }); 
             } 
             blon(b,md.server,blGrey[0],c);
         }

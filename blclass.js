@@ -552,14 +552,23 @@ var blo0 = new blClass;
 blo0.lsCVS = [];
 blo0.sc = new CScripts;
 
-function CRectBtn(_o,_x,_y,_w,_h,_c1,_c2){
-	var o = _o;
+function CBtn(_x,_y,_w,_h,_c,callback){ 
+	var x = _x, y=_y,w=_w,h=_h,c=_c;
+	this.draw=function(cvs){
+		blo0.blRect(cvs,x,y,w,h,c); 
+	} 
+	this.click = function(xx,yy){
+		if(blo0.blPiR(xx,yy,x,y,w,h)){
+			callback();
+		}
+	}
+}
+function CRectBtn(_x,_y,_w,_h,_c1,_c2){ 
 	var x = _x, y=_y,w=_w,h=_h,c1=_c1,c2=_c2;
 	var c = c1;
 	var b = false;
 	this.draw=function(cvs){
-		blo0.blRect(cvs,x,y,w,h,c);
-		if(b) _o.btnDraw(cvs);
+		blo0.blRect(cvs,x,y,w,h,c); 
 	}
 	this.click = function(_x,_y){
 		if(blo0.blPiR(_x,_y,x,y,w,h)){
@@ -573,21 +582,49 @@ function CRectBtn(_o,_x,_y,_w,_h,_c1,_c2){
 			}
 		}
 	}
+	this.getStatus = function(){return b;}
+	this.setStatus = function(_b){b = _b;c=c1;}
+	this.setXY = function(_x,_y){x=_x; y=_y;}
 }
 function C1Script(_x,_y){
 	var x = _x, y = _y; 
-	this.draw = function(cvs){  
-		blo0.blRect(cvs,x,y,20,20,"lightblue");
+	var w = 15, h = 15;
+	var X = x, Y=y+30,W=100,H=100;
+	var m =false;
+	var r = new CRectBtn(x,y,w,h,"white","yellow");
+	var rc = new CRectBtn(X,Y,w,h,"brown","yellow");
+
+	this.draw = function(cvs){   
+		r.draw(cvs);
+		if(r.getStatus()){
+			blo0.blRect(cvs,X,Y,W,H,"lightblue");
+			rc.draw(cvs);
+		}
 	} 
-	this.click = function(_x,_y){   
-		if(blo0.blPiR(_x,_y,x,y,20,20)){
-			alert(x);
+	this.click = function(_x,_y){    
+		r.click(_x,_y);
+		if(r.getStatus()){			
+			rc.click(_x,_y);	
+		}
+		if(m){
+			X = _x;
+			Y = _y;
+			m = false;		
+			rc.setStatus(false);	
+			rc.setXY(_x,_y); 
+		}
+		if(rc.getStatus()){
+			m = true;
+		}	 	
+		else{
+			m = false;
 		}
 	} 
 }
 function CScripts(){
 	const CC = "lightgrey";
 	const CC1 = "darkseagreen";
+	const CC2 = "white";
 	var ls = [];
 	var x = 11;
 	var y = 21;
@@ -598,35 +635,54 @@ function CScripts(){
 	var W = 200;
 	var H = 200;
 	var c = CC; 
+	var m = false;
 	this.v = "CScripts: v0.11";
-	var r = new CRectBtn(this,x,y,w,h,CC,"yellow");
-
-	this.btnDraw = function(cvs){
+	var r = new CRectBtn(x,y,w,h,CC,CC2);
+	var r1 = new CBtn(x+33,y,w,h,CC,function(){
 		var n = ls.length;
-		blo0.blText(cvs,this.v + ":"+ n,x,y,c);
-		
-		blo0.blRect(cvs,X,Y,W,H,CC1);
-
-		for(var i = 0; i<n; i++){
-			ls[i].draw(cvs);
-		}
-	}
+		var s = new C1Script(x+60+30*n,y);
+		ls.push(s);
+	});	
+	var rc = new CRectBtn(X,Y,w,h,CC,CC1);
+ 
 	this.draw = function(cvs){ 
 		r.draw(cvs);
-	} 
-	this.click = function(_x,_y){  
-		r.click(_x,_y);
-		
-		var n = ls.length;
-		for(var i = 0; i<n; i++){
-			ls[i].click(_x,_y);
+		if(r.getStatus()){
+			blo0.blRect(cvs,X,Y,W,H,CC2);
+			rc.draw(cvs);
+
+			r1.draw(cvs);
+			var n = ls.length;
+			blo0.blText(cvs,"n="+n,x+60,y,12,CC);
+
+			for(var i=0; i<n;i++){
+				ls[i].draw(cvs);
+			}
 		}
 	} 
-	this.addScript = function(){
-		var n = ls.length; 
-		var s = new C1Script(x+30 + n*30,y);
-		ls.push(s);
-	}	
+	this.click = function(_x,_y){  
+		r.click(_x,_y);	
+		if(r.getStatus()){
+			rc.click(_x,_y);	
+			r1.click(_x,_y);	
+			for(i in ls){
+				ls[i].click(_x,_y);
+			}	
+		}	
+		if(m){
+			X = _x;
+			Y = _y;
+			m = false;		
+			rc.setStatus(false);	
+			rc.setXY(_x,_y); 
+		}
+		if(rc.getStatus()){
+			m = true;
+		}	 	
+		else{
+			m = false;
+		}
+	}   
 }; 
 
  
