@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.12"
+var g_ver_blClass = "blclass_v1.2.13"
 var _load_plx_btn = function(blo,oBoss,plxName,src, color ){
 			var idBtn	= oBoss.id + plxName + "btn";
 			var b		=  blo.blBtn(oBoss,idBtn,plxName,color);
@@ -548,7 +548,96 @@ function blClass ()
 }//END: function blClass ()
  
 var blo0 = new blClass;
+ 
 blo0.lsCVS = [];
+blo0.sc = new CScripts;
+
+function CRectBtn(_o,_x,_y,_w,_h,_c1,_c2){
+	var o = _o;
+	var x = _x, y=_y,w=_w,h=_h,c1=_c1,c2=_c2;
+	var c = c1;
+	var b = false;
+	this.draw=function(cvs){
+		blo0.blRect(cvs,x,y,w,h,c);
+		if(b) _o.btnDraw(cvs);
+	}
+	this.click = function(_x,_y){
+		if(blo0.blPiR(_x,_y,x,y,w,h)){
+			if(!b){
+				b=true;		
+				c=c2;
+			}
+			else{
+				b=false;
+				c=c1;
+			}
+		}
+	}
+}
+function C1Script(_x,_y){
+	var x = _x, y = _y; 
+	this.draw = function(cvs){  
+		blo0.blRect(cvs,x,y,20,20,"lightblue");
+	} 
+	this.click = function(_x,_y){   
+		if(blo0.blPiR(_x,_y,x,y,20,20)){
+			alert(x);
+		}
+	} 
+}
+function CScripts(){
+	const CC = "lightgrey";
+	const CC1 = "darkseagreen";
+	var ls = [];
+	var x = 11;
+	var y = 21;
+	var w = 20;
+	var h = 20;
+	var X = 21;
+	var Y = 44;
+	var W = 200;
+	var H = 200;
+	var c = CC; 
+	this.v = "CScripts: v0.11";
+	var r = new CRectBtn(this,x,y,w,h,CC,"yellow");
+
+	this.btnDraw = function(cvs){
+		var n = ls.length;
+		blo0.blText(cvs,this.v + ":"+ n,x,y,c);
+		
+		blo0.blRect(cvs,X,Y,W,H,CC1);
+
+		for(var i = 0; i<n; i++){
+			ls[i].draw(cvs);
+		}
+	}
+	this.draw = function(cvs){ 
+		r.draw(cvs);
+	} 
+	this.click = function(_x,_y){  
+		r.click(_x,_y);
+		
+		var n = ls.length;
+		for(var i = 0; i<n; i++){
+			ls[i].click(_x,_y);
+		}
+	} 
+	this.addScript = function(){
+		var n = ls.length; 
+		var s = new C1Script(x+30 + n*30,y);
+		ls.push(s);
+	}	
+}; 
+
+ 
+blo0.blPiR = function(x,y,x1,y1,w1,h1){
+	if(x<x1|| x>x1+w1 || y<y1 || y>y1+h1){
+		return false;
+	}
+	else {
+		return true;
+	}
+}
 blo0.regCVS = function(o){
 	blo0.lsCVS.push(o);
 }
@@ -562,16 +651,16 @@ blo0.blCanvase = function(d,w,h,color){
 	cvs.addEventListener('mousedown', function (e) {
 		var x = e.offsetX;
 		var y = e.offsetY;
-		var s = "["+x+","+y+"]";
-		alert(s);
+		blo0.sc.click(x,y);
 	})
 
 	
 	var f = function(_o,_ls,_cvs){
 		return function(){
-			_o.blRect(_cvs,0,0,_cvs.width,_cvs.height,color);
+			_o.blRect(_cvs,0,0,_cvs.width,_cvs.height,color);			
+			blo0.sc.draw(_cvs);
 			var n = blo0.lsCVS.length; 
-			var s = "["+n+"] ";
+			var s = "[==="+n+"] ";
 			for(var i = 0; i < n; i++){
 				var r = _ls[i].draw(_cvs);
 				s += ":";
@@ -589,7 +678,7 @@ blo0.blCanvase = function(d,w,h,color){
 blo0.blRect = function(cvs,x,y,w,h,color){
 	var ctx = cvs.getContext("2d");
 	ctx.fillStyle = color;
-	ctx.fillRect(0,0,w,h);	
+	ctx.fillRect(x,y,w,h);	
 }
 blo0.blText = function(cvs,txt,x,y,size,color){
 	var ctx = cvs.getContext("2d");
@@ -609,6 +698,5 @@ blo0.dbgBtn = function(tb,txt,c1,c2,callback){
 			callback(cvs);
 		}
 	}
-	blo0.regCVS(b);
-	
+	blo0.regCVS(b);	
 }
