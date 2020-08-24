@@ -1,4 +1,5 @@
-### [v0.1.34](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/) 
+### [v0.1.35](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/) 
+### [animate-frames](https://littleflute.github.io/animate-frames/)
 ## [exapp/public](exapp/public)
 <div id = "id_div_4_plx">
   <button id = "id_btn_4_blApp">+blApp</button> 
