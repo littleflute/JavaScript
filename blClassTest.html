@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>blClass Test v0.14</title>
+<title>blClass Test v0.15</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="w3.css">
 <script src="blclass.js"></script>
@@ -29,7 +29,7 @@
         var md = null;
         var x = screen.width*0.19;
         var y = screen.height*0.15;
-        var w = 300;//screen.width*0.5;
+        var w =  screen.width*0.5;
         var h = screen.height*0.15;
         var to = {};
         to.playground = function(b,v){
@@ -37,11 +37,29 @@
             if(!md.playground)
             {
                 md.playground = blo0.blDiv(md,md.id+"playground","",c); 
-                var cvs = blo0.blCanvase(md.playground,555,444,"grey");      
+
+                var v = blo0.blDiv(md.playground,md.playground.id+"v","v",blGrey[3]);
+
+                var cvs = blo0.blCanvase(v,w,444,"grey");      
             	blo0.blText(cvs,"test",55,55,30,"green");          
                 b.b = false;                
             } 
             blon(b,md.playground,blGrey[0],c); 
+        }
+        to.statusBoard = function(b,v){
+            var c = "teal"; 
+            if(!md.statusBoard)
+            {
+                md.statusBoard = blo0.blDiv(md.v,md.v.id+"statusBoard","statusBoard",c);
+                b.b = false;      
+
+                var v = blo0.blDiv(md.statusBoard,md.statusBoard.id+"v","v",blGrey[3]);
+                var tb = blo0.blDiv(md.statusBoard,md.statusBoard.id+"st","st",blGrey[0]);
+                var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
+                    blo0.blText(cvs,"statusBoard.dbg"+Date(),50,180,20,c);
+                }); 
+            } 
+            blon(b,md.statusBoard,blGrey[0],c);
         }
         to.storyBoard = function(b,v){
             var c = "skyblue"; 
@@ -50,7 +68,7 @@
                 md.storyBoard = blo0.blDiv(md.v,md.v.id+"storyBoard","storyBoard",c);
                 b.b = false;      
 
-                var tb = blo0.blDiv(md.storyBoard,md.storyBoard.id+"db","db",blGrey[0]);
+                var tb = blo0.blDiv(md.storyBoard,md.storyBoard.id+"sb","sb",blGrey[0]);
                 var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
                     blo0.blText(cvs,"storyBoard.dbg",50,80,20,c);
                 }); 
@@ -63,7 +81,7 @@
             {
                 md.server = blo0.blDiv(md.v,md.v.id+"server","server",c);
                 b.b = false;        
-                var tb = blo0.blDiv(md.server,md.server.id+"db","db",blGrey[0]);
+                var tb = blo0.blDiv(md.server,md.server.id+"sv","sv",blGrey[0]);
                 var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
                     blo0.blText(cvs,"server.dbg",50,150,20,c);
                 }); 

@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.13"
+var g_ver_blClass = "blclass_v1.2.15"
 var _load_plx_btn = function(blo,oBoss,plxName,src, color ){
 			var idBtn	= oBoss.id + plxName + "btn";
 			var b		=  blo.blBtn(oBoss,idBtn,plxName,color);
@@ -504,7 +504,7 @@ function blClass ()
 
     this.blMakeDivMovable = function (elmnt) {
       	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-	var idHeader = document.getElementById(elmnt.id + "Header");
+		var idHeader = document.getElementById(elmnt.id + "Header");
       	if (idHeader) {
         	/* if present, the header is where you move the DIV from:*/
         	idHeader.onmousedown = dragMouseDown;
@@ -543,14 +543,17 @@ function blClass ()
         document.onmouseup = null;
         document.onmousemove = null;
       }
-    }
+	}
+	this.sXY = function(x,y){
+		return " ["+x+","+y+"]";
+	}
 	
 }//END: function blClass ()
  
 var blo0 = new blClass;
  
 blo0.lsCVS = [];
-blo0.sc = new CScripts;
+blo0.scm = new CScriptMng;
 
 function CBtn(_x,_y,_w,_h,_c,callback){ 
 	var x = _x, y=_y,w=_w,h=_h,c=_c;
@@ -586,22 +589,39 @@ function CRectBtn(_x,_y,_w,_h,_c1,_c2){
 	this.setStatus = function(_b){b = _b;c=c1;}
 	this.setXY = function(_x,_y){x=_x; y=_y;}
 }
-function C1Script(_x,_y){
+function C1Script(_id,_x,_y){
+	var id = _id;
+	var z = _id;
 	var x = _x, y = _y; 
 	var w = 15, h = 15;
 	var X = x, Y=y+30,W=100,H=100;
+	var C = "lightgrey";
+	var clickTest = "clickTest:";
+	var clickInScreen = "clickInScreen:";
 	var m =false;
 	var r = new CRectBtn(x,y,w,h,"white","yellow");
 	var rc = new CRectBtn(X,Y,w,h,"brown","yellow");
 
-	this.draw = function(cvs){   
+	this.getZ = function(){return z;}
+	this.setZ = function(_z){  z=_z;}
+	this.getX = function(){return X;}
+	this.getY = function(){return Y;}
+	this.getW = function(){return W;}
+	this.getH = function(){return H;}
+	this.setC = function(_c){C = _c;}
+	this.inScriptScreen = function(_x,_y){		return blo0.blPiR(_x,_y,X,Y,W,H);	}
+
+	this.draw1Script = function(cvs){   
 		r.draw(cvs);
 		if(r.getStatus()){
-			blo0.blRect(cvs,X,Y,W,H,"lightblue");
+			blo0.blRect(cvs,X,Y,W,H,C);
+			blo0.blText(cvs,"id=" + id + " z="+z,X+W/4,Y+H/5,12,"green");
+			blo0.blText(cvs,clickInScreen,X+W/12,Y+H/3,12,"brown");
+			blo0.blText(cvs,clickTest,X+W/12,Y+H/2,12,"blue");
 			rc.draw(cvs);
 		}
 	} 
-	this.click = function(_x,_y){    
+	this.click1script = function(_x,_y){    
 		r.click(_x,_y);
 		if(r.getStatus()){			
 			rc.click(_x,_y);	
@@ -619,13 +639,22 @@ function C1Script(_x,_y){
 		else{
 			m = false;
 		}
+
+		var d = new Date();
+		var n = d.toLocaleTimeString();
+		clickTest = n;
+
+		if(blo0.blPiR(_x,_y,X,Y,W,H)){
+			clickInScreen = n;
+		}
 	} 
 }
-function CScripts(){
+function CScriptMng(){
 	const CC = "lightgrey";
 	const CC1 = "darkseagreen";
 	const CC2 = "white";
 	var ls = [];
+	var saj = "saj:";
 	var x = 11;
 	var y = 21;
 	var w = 20;
@@ -636,16 +665,45 @@ function CScripts(){
 	var H = 200;
 	var c = CC; 
 	var m = false;
-	this.v = "CScripts: v0.11";
+	var clickScripts = "clickScripts";
+	var clickInClientScripts = "clickInClientScripts";
+	var v = "CScriptMng: v0.13";
 	var r = new CRectBtn(x,y,w,h,CC,CC2);
-	var r1 = new CBtn(x+33,y,w,h,CC,function(){
+	var r1 = new CBtn(x+33,y,w,h,CC1,function(){
 		var n = ls.length;
-		var s = new C1Script(x+60+30*n,y);
+		var s = new C1Script(n,x+60+30*n,y);
 		ls.push(s);
 	});	
 	var rc = new CRectBtn(X,Y,w,h,CC,CC1);
  
-	this.draw = function(cvs){ 
+	this.AJust = function(_x,_y){ 
+		for(i in ls){ 
+			if(ls[i].inScriptScreen(_x,_y)){
+				ls[i].setC( "lightblue");
+
+				for(j in ls){
+					if(ls[j].getZ()>ls[i].getZ()){
+						ls[j].setZ(ls[j].getZ()-1);
+						ls[j].setC( "lightgrey");
+					}
+				}
+				ls[i].setZ(ls.length-1);
+				break;
+			}
+			else{
+				ls[i].setC( "lightgrey");
+			}
+		}	
+		var sz = "";
+		for(i in ls){ 
+			sz+=" " + ls[i].getZ();			
+		}	
+
+		var now = new Date();
+		var s = now.toLocaleTimeString();
+		saj = "saj:" + s +blo0.sXY(_x,_y) + sz;
+	}
+	this.drawMng = function(cvs){ 
 		r.draw(cvs);
 		if(r.getStatus()){
 			blo0.blRect(cvs,X,Y,W,H,CC2);
@@ -653,20 +711,32 @@ function CScripts(){
 
 			r1.draw(cvs);
 			var n = ls.length;
-			blo0.blText(cvs,"n="+n,x+60,y,12,CC);
+			blo0.blText(cvs,saj,X+W/12,Y+H/6,12,"red");
+			blo0.blText(cvs,v+" n="+n,X+W/12,Y+H/2,12,CC1);
+			blo0.blText(cvs,clickScripts,X+W/12,Y+H/4,12,"blue");
+			blo0.blText(cvs,clickInClientScripts,X+W/12,Y+H/3,12,"brown");
 
 			for(var i=0; i<n;i++){
-				ls[i].draw(cvs);
+				ls[i].draw1Script(cvs);
 			}
 		}
 	} 
-	this.click = function(_x,_y){  
+	this.clickMng = function(_x,_y){  
+		var now = new Date();
+		var s = now.toLocaleTimeString();
+		clickScripts = s;
+		if(blo0.blPiR(_x,_y,X,Y,W,H) && !(blo0.blPiR(_x,_y,x,y,w,h))){
+			var d = new Date();
+			var n = "clickInClientScripts: " + d.toLocaleTimeString();
+			clickInClientScripts = n;
+		}
+
 		r.click(_x,_y);	
 		if(r.getStatus()){
 			rc.click(_x,_y);	
 			r1.click(_x,_y);	
 			for(i in ls){
-				ls[i].click(_x,_y);
+				ls[i].click1script(_x,_y);
 			}	
 		}	
 		if(m){
@@ -682,6 +752,8 @@ function CScripts(){
 		else{
 			m = false;
 		}
+
+		this.AJust(_x,_y);
 	}   
 }; 
 
@@ -707,14 +779,14 @@ blo0.blCanvase = function(d,w,h,color){
 	cvs.addEventListener('mousedown', function (e) {
 		var x = e.offsetX;
 		var y = e.offsetY;
-		blo0.sc.click(x,y);
+		blo0.scm.clickMng(x,y);
 	})
 
 	
 	var f = function(_o,_ls,_cvs){
 		return function(){
 			_o.blRect(_cvs,0,0,_cvs.width,_cvs.height,color);			
-			blo0.sc.draw(_cvs);
+			blo0.scm.drawMng(_cvs);
 			var n = blo0.lsCVS.length; 
 			var s = "[==="+n+"] ";
 			for(var i = 0; i < n; i++){
