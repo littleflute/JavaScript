@@ -1,4 +1,4 @@
-### [v0.1.35](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/) 
+### [v0.1.41](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/) 
 ### [animate-frames](https://littleflute.github.io/animate-frames/)
 ## [exapp/public](exapp/public)
 <div id = "id_div_4_plx">
@@ -12,7 +12,7 @@
 
 ### <a tartget="_blank" href = "blclass.js">blclass.js</a> - <a tartget="_blank" href = "https://github.com/littleflute/JavaScript/edit/master/blclass.js">blclass.js*</a>  
 
-### <a tartget="_blank" href = "blClassTest.html">blClassTest.html</a> - <a tartget="_blank" href = "https://github.com/littleflute/JavaScript/edit/master/blClassTest.html">blClassTest.htm 
+### <a tartget="_blank" href = "blClassTest.html">blClassTest.html</a> - <a tartget="_blank" href = "https://github.com/littleflute/JavaScript/edit/master/blClassTest.html">blClassTest.htm*</a> 
 
 ## Books : [【pro-html5-games】](https://littleflute.github.io/pro-html5-games/) [Build An HTML5 Game A Developer's Guide With CSS and JavaScript](https://hjhy.oschina.io/javascript/files/books/0119/)
 <script src="w3.js"></script>
