@@ -1,45 +1,32 @@
-const tag = "[app.js_v0.15]";
+const tag = "[app.js_v0.11]";
+var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var logger = require('morgan');
 
-var index = require('./routes/index');
-var user = require('./routes/user');
-var auth = require('./routes/auth');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
-const passport    = require('passport');
-
-require('./passport');
-
-console.log(tag + " xdTest:" + Date());
 var app = express();
- 
- 
 
+console.log(tag+ " xdTest:" + Date());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/user', passport.authenticate('jwt', {session: false}), user);
-app.use('/auth', auth);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+  next(createError(404));
 });
 
 // error handler
@@ -52,6 +39,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 module.exports = app;
