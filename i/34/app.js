@@ -1,4 +1,4 @@
-const tag = "[app.js_v0.14]";
+const tag = "[app.js_v0.15]";
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -16,6 +16,8 @@ require('./passport');
 
 console.log(tag + " xdTest:" + Date());
 var app = express();
+ 
+ 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
