@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.25"
+var g_ver_blClass = "blclass_v1.2.31"
 var _load_plx_btn = function(blo,oBoss,plxName,src, color ){
 			var idBtn	= oBoss.id + plxName + "btn";
 			var b		=  blo.blBtn(oBoss,idBtn,plxName,color);
@@ -655,6 +655,7 @@ function CScriptMng(){
 	const CC2 = "white";
 	var ls = [];
 	var saj = "saj:";
+	var clickDbg = "clickDbg:";
 	var x = 11;
 	var y = 21;
 	var w = 20;
@@ -676,33 +677,29 @@ function CScriptMng(){
 	});	
 	var rc = new CRectBtn(X,Y,w,h,CC,CC1);
  
-	this.AJust = function(_x,_y){ 
-		for(i in ls){ 
-			if(ls[i].inScriptScreen(_x,_y)){
-				ls[i].setC( "lightblue");
-
-				for(j in ls){
-					if(ls[j].getZ()>ls[i].getZ()){
-						ls[j].setZ(ls[j].getZ()-1);
-						ls[j].setC( "lightgrey");
+	this.clickList = function(_x,_y){ 
+		var l = ls.length;
+		for(var z = l; z>=0;z--){
+			for(i in ls){
+				if(ls[i].getZ()==z&&ls[i].inScriptScreen(_x,_y)){					
+					clickDbg = "clickDbg:z=" +ls[i].getZ();
+					ls[i].setC( "lightblue");	
+					for(j in ls){
+						if(ls[j].getZ()>ls[i].getZ()){
+							ls[j].setZ(ls[j].getZ()-1);
+							ls[j].setC( "lightgrey");
+						}
 					}
+					ls[i].setZ(ls.length-1);
+					z=-1;
+					break;
 				}
-				ls[i].setZ(ls.length-1);
-				break;
+				else{
+					ls[i].setC( "lightgrey");
+				}
 			}
-			else{
-				ls[i].setC( "lightgrey");
-			}
-		}	
-		var sz = "";
-		for(i in ls){ 
-			sz+=" " + ls[i].getZ();			
-		}	
-
-		var now = new Date();
-		var s = now.toLocaleTimeString();
-		saj = "saj:" + s +blo0.sXY(_x,_y) + sz;
-	}
+		}
+	} 
 	this.drawMng = function(cvs){ 
 		r.draw(cvs);
 		if(r.getStatus()){
@@ -711,6 +708,8 @@ function CScriptMng(){
 
 			r1.draw(cvs);
 			var n = ls.length;
+
+			blo0.blText(cvs,clickDbg,X+W/12,Y+H/1.1,12,"red");
 			blo0.blText(cvs,saj,X+W/12,Y+H/6,12,"red");
 			blo0.blText(cvs,v+" n="+n,X+W/12,Y+H/2,12,CC1);
 			blo0.blText(cvs,clickScripts,X+W/12,Y+H/4,12,"blue");
@@ -771,7 +770,7 @@ function CScriptMng(){
 			m = false;
 		}
 
-		this.AJust(_x,_y);
+		this.clickList(_x,_y); 
 	}   
 }; 
 
