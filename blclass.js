@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.15"
+var g_ver_blClass = "blclass_v1.2.25"
 var _load_plx_btn = function(blo,oBoss,plxName,src, color ){
 			var idBtn	= oBoss.id + plxName + "btn";
 			var b		=  blo.blBtn(oBoss,idBtn,plxName,color);
@@ -716,11 +716,29 @@ function CScriptMng(){
 			blo0.blText(cvs,clickScripts,X+W/12,Y+H/4,12,"blue");
 			blo0.blText(cvs,clickInClientScripts,X+W/12,Y+H/3,12,"brown");
 
-			for(var i=0; i<n;i++){
-				ls[i].draw1Script(cvs);
-			}
+			this.drawList_z_0_n(cvs,X+W/18,Y+H/1.8,"brown"); 
 		}
 	} 
+	this.drawList_z_0_n = function(cvs,_x,_y,_c)
+	{
+		blo0.blRect(cvs,_x,_y,20,20,_c);
+		blo0.blText(cvs,"z-0-n:",_x,_y,_c);
+		var n = 0;
+		var l = ls.length;
+		blo0.blText(cvs,n,_x+n*15+20,_y+22,"blue");
+		for(var z = 0;z<=l;z++){
+			blo0.blText(cvs,n,_x+n*15+20,_y+22,"green");
+			for(i in ls){
+				if(z==ls[i].getZ()){
+					blo0.blText(cvs,i,_x+n*15+20,_y*33,"blue");
+					ls[i].draw1Script(cvs);
+				}
+			}
+
+			n++;
+		}
+
+	}
 	this.clickMng = function(_x,_y){  
 		var now = new Date();
 		var s = now.toLocaleTimeString();
