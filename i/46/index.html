@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>46 v0.21</title>
+<title>46 v0.24</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../w3.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
@@ -9,8 +9,7 @@
 </head>
 <body>
     <button id="b1" onclick = "f(this);">a</button>
-    <div id="tiles"></div>
-    <div id="total_users"></div>
+    <div id="nn"></div> 
 
 
 <script>
@@ -19,29 +18,18 @@
             _this.d = blo0.blMD("id_MD","md",101,10,555,100,"lightblue");
             var tb = blo0.blDiv(_this.d, _this.d.id+"tb","tb",blGrey[0]);
             var b1 = blo0.blBtn(tb,tb.id+"b1","b1",blGrey[1]);
-            b1.onclick = function(){
-                var socketIO = io("http://localhost:3000/");
-                socketIO.on("new_user", function () {
-                    var total_users = document.getElementById("total_users").value;
-                    total_users++;
-                
-                    var totalUsers_Str = total_users + "";
-                    totalUsers_Str = totalUsers_Str.padStart(4, "0");
-                
-                    var html = "";
-                    for (var a = 0; a < totalUsers_Str.length; a++) {
-                        html += "<span>" + totalUsers_Str[a] + "</span>";
-                    }
-                
-                    document.getElementById("tiles").innerHTML = html;
-                    document.getElementById("total_users").value = total_users;
-                });
-            
-                socketIO.emit("new_user");
-            }
+            b1.onclick = function(_url){                
+                return function(){
+                    var socketIO = io(_url);
+                    socketIO.on("new_user", function () {                 
+                        document.getElementById("nn").innerHTML = Date(); 
+                    });
+                    socketIO.emit("new_user");
+                }
+            }("http://localhost:3000/");
             _this.b = false; 
         }
-            blon (_this,_this.d,"grey","green");
+        blon (_this,_this.d,"grey","green");
     } 
 
   
