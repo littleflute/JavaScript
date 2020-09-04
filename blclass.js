@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.31"
+var g_ver_blClass = "blclass_v1.2.32"
 var _load_plx_btn = function(blo,oBoss,plxName,src, color ){
 			var idBtn	= oBoss.id + plxName + "btn";
 			var b		=  blo.blBtn(oBoss,idBtn,plxName,color);
@@ -553,7 +553,6 @@ function blClass ()
 var blo0 = new blClass;
  
 blo0.lsCVS = [];
-blo0.scm = new CScriptMng;
 
 function CBtn(_x,_y,_w,_h,_c,callback){ 
 	var x = _x, y=_y,w=_w,h=_h,c=_c;
@@ -594,7 +593,7 @@ function C1Script(_id,_x,_y){
 	var z = _id;
 	var x = _x, y = _y; 
 	var w = 15, h = 15;
-	var X = x, Y=y+30,W=100,H=100;
+	var X = x+50+id*100, Y=y+11,W=100,H=100;
 	var C = "lightgrey";
 	var clickTest = "clickTest:";
 	var clickInScreen = "clickInScreen:";
@@ -652,16 +651,16 @@ function C1Script(_id,_x,_y){
 function CScriptMng(){
 	const CC = "lightgrey";
 	const CC1 = "darkseagreen";
-	const CC2 = "white";
+	const CC2 = "lightblue";
 	var ls = [];
 	var saj = "saj:";
 	var clickDbg = "clickDbg:";
-	var x = 11;
-	var y = 21;
+	var x = 10;
+	var y = 55;
 	var w = 20;
 	var h = 20;
-	var X = 21;
-	var Y = 44;
+	var X = 444;
+	var Y = 55;
 	var W = 200;
 	var H = 200;
 	var c = CC; 
@@ -670,9 +669,9 @@ function CScriptMng(){
 	var clickInClientScripts = "clickInClientScripts";
 	var v = "CScriptMng: v0.13";
 	var r = new CRectBtn(x,y,w,h,CC,CC2);
-	var r1 = new CBtn(x+33,y,w,h,CC1,function(){
+	var r1 = new CBtn(x+20,y,w,h,CC1,function(){
 		var n = ls.length;
-		var s = new C1Script(n,x+60+30*n,y);
+		var s = new C1Script(n,x,y+60+30*n);
 		ls.push(s);
 	});	
 	var rc = new CRectBtn(X,Y,w,h,CC,CC1);
@@ -700,7 +699,9 @@ function CScriptMng(){
 			}
 		}
 	} 
-	this.drawMng = function(cvs){ 
+	this.drawMng = function(cvs,_w,_h){  
+		W = _w/5;
+		H = _h/2;
 		r.draw(cvs);
 		if(r.getStatus()){
 			blo0.blRect(cvs,X,Y,W,H,CC2);
@@ -786,6 +787,10 @@ blo0.blPiR = function(x,y,x1,y1,w1,h1){
 blo0.regCVS = function(o){
 	blo0.lsCVS.push(o);
 }
+blo0.initDraw = function(cvs,_x,_y,_c){
+	for(i in blColor){blo0.blRect(cvs,_x+i*20,_y+5,10,10,blColor[i]);}
+	for(i in blGrey){blo0.blRect(cvs,_x+i*20,_y+25,10,10,blGrey[i]);}
+}
 blo0.blCanvase = function(d,w,h,color){
 	var cvs = document.createElement("canvas");
 	cvs.width = w;
@@ -800,10 +805,13 @@ blo0.blCanvase = function(d,w,h,color){
 	})
 
 	
-	var f = function(_o,_ls,_cvs){
+	var fTimer = function(_o,_ls,_cvs){
+		blo0.scm = new CScriptMng;
 		return function(){
-			_o.blRect(_cvs,0,0,_cvs.width,_cvs.height,color);			
-			blo0.scm.drawMng(_cvs);
+			_o.blRect(_cvs,0,0,_cvs.width,_cvs.height,"grey");	
+			_o.initDraw(_cvs,10,10,"brown");
+
+			blo0.scm.drawMng(_cvs,_cvs.width,_cvs.height);
 			var n = blo0.lsCVS.length; 
 			var s = "[==="+n+"] ";
 			for(var i = 0; i < n; i++){
@@ -816,7 +824,7 @@ blo0.blCanvase = function(d,w,h,color){
 		}
 	}(blo0,blo0.lsCVS,cvs);
 
-	var interval = setInterval(f, 20);
+	var interval = setInterval(fTimer, 20);
 	return cvs;
 }
 
