@@ -1,7 +1,8 @@
-const tag = "[i/49/plx/p1.js_v0.53]";
+const tag = "[i/49/plx/p1.js_v0.113]";
 const p1Btn = bl$("id_p1_btn"); 
 var md = null;
  
+var vBreakNews = null;
 var vPlayers = null;
 var vGames = null;
 
@@ -21,15 +22,14 @@ p1Btn.onclick = function(){
         md = blo0.blMD("id_md_4_plx1",tag,555,50,444,400,blGrey[0]);
         
         var tb = blo0.blDiv(md,md.id+"tb","tb",blGrey[1]);
+        vBreakNews = blo0.blDiv(md,md.id+"BreakNews","news","lightblue");
         vPlayers = blo0.blDiv(md,md.id+"players","players",blGrey[2]);
         vGames = blo0.blDiv(md,md.id+"games","games",blGrey[2]);
-        var enter = blo0.blBtn(tb,tb.id+"enter","=>enter",blGrey[3]);
-        enter.onclick = function(){
+        var connect = blo0.blBtn(tb,tb.id+"connect","=>connect",blGrey[3]);
+        connect.onclick = function(){
             wso = _setSvr("ws://localhost:9090");  
             wso.add1Game(tb);
-        }
-
-        
+        }       
         
         vGames.addGame = function(_vgs){
             _vgs.ls = [];
@@ -104,6 +104,16 @@ function _setSvr(wsurl){
             gameId = response.game.id; 
             vGames.addGame(gameId);
             console.log("game successfully created with id " + response.game.id + " with " + response.game.balls + " balls")  
+        }
+     
+        if (response.method === "mBreakNews"){
+            vBreakNews.innerHTML = response.news;
+            var n = 0;
+            for(i in response.clients){
+                var cs = blo0.blDiv(vBreakNews,vBreakNews.id+"clients" +i,response.clients[i],blColor[n]);
+                n++;
+            }
+            
         }
     
     

@@ -1,11 +1,33 @@
-const tag = "[i/49/ws/index.js_v0.21]"; 
-
+const tag = "[i/49/ws/index.js_v0.52]"; 
 const http = require("http");
+console.log(tag);
+ 
+var gBroadcast = null;
+const clientList = {};
+const gameList = {};
 
-//hashmap clients
-const clients = {};
-const games = {};
-
+function CBroadcast(cl){
+    var n = 0;
+    var timeFun = function(){
+        n++;
+        var l = 0;
+        var cs = [];
+        for(i in cl){
+            cs.push(i);
+        }
+        for(i in cl){
+            l++;
+            const breakNewsPayLoad = {
+                "method": "mBreakNews",
+                "news" : tag + " " + Date() + " News." + n,
+                "clients": cs
+            }
+            cl[i].connection.send(JSON.stringify(breakNewsPayLoad))
+        } 
+        setTimeout(timeFun, 1111);
+    }
+    this.bcRun = function(){        timeFun();    }
+}
 const websocketServer = require("websocket").server
 const httpServer = http.createServer();
 
@@ -24,7 +46,7 @@ wsServer.on("request", request => {
         if (result.method === "create") {
             const clientId = result.clientId;
             const gameId = guid();
-            games[gameId] = {
+            gameList[gameId] = {
                 "id": gameId,
                 "balls": 20,
                 "clients": []
@@ -32,19 +54,19 @@ wsServer.on("request", request => {
 
             const payLoad = {
                 "method": "create",
-                "game" : games[gameId]
+                "game" : gameList[gameId]
             }
 
-            const con = clients[clientId].connection;
+            const con = clientList[clientId].connection;
             con.send(JSON.stringify(payLoad));
         }
 
         //a client want to join
-        if (result.method === "join") {
+        if (result.method === "join") { 
 
             const clientId = result.clientId;
             const gameId = result.gameId;
-            const game = games[gameId];
+            const game = gameList[gameId];
             if (game.clients.length >= 3) 
             {
                 //sorry max players reach
@@ -62,29 +84,30 @@ wsServer.on("request", request => {
                 "method": "join",
                 "game": game
             }
-            //loop through all clients and tell them that people has joined
+            
             game.clients.forEach(c => {
-                clients[c.clientId].connection.send(JSON.stringify(payLoad))
+                clientList[c.clientId].connection.send(JSON.stringify(payLoad))
             })
         }
         //a user plays
-        if (result.method === "play") {
+        if (result.method === "play") {            
+            console.log("xddbg: play " + Date());
             const gameId = result.gameId;
             const ballId = result.ballId;
             const color = result.color;
-            let state = games[gameId].state;
+            let state = gameList[gameId].state;
             if (!state)
                 state = {}
             
             state[ballId] = color;
-            games[gameId].state = state;            
+            gameList[gameId].state = state;            
         }
 
     })
 
     //generate a new clientId
     const clientId = guid();
-    clients[clientId] = {
+    clientList[clientId] = {
         "connection":  connection
     }
 
@@ -92,24 +115,29 @@ wsServer.on("request", request => {
         "method": "connect",
         "clientId": clientId
     }
-    //send back the client connect
-    connection.send(JSON.stringify(payLoad))
+    
+    connection.send(JSON.stringify(payLoad)); 
+
+    if(!gBroadcast){
+        gBroadcast = new CBroadcast(clientList);
+        gBroadcast.bcRun();
+    }
 
 })
 
 
 function updateGameState(){
-
+    console.log("xddbg: updateGameState  " + Date());
     //{"gameid", fasdfsf}
-    for (const g of Object.keys(games)) {
-        const game = games[g]
+    for (const g of Object.keys(gameList)) {
+        const game = gameList[g]
         const payLoad = {
             "method": "update",
             "game": game
         }
 
         game.clients.forEach(c=> {
-            clients[c.clientId].connection.send(JSON.stringify(payLoad))
+            clientList[c.clientId].connection.send(JSON.stringify(payLoad))
         })
     }
 
@@ -127,6 +155,5 @@ const guid = () => (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S
 
 
 exports.wsRun = function(port){
-    console.log(tag) + Date();
-    httpServer.listen(port, () => console.log("websocket listening.. on " + port));
+    httpServer.listen(port, () => console.log( Date() + " websocket listening.. on " + port));
 } 
