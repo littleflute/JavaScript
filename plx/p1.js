@@ -1,4 +1,4 @@
-const tag = "[plx/p1.js_v0.12]";
+const tag = "[plx/p1.js_v0.14]";
 
 var b = bl$("id_plx1_btn");
 b.onclick = function(){
@@ -76,11 +76,17 @@ function CTest(){
 		if(!md.server)
 		{
 			md.server = blo0.blDiv(md.v,md.v.id+"server","server",c);
-			b.b = false;        
+			b.b = false;   
+			var ss = "";     
 			var tb = blo0.blDiv(md.server,md.server.id+"sv","sv",blGrey[0]);
 			var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
 				blo0.blText(cvs,"server.dbg",222,111,20,c);
+				eval(ss);
 			}); 
+			var b1 = blo0.blBtn(tb,tb.id+"b1","b1",blGrey[1]); b1.style.float = "right";
+			b1.onclick = function(){
+				ss = 'blo0.blText(cvs,"server.dbg",222,122,20,"red");';
+			}
 		} 
 		blon(b,md.server,blGrey[0],c);
 	} 
