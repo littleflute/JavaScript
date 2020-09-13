@@ -7,7 +7,7 @@ using namespace web::websockets::client;
 
 int main() {
   websocket_client client;
-  client.connect("ws://echo.websocket.org").wait();
+  client.connect("ws://localhost:9090").wait();
 
   websocket_outgoing_message out_msg;
   out_msg.set_utf8_message("test");
