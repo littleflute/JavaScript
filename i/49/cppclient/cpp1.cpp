@@ -13,6 +13,12 @@ int main() {
   //{"method":"connect","clientId":"d560a361-7d08-41da-05c5-cd01b5f089d1"}
   string s = "{";
   s+="\"";
+  s+="method";
+  s+="\"";
+  s+=":";
+  s+="\"";
+  s+="join";
+  s+="\"";
   s+="}";
 
   out_msg.set_utf8_message(s);
