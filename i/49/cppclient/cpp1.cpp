@@ -6,6 +6,8 @@ using namespace web;
 using namespace web::websockets::client;
 
 int main() {
+  cout << "cpp1.cpp_v0.11" << endl;  
+  
   websocket_client client;
   client.connect("ws://localhost:9090").wait();
 
@@ -17,7 +19,7 @@ int main() {
   s+="\"";
   s+=":";
   s+="\"";
-  s+="join";
+  s+="cppTest";
   s+="\"";
   s+="}";
 

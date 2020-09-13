@@ -1,4 +1,4 @@
-const tag = "[i/49/ws/index.js_v0.52]"; 
+const tag = "[i/49/ws/index.js_v0.53]"; 
 const http = require("http");
 console.log(tag);
  
@@ -61,6 +61,9 @@ wsServer.on("request", request => {
             con.send(JSON.stringify(payLoad));
         }
 
+        if (result.method === "cppTest") {
+            console.log("cppTest---------------------------" +Date()); 
+        }
         //a client want to join
         if (result.method === "join") { 
 
