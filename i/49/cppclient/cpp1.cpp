@@ -6,11 +6,24 @@ using namespace web;
 using namespace web::websockets::client;
 
 int main() {
+  cout << "cpp1.cpp_v0.11" << endl;  
+  
   websocket_client client;
-  client.connect("ws://echo.websocket.org").wait();
+  client.connect("ws://localhost:9090").wait();
 
   websocket_outgoing_message out_msg;
-  out_msg.set_utf8_message("test");
+  //{"method":"connect","clientId":"d560a361-7d08-41da-05c5-cd01b5f089d1"}
+  string s = "{";
+  s+="\"";
+  s+="method";
+  s+="\"";
+  s+=":";
+  s+="\"";
+  s+="cppTest";
+  s+="\"";
+  s+="}";
+
+  out_msg.set_utf8_message(s);
   client.send(out_msg).wait();
 
   client.receive().then([](websocket_incoming_message in_msg) {

@@ -1,4 +1,4 @@
-const tag = "[i/49/ws/index.js_v0.52]"; 
+const tag = "[i/49/ws/index.js_v0.54]"; 
 const http = require("http");
 console.log(tag);
  
@@ -41,6 +41,9 @@ wsServer.on("request", request => {
     connection.on("close", () => console.log("closed!"))
     connection.on("message", message => {
         const result = JSON.parse(message.utf8Data)
+        
+        console.log(result);
+
         //I have received a message from the client
         //a user want to create a new game
         if (result.method === "create") {
@@ -61,6 +64,9 @@ wsServer.on("request", request => {
             con.send(JSON.stringify(payLoad));
         }
 
+        if (result.method === "cppTest") {
+            console.log("cppTest---------------------------" +Date()); 
+        }
         //a client want to join
         if (result.method === "join") { 
 
