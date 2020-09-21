@@ -1,5 +1,24 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.32"
+var g_ver_blClass = "blclass_v1.2.33"
+function myAjaxCmd(method, url, data, callback){
+	var xmlHttpReg = null;
+	if (window.XMLHttpRequest){
+	  xmlHttpReg = new XMLHttpRequest();
+	}else{
+	  xmlHttpReg = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlHttpReg.onreadystatechange = function (){
+	  callback(xmlHttpReg);
+	};
+	xmlHttpReg.open(method, url, true);
+	if(method == "PATCH" || method == "POST"){
+		xmlHttpReg.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xmlHttpReg.send(JSON.stringify(data));
+	}else if(method == "GET"){
+		xmlHttpReg.setRequestHeader('If-Modified-Since', '0');
+		xmlHttpReg.send(null);
+	}
+}
 var _load_plx_btn = function(blo,oBoss,plxName,src, color ){
 			var idBtn	= oBoss.id + plxName + "btn";
 			var b		=  blo.blBtn(oBoss,idBtn,plxName,color);
@@ -827,7 +846,30 @@ blo0.blCanvase = function(d,w,h,color){
 	var interval = setInterval(fTimer, 20);
 	return cvs;
 }
+blo0.blGetGHI = function(_url,cb){  
+	var r = "blo0.blGetGHI： "+ _url + "_" + cb + ":"+ Date();
+	var token = "f89b0eccf7"+"4c65a65513"+"60062c3e47"+"98d0df4577";//jp
+	var xdToken = "023b4e4f"+"a78cff90"+"8afa75bf"+"072567053"+"3bacc60";
+	var url = "https://api.github.com/repos/jeremyjia/Games/issues/comments/526806470?access_token="+xdToken;
+	//*
+	myAjaxCmd('GET',url, null, readCallBack);
 
+	function readCallBack(resp){
+		if(resp.readyState == 4){
+		  if(resp.status==200){
+			  var msg = JSON.parse(resp.responseText);
+			  if(msg.body==null || msg.body==""){
+				allMsg ="";
+			  }else allMsg=msg.body;
+			  cb(allMsg);
+		  }else{
+			alert("The status code:"+resp.status); 
+		  }
+		}			 
+	 }
+	 //*/
+	return r;
+}
 blo0.blRect = function(cvs,x,y,w,h,color){
 	var ctx = cvs.getContext("2d");
 	ctx.fillStyle = color;

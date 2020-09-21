@@ -77,15 +77,25 @@ function CTest(){
 		{
 			md.server = blo0.blDiv(md.v,md.v.id+"server","server",c);
 			b.b = false;   
-			var ss = "";     
+			var ss = "1";     
 			var tb = blo0.blDiv(md.server,md.server.id+"sv","sv",blGrey[0]);
 			var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
 				blo0.blText(cvs,"server.dbg",222,111,20,c);
 				eval(ss);
 			}); 
-			var b1 = blo0.blBtn(tb,tb.id+"b1","b1",blGrey[1]); b1.style.float = "right";
+			var b1 = blo0.blBtn(tb,tb.id+"b1","ghiTest",blGrey[1]); b1.style.float = "right";
+			 
 			b1.onclick = function(){
-				ss = 'blo0.blText(cvs,"server.dbg",222,122,20,"red");';
+				
+				blo0.blGetGHI("url",function(s){
+					var a = s.split("\n");
+					var sa = "";
+					for(i in a){
+						var y = 100 + i*20;
+						sa += 'blo0.blText(cvs,"'+a[i] +'",111,'+y+',20,blColor[0]);'; 
+					}
+					ss = sa;//'blo0.blText(cvs,"'+a[0] +'",111,122,20,blColor[0]);'; 
+				});	
 			}
 		} 
 		blon(b,md.server,blGrey[0],c);
