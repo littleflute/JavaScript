@@ -1,4 +1,4 @@
-const tag = "plx/gameBoard.js_v0.11";
+const tag = "plx/gameBoard.js_v0.12";
 
 function CGameBoard (_btn,_wso){    
     
@@ -17,8 +17,13 @@ function CGameBoard (_btn,_wso){
                 blo0.blRect (c,_x,_y,_w,_h,"lightblue");
                 blo0.blText(c,"test.dbg",_x,_y,20,"red");            
             },
-            function(_btn,_x,_y){
-                alert(_btn.id);
+            function(_btn,_x,_y){ 
+                _btn.setDown(true);
+            },
+            function(_btn,_x,_y){ 
+                _btn.setDown(false);
+            },
+            function(_btn,_x,_y){ 
             }
         ); 
         d.v = blo0.blDiv(d,d.id+"v","v",blGrey[1]);
