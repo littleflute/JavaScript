@@ -1,4 +1,4 @@
-const tag = "[plx/p1.js_v0.121]";
+const tag = "[plx/p1.js_v0.122]";
 const p1Btn = bl$("id_p1_btn"); 
 var md = null;
  
@@ -19,7 +19,7 @@ var wso = null;
   
 p1Btn.onclick = function(){    
     if(!md){
-        md = blo0.blMD("id_md_4_plx1",tag,555,50,444,400,blGrey[0]);
+        md = blo0.blMD("id_md_4_plx1",tag,111,11,444,400,blGrey[0]);
         
         var tb = blo0.blDiv(md,md.id+"tb","tb",blGrey[1]);
         vBreakNews = blo0.blDiv(md,md.id+"BreakNews","news","lightblue");
@@ -56,8 +56,6 @@ p1Btn.onclick = function(){
                 _vpl.ls.push(p);
             }
         }(vPlayers);
-
-
     }
     blon(this,md,"grey","green");
 }
@@ -86,8 +84,24 @@ function _setSvr(wsurl){
                     "clientId": clientId,
                     "gameId": gameId
                 }
-
                 wso.send(JSON.stringify(payLoad));
+            }
+            var gameBoard = blo0.blBtn(tb,tb.id+"gameBoard","gameBoard",blGrey[3]);
+            gameBoard.onclick = function(){ 
+                if(!this.loadGameBoard){
+                    this.loadGameBoard = true;
+                    
+                    var w = {};
+                    w._2do = function(txt){
+                        eval(txt);
+                        gameBoard.gb = new CGameBoard(gameBoard,wso);
+                        gameBoard.gb.click();
+                    }
+                    blo0.blAjx(w,"plx/gameBoard.js"); 
+                }
+                else{
+                    this.gb.click();
+                }
             }
         }
     }(o);
@@ -173,8 +187,7 @@ function _setSvr(wsurl){
                 divBoard.appendChild(b);
             }
         }
-    }
-    
+    }    
     return o;
 }
 

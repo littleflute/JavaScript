@@ -1,7 +1,7 @@
 const tag = "[i/49/ws/index.js_v0.55]"; 
 const http = require("http");
 console.log(tag);
- 
+  
 var gBroadcast = null;
 const clientList = {};
 const gameList = {};
@@ -133,7 +133,6 @@ wsServer.on("request", request => {
         gBroadcast = new CBroadcast(clientList);
         gBroadcast.bcRun();
     }
-
 })
 
 

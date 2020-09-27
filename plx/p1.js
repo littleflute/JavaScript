@@ -79,10 +79,16 @@ function CTest(){
 			b.b = false;   
 			var ss = "1";     
 			var tb = blo0.blDiv(md.server,md.server.id+"sv","sv",blGrey[0]);
-			var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
+			var dbg = blo0.dbgBtn(tb,"dbg","grey",c,
+			  function(cvs,_x,_y,_w,_h){
+				blo0.blRect(cvs,_x,_y,_w,_h,"lightblue");
 				blo0.blText(cvs,"server.dbg",222,111,20,c);
 				eval(ss);
-			}); 
+			  },
+			  function(_btn,_x,_y){
+				  alert(_btn.id + blo0.sXY(_x,_y));
+			  }
+			); 
 			var b1 = blo0.blBtn(tb,tb.id+"b1","ghiTest",blGrey[1]); b1.style.float = "right";
 			 
 			b1.onclick = function(){
