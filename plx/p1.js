@@ -82,11 +82,17 @@ function CTest(){
 			var dbg = blo0.dbgBtn(tb,"dbg","grey",c,
 			  function(cvs,_x,_y,_w,_h){
 				blo0.blRect(cvs,_x,_y,_w,_h,"lightblue");
-				blo0.blText(cvs,"server.dbg",222,111,20,c);
+				blo0.blText(cvs,"server.dbg",_x,_y,20,c);
 				eval(ss);
 			  },
-			  function(_btn,_x,_y){
-				  alert(_btn.id + blo0.sXY(_x,_y));
+			  function(_btn,_x,_y){//mousedown	  				  
+				  _btn.setDown(true);
+			  },
+			  function(_btn,_x,_y){//mouseup	  
+				  _btn.setDown(false);
+			  },
+			  function(_btn,_x,_y){	//mousemove	 
+				  if(_btn.getDown()) _btn.setX(_x,_y);
 			  }
 			); 
 			var b1 = blo0.blBtn(tb,tb.id+"b1","ghiTest",blGrey[1]); b1.style.float = "right";
