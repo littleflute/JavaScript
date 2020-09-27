@@ -1,4 +1,4 @@
-const tag = "[i/49/ws/index.js_v0.54]"; 
+const tag = "[i/49/ws/index.js_v0.55]"; 
 const http = require("http");
 console.log(tag);
  
@@ -6,23 +6,25 @@ var gBroadcast = null;
 const clientList = {};
 const gameList = {};
 
-function CBroadcast(cl){
+function CBroadcast(_cl){
     var n = 0;
     var timeFun = function(){
         n++;
         var l = 0;
         var cs = [];
-        for(i in cl){
-            cs.push(i);
+        for(i in _cl){
+            if(_cl[i].connection.connected){
+                cs.push(i);
+            }   
         }
-        for(i in cl){
+        for(i in _cl){
             l++;
             const breakNewsPayLoad = {
                 "method": "mBreakNews",
                 "news" : tag + " " + Date() + " News." + n,
                 "clients": cs
             }
-            cl[i].connection.send(JSON.stringify(breakNewsPayLoad))
+            _cl[i].connection.send(JSON.stringify(breakNewsPayLoad))
         } 
         setTimeout(timeFun, 1111);
     }
@@ -38,7 +40,10 @@ wsServer.on("request", request => {
     //connect
     const connection = request.accept(null, request.origin);
     connection.on("open", () => console.log("opened!"))
-    connection.on("close", () => console.log("closed!"))
+    connection.on("close", () => {
+        console.log("closed! connection=" + JSON.stringify(connection) + " : " + Date());
+    });
+
     connection.on("message", message => {
         const result = JSON.parse(message.utf8Data)
         
