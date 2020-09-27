@@ -92,7 +92,7 @@ function CTest(){
 				  _btn.setDown(false);
 			  },
 			  function(_btn,_x,_y){	//mousemove	 
-				  if(_btn.getDown()) _btn.setX(_x,_y);
+				//  if(_btn.getDown()) _btn.setX(_x,_y);
 			  }
 			); 
 			var b1 = blo0.blBtn(tb,tb.id+"b1","ghiTest",blGrey[1]); b1.style.float = "right";

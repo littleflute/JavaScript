@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.35"
+var g_ver_blClass = "blclass_v1.2.41"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -916,6 +916,7 @@ blo0.blText = function(cvs,txt,x,y,size,color){
 }
 blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 	var x = 110; var y =120; var w = 100; var h = 100;
+	var x0 = 0; var y0 =0; var dx = 0; var dy = 0;
 	var isDown = false;
 	var b = blo0.blBtn(tb,tb.id+txt,txt,c1);	
 	b.style.float = "right";
@@ -930,21 +931,30 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 	}
 	b.onMousedown = function(_x,_y){
 		if(b.b){ 
-			if(cbMousedown) cbMousedown(b,_x,_y);
+			if(blo0.blPiR(_x,_y,x,y,w,h)){
+				if(cbMousedown) cbMousedown(b,_x,_y);
+			}
+			x0 = _x; y0 = _y;
 		}
 	}
 	b.onCVSMouseup = function(_x,_y){
 		if(b.b){  
 			if(cbMouseup) cbMouseup(b,_x,_y);
+			x0 = 0; y0 = 0;
 		}
 	}
 	b.onCVSMousemove = function(_x,_y){
 		if(b.b){  
+			dx = _x - x0; dy = _y -y0; x0 = _x; y0 = _y;
+			if(isDown) b.move(dx,dy);
 			if(cbMousemove) cbMousemove(b,_x,_y);
 		}
 	}
 	b.setX = function(_x,_y){
 		x = _x; y = _y;
+	}
+	b.move = function(_dx,_dy){
+		x += _dx; y += _dy;
 	}
 	b.getDown = function(){return isDown;}
 	b.setDown = function(_b){ isDown = _b;}
