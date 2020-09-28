@@ -1,4 +1,4 @@
-const tag = "[i/49/ws/index.js_v0.111]"; 
+const tag = "[i/49/ws/index.js_v0.112]"; 
 const http = require("http");
 console.log(tag);
   
@@ -21,7 +21,7 @@ function CBroadcast(_cl){
             l++;
             const breakNewsPayLoad = {
                 "method": "mBreakNews",
-                "news" : tag + " " + Date() + " News." + n,
+                "news" : tag + " News. " + n + " " + Date() ,
                 "clients": cs
             }
             _cl[i].connection.send(JSON.stringify(breakNewsPayLoad))
