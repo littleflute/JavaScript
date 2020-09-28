@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.41"
+var g_ver_blClass = "blclass_v1.2.42"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -806,7 +806,7 @@ blo0.blPiR = function(x,y,x1,y1,w1,h1){
 		return true;
 	}
 }
-blo0.regCVS = function(o){
+blo0.regCVSDraw = function(o){
 	blo0.lsCVS.push(o);
 }
 blo0.regMousedown = function(o){
@@ -866,7 +866,7 @@ blo0.blCanvase = function(d,w,h,color){
 			var n = blo0.lsCVS.length; 
 			var s = "[==="+n+"] ";
 			for(var i = 0; i < n; i++){
-				var r = _ls[i].draw(_cvs);
+				var r = _ls[i].onCVSDraw(_cvs);
 				s += ":";
 				s += r;
 			}
@@ -923,7 +923,7 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 	b.onclick = function(){
 		blon(b,null,c1,c2);
 	}
-	b.draw = function(cvs){
+	b.onCVSDraw = function(cvs){
 		if(b.b){
 			if(cbDraw) cbDraw(cvs,x,y,w,h);
 			blo0.blText(cvs,"down="+isDown,x+55,y,20,"yellow");
@@ -958,7 +958,7 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 	}
 	b.getDown = function(){return isDown;}
 	b.setDown = function(_b){ isDown = _b;}
-	blo0.regCVS(b);	
+	blo0.regCVSDraw(b);	
 	blo0.regMousedown(b);
 	blo0.regMouseup(b);
 	blo0.regMousemove(b);
