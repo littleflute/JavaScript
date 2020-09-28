@@ -79,11 +79,32 @@ function CTest(){
 			b.b = false;   
 			var ss = "1";     
 			var tb = blo0.blDiv(md.server,md.server.id+"sv","sv",blGrey[0]);
+			var _wso = null;
 			var dbg = blo0.dbgBtn(tb,"dbg","grey",c,
 			  function(cvs,_x,_y,_w,_h){
 				blo0.blRect(cvs,_x,_y,_w,_h,"lightblue");
 				blo0.blText(cvs,"server.dbg",_x,_y,20,c);
 				eval(ss);
+			  },
+			  function(_btn){//init	  				  
+				_wso = new WebSocket("ws://localhost:9090");
+				_wso.onmessage = msg => {				
+					const da = JSON.parse(msg.data);
+					var s = "";
+					if (da.method === "mBreakNews"){
+						_btn.setS(da.news);
+					}					
+				}
+				var r = _btn.addRect(100 + 25,300,20,20,"green");
+				r.setFun(function(_o,_x,_y){ 
+					const payLoad = {
+						"method": "html5Test",
+						"msg": "msg...",
+						"x": _x,
+						"y": _y						
+					}	
+					_wso.send(JSON.stringify(payLoad));
+				});
 			  },
 			  function(_btn,_x,_y){//mousedown	  				  
 				  _btn.setDown(true);
@@ -116,8 +137,25 @@ function CTest(){
 			var b3 = blo0.blBtn(tb,tb.id+"b3","b3",blGrey[1]); b3.style.float = "right";
 			b3.onclick = function(){ 
 				var i = 0;
+				var f = function(_o,_x,_y){
+					var c = _o.getColor();
+					if(c=="yellow") c = "brown";
+					else c = "yellow";
+					_o.setColor(c);
+
+					const payLoad = {
+						"method": "html5Test",
+						"msg": "msg...",
+						"x": _x,
+						"y": _y						
+					}
+	
+					_wso.send(JSON.stringify(payLoad));
+				}
 				return function(){
-					dbg.addRect(100 + i*25,100,20,20,"blue"); i++;
+					var r = dbg.addRect(100 + i*25,100,20,20,"blue");
+					r.setFun(f);
+					i++;
 				}
 			}();
 		} 

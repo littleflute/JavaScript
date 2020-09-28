@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.51"
+var g_ver_blClass = "blclass_v1.2.55"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -916,9 +916,10 @@ blo0.blText = function(cvs,txt,x,y,size,color){
 	ctx.fillText(txt, x,y);
 	return cvs;
 }
-blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
+blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbInit,cbMousedown,cbMouseup,cbMousemove){
 	var x = 110; var y =120; var w = 100; var h = 100;
 	var x0 = 0; var y0 =0; var dx = 0; var dy = 0;
+	var s = "s";
 	var ls = [];
 	var isDown = false;
 	var b = blo0.blBtn(tb,tb.id+txt,txt,c1);	
@@ -930,6 +931,9 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 		if(b.b){
 			if(cbDraw) cbDraw(cvs,x,y,w,h);
 			blo0.blText(cvs,"down="+isDown,x+55,y,20,"yellow"); 
+			
+			blo0.blText(cvs,s,x+55,y+55,20,"Blue"); 
+
 			for(i in ls){
 				ls[i].onCVSDraw(cvs);
 			}
@@ -959,12 +963,14 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 			if(cbMousemove) cbMousemove(b,_x,_y);
 		}
 	}
+	b.setS = function(_s){s = _s;}
 	b.setX = function(_x,_y){
 		x = _x; y = _y;
 	}
 	b.addRect = function(_x,_y,_w,_h,_clr){
 		var o = new CCVSRect(_x,_y,_w,_h,_clr);
 		ls.push(o);
+		return o;
 	}
 	b.move = function(_dx,_dy){
 		x += _dx; y += _dy;
@@ -978,11 +984,16 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 	blo0.regMousedown(b);
 	blo0.regMouseup(b);
 	blo0.regMousemove(b);
+	cbInit(b);
 	return b;
 }
 
 function CCVSRect(_x,_y,_w,_h,_clr){
 	var x = _x; var y = _y; var w = _w; var h = _h; var clr = _clr;
+	var f = null;
+	this.setFun = function(_f){ f = _f;	}
+	this.setColor = function(_clr){ clr = _clr;	}
+	this.getColor = function(){ return clr;}
 	this.onCVSDraw = function(cvs){
 		blo0.blRect(cvs,x,y,w,h,clr);
 	}
@@ -990,8 +1001,8 @@ function CCVSRect(_x,_y,_w,_h,_clr){
 		x += _dx; y += _dy;
 	} 
 	this.onCVSMousedown = function(_x,_y){ 
-			if(blo0.blPiR(_x,_y,x,y,w,h)){
-				clr = clr=="yellow"?"red":"yellow";
+			if(blo0.blPiR(_x,_y,x,y,w,h)){ 
+				if(f) f(this,_x,_y);
 			} 
 	} 
 }

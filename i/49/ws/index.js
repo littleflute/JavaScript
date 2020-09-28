@@ -1,4 +1,4 @@
-const tag = "[i/49/ws/index.js_v0.55]"; 
+const tag = "[i/49/ws/index.js_v0.111]"; 
 const http = require("http");
 console.log(tag);
   
@@ -41,7 +41,7 @@ wsServer.on("request", request => {
     const connection = request.accept(null, request.origin);
     connection.on("open", () => console.log("opened!"))
     connection.on("close", () => {
-        console.log("closed! connection=" + JSON.stringify(connection) + " : " + Date());
+        console.log("closed! connection="   + " : " + Date());
     });
 
     connection.on("message", message => {
@@ -72,6 +72,11 @@ wsServer.on("request", request => {
         if (result.method === "cppTest") {
             console.log("cppTest---------------------------" +Date()); 
         }
+        
+        if (result.method === "html5Test") {
+            console.log("html5Test---------------------------" +JSON.stringify(result)); 
+        }
+
         //a client want to join
         if (result.method === "join") { 
 
@@ -118,9 +123,9 @@ wsServer.on("request", request => {
 
     //generate a new clientId
     const clientId = guid();
-    clientList[clientId] = {
-        "connection":  connection
-    }
+    clientList[clientId] = {"connection":  connection    };
+    console.log("clientId=" + clientId +" : "+ Date());
+
 
     const payLoad = {
         "method": "connect",
