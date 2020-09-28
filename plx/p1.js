@@ -92,7 +92,9 @@ function CTest(){
 				  _btn.setDown(false);
 			  },
 			  function(_btn,_x,_y){	//mousemove	 
-				//  if(_btn.getDown()) _btn.setX(_x,_y);
+				  if(_btn.getDown()){
+					  
+				  } 
 			  }
 			); 
 			var b1 = blo0.blBtn(tb,tb.id+"b1","ghiTest",blGrey[1]); b1.style.float = "right";
@@ -109,6 +111,15 @@ function CTest(){
 					ss = sa;//'blo0.blText(cvs,"'+a[0] +'",111,122,20,blColor[0]);'; 
 				});	
 			}
+
+			 
+			var b3 = blo0.blBtn(tb,tb.id+"b3","b3",blGrey[1]); b3.style.float = "right";
+			b3.onclick = function(){ 
+				var i = 0;
+				return function(){
+					dbg.addRect(100 + i*25,100,20,20,"blue"); i++;
+				}
+			}();
 		} 
 		blon(b,md.server,blGrey[0],c);
 	} 

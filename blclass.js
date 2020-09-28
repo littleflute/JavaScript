@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.42"
+var g_ver_blClass = "blclass_v1.2.51"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -132,7 +132,8 @@ var blon = function(b,d,c1,c2){
 function blClass ()
 { 
     var _id = "id_div_4_blClass";
-    this.v = g_ver_blClass;
+	this.v = g_ver_blClass;
+	
 	function _blhMakeLink(txt,href,style,target){
 		var r = "";
 		r += "<a href='" + href + "' ";
@@ -141,7 +142,8 @@ function blClass ()
 		r +=">" + txt; 
 		r += "</a>";   
 		return r;
-	}
+	} 
+
     this.blhMakeLink = function (txt,href,style,target) { return _blhMakeLink(txt,href,style,target); } 
     this.blrMax = function (b,d)
     {        
@@ -835,7 +837,7 @@ blo0.blCanvase = function(d,w,h,color){
 		blo0.scm.clickMng(x,y);
 
 		for(i in mousedownList){
-			if(mousedownList[i].onMousedown) mousedownList[i].onMousedown(x,y);
+			if(mousedownList[i].onCVSMousedown) mousedownList[i].onCVSMousedown(x,y);
 		}
 	});
 
@@ -917,6 +919,7 @@ blo0.blText = function(cvs,txt,x,y,size,color){
 blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 	var x = 110; var y =120; var w = 100; var h = 100;
 	var x0 = 0; var y0 =0; var dx = 0; var dy = 0;
+	var ls = [];
 	var isDown = false;
 	var b = blo0.blBtn(tb,tb.id+txt,txt,c1);	
 	b.style.float = "right";
@@ -926,15 +929,21 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 	b.onCVSDraw = function(cvs){
 		if(b.b){
 			if(cbDraw) cbDraw(cvs,x,y,w,h);
-			blo0.blText(cvs,"down="+isDown,x+55,y,20,"yellow");
+			blo0.blText(cvs,"down="+isDown,x+55,y,20,"yellow"); 
+			for(i in ls){
+				ls[i].onCVSDraw(cvs);
+			}
 		}
 	}
-	b.onMousedown = function(_x,_y){
+	b.onCVSMousedown = function(_x,_y){
 		if(b.b){ 
 			if(blo0.blPiR(_x,_y,x,y,w,h)){
 				if(cbMousedown) cbMousedown(b,_x,_y);
 			}
 			x0 = _x; y0 = _y;
+			for(i in ls){
+				ls[i].onCVSMousedown(_x,_y);
+			}
 		}
 	}
 	b.onCVSMouseup = function(_x,_y){
@@ -953,8 +962,15 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 	b.setX = function(_x,_y){
 		x = _x; y = _y;
 	}
+	b.addRect = function(_x,_y,_w,_h,_clr){
+		var o = new CCVSRect(_x,_y,_w,_h,_clr);
+		ls.push(o);
+	}
 	b.move = function(_dx,_dy){
 		x += _dx; y += _dy;
+		for(i in ls){
+			ls[i].move(_dx,_dy);
+		}
 	}
 	b.getDown = function(){return isDown;}
 	b.setDown = function(_b){ isDown = _b;}
@@ -963,4 +979,19 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbMousedown,cbMouseup,cbMousemove){
 	blo0.regMouseup(b);
 	blo0.regMousemove(b);
 	return b;
+}
+
+function CCVSRect(_x,_y,_w,_h,_clr){
+	var x = _x; var y = _y; var w = _w; var h = _h; var clr = _clr;
+	this.onCVSDraw = function(cvs){
+		blo0.blRect(cvs,x,y,w,h,clr);
+	}
+	this.move = function(_dx,_dy){
+		x += _dx; y += _dy;
+	} 
+	this.onCVSMousedown = function(_x,_y){ 
+			if(blo0.blPiR(_x,_y,x,y,w,h)){
+				clr = clr=="yellow"?"red":"yellow";
+			} 
+	} 
 }
