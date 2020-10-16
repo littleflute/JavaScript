@@ -1,4 +1,4 @@
-### [v0.1.41](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/) 
+### [v0.1.42](https://github.com/littleflute/JavaScript/edit/master/README.md) [+me](https://littleflute.github.io/JavaScript/) 
 ### [animate-frames](https://littleflute.github.io/animate-frames/)
 ## [exapp/public](exapp/public)
 <div id = "id_div_4_plx">
@@ -7,7 +7,7 @@
 ## [exapp/public/index.html](exapp/public/index.html)
 ## [xdgraph.html](xdgraph.html)
 
-- [w3Div](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default)-[runjs](runjs.html)
+- [w3Div](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default)-[runjs](runjs.html)-[i/56/trysql.html](trsql.html)
 ### [RegExTester_JavaScript](RegExTester_JavaScript)
 
 ### <a tartget="_blank" href = "blclass.js">blclass.js</a> - <a tartget="_blank" href = "https://github.com/littleflute/JavaScript/edit/master/blclass.js">blclass.js*</a>  
