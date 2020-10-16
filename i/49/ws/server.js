@@ -1,35 +1,13 @@
-const tag = "[i/49/ws/index.js_v0.112]"; 
+const tag = "[i/49/ws/server.js_v0.113]"; 
 const http = require("http");
-console.log(tag);
+const bc = require("./broadcast.js");
+const u = require("../util.js");
+u.l(tag + " to load ...");
   
-var gBroadcast = null;
 const clientList = {};
 const gameList = {};
 
-function CBroadcast(_cl){
-    var n = 0;
-    var timeFun = function(){
-        n++;
-        var l = 0;
-        var cs = [];
-        for(i in _cl){
-            if(_cl[i].connection.connected){
-                cs.push(i);
-            }   
-        }
-        for(i in _cl){
-            l++;
-            const breakNewsPayLoad = {
-                "method": "mBreakNews",
-                "news" : tag + " News. " + n + " " + Date() ,
-                "clients": cs
-            }
-            _cl[i].connection.send(JSON.stringify(breakNewsPayLoad))
-        } 
-        setTimeout(timeFun, 1111);
-    }
-    this.bcRun = function(){        timeFun();    }
-}
+
 const websocketServer = require("websocket").server
 const httpServer = http.createServer();
 
@@ -39,7 +17,10 @@ const wsServer = new websocketServer({
 wsServer.on("request", request => {
     //connect
     const connection = request.accept(null, request.origin);
-    connection.on("open", () => console.log("opened!"))
+    connection.on("open", () => {
+        console.log("opened!");
+    });
+
     connection.on("close", () => {
         console.log("closed! connection="   + " : " + Date());
     });
@@ -53,7 +34,7 @@ wsServer.on("request", request => {
         //a user want to create a new game
         if (result.method === "create") {
             const clientId = result.clientId;
-            const gameId = guid();
+            const gameId = u.GUID();
             gameList[gameId] = {
                 "id": gameId,
                 "balls": 20,
@@ -118,26 +99,17 @@ wsServer.on("request", request => {
             state[ballId] = color;
             gameList[gameId].state = state;            
         }
-
-    })
-
-    //generate a new clientId
-    const clientId = guid();
-    clientList[clientId] = {"connection":  connection    };
-    console.log("clientId=" + clientId +" : "+ Date());
-
+    });
+ 
+    const clientId = u.GUID();
+    clientList[clientId] = {"connection":  connection    }; 
 
     const payLoad = {
         "method": "connect",
         "clientId": clientId
     }
     
-    connection.send(JSON.stringify(payLoad)); 
-
-    if(!gBroadcast){
-        gBroadcast = new CBroadcast(clientList);
-        gBroadcast.bcRun();
-    }
+    connection.send(JSON.stringify(payLoad));     
 })
 
 
@@ -160,15 +132,7 @@ function updateGameState(){
 }
 
 
-
-function S4() {
-    return (((1+Math.random())*0x10000)|0).toString(16).substring(1); 
-}
- 
-// then to call it, plus stitch in '4' in the third group
-const guid = () => (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
-
-
 exports.wsRun = function(port){
-    httpServer.listen(port, () => console.log( Date() + " websocket listening.. on " + port));
+    httpServer.listen(port, () => console.log( tag + " " + Date() + " websocket listening.. on " + port));
+    bc.setupBrodcastStation(clientList);
 } 
