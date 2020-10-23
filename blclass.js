@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.55"
+var g_ver_blClass = "blclass_v1.2.112"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -578,16 +578,52 @@ var mousedownList = [];
 var mouseupList = [];
 var mousemoveList = [];
 
-function CBtn(_x,_y,_w,_h,_c,callback){ 
-	var x = _x, y=_y,w=_w,h=_h,c=_c;
-	this.draw=function(cvs){
+function CPlayer(_w,_h,_c){ 
+	var x = 0, y=0,w=_w,h=_h,c=_c;
+	var txt = "player..."; 
+	var b1Txt = "b1";
+	var b1 = new CBtn(x,y,20,20,"red",
+		function(){
+			var d = new Date();
+			b1Txt = d.toLocaleTimeString();
+			var s = "testCPlayer: v0.0. 12";
+			var d = blo0.blMD("testCPlayer", s,    300,100,500,111, blGrey[5]); 
+						 
+			_on_off_div(null,d);
+		},
+		function(_cvs,_x,_y){
+			blo0.blText(_cvs,b1Txt,_x+22,_y+22,12,"brown");
+		}
+	);
+	this.draw=function(cvs,_x,_y){
+		x = _x;
+		y = _y;
 		blo0.blRect(cvs,x,y,w,h,c); 
+		blo0.blText(cvs,txt,x+w/12,y+h/3,12,"blue");
+		b1.setXY(x+20,y+25);
+		b1.draw(cvs);
 	} 
 	this.click = function(xx,yy){
 		if(blo0.blPiR(xx,yy,x,y,w,h)){
-			callback();
+			var d = new Date();
+			txt = d.toLocaleTimeString();
+		}
+		b1.click(xx,yy);
+	}
+}
+function CBtn(_x,_y,_w,_h,_c,cbClick,cbDraw){ 
+	var x = _x, y=_y,w=_w,h=_h,c=_c;
+	this.draw=function(cvs){
+		blo0.blRect(cvs,x,y,w,h,c); 
+		if(cbDraw) cbDraw(cvs,x,y);
+	} 
+	this.click = function(xx,yy){
+		if(blo0.blPiR(xx,yy,x,y,w,h)){
+			if(cbClick) cbClick();
 		}
 	}
+	this.setXY = function(_x,_y){		x = _x, y=_y;	}
+	this.setC = function(_c){		c = _c;	}
 }
 function CRectBtn(_x,_y,_w,_h,_c1,_c2){ 
 	var x = _x, y=_y,w=_w,h=_h,c1=_c1,c2=_c2;
@@ -699,6 +735,7 @@ function CScriptMng(){
 		ls.push(s);
 	});	
 	var rc = new CRectBtn(X,Y,w,h,CC,CC1);
+	var myPlayer = new CPlayer(121,55,"yellow");
  
 	this.clickList = function(_x,_y){ 
 		var l = ls.length;
@@ -741,6 +778,9 @@ function CScriptMng(){
 			blo0.blText(cvs,clickInClientScripts,X+W/12,Y+H/3,12,"brown");
 
 			this.drawList_z_0_n(cvs,X+W/18,Y+H/1.8,"brown"); 
+
+			myPlayer.draw(cvs,X+111,Y+1);
+ 
 		}
 	} 
 	this.drawList_z_0_n = function(cvs,_x,_y,_c)
@@ -780,6 +820,7 @@ function CScriptMng(){
 			for(i in ls){
 				ls[i].click1script(_x,_y);
 			}	
+			myPlayer.click(_x,_y);
 		}	
 		if(m){
 			X = _x;
@@ -824,6 +865,7 @@ blo0.initDraw = function(cvs,_x,_y,_c){
 	for(i in blColor){blo0.blRect(cvs,_x+i*20,_y+5,10,10,blColor[i]);}
 	for(i in blGrey){blo0.blRect(cvs,_x+i*20,_y+25,10,10,blGrey[i]);}
 }
+
 blo0.blCanvase = function(d,w,h,color){
 	var cvs = document.createElement("canvas");
 	cvs.width = w;
