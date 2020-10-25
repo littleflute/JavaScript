@@ -42,7 +42,7 @@ const output = "o.mp4";
         await exec(`ffmpeg -start_number 1 -i temp/edited-frames/%d.png -vcodec ${videoEncoder} -filter:v "setpts=0.5*PTS" temp/no-audio.mp4`);
 
         console.log("Adding audio");
-        await exec(`ffmpeg -i temp/no-audio.mp4 -i input.mp4 -c copy -map 0:v:0 -map 1:a:0 ${output}`);
+        await exec(`ffmpeg -i temp/no-audio.mp4 -i ${input} -c copy -map 0:v:0 -map 1:a:0 ${output}`);
 
         console.log("Cleaning up");
         await fs.remove("temp");
