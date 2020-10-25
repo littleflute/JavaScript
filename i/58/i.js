@@ -26,8 +26,33 @@ context.fillStyle = '#fff'
 context.font = 'bold 30pt Menlo'
 context.fillText('flaviocopes.com', 600, 530)
 
+var radius =  height / 2;
+context.translate(radius, radius);
+radius = radius * 0.90
+drawFace(context, radius);
+
 loadImage('./logo.png').then(image => {
   context.drawImage(image, 340, 515, 70, 70)
   const buffer = canvas.toBuffer('image/png')
   fs.writeFileSync('./test.png', buffer)
 })
+
+
+function drawFace(ctx, radius) {
+    var grad;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, 2*Math.PI);
+    ctx.fillStyle = 'white';
+ //   ctx.fill();
+    grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+    grad.addColorStop(0, '#333');
+    grad.addColorStop(0.5, 'white');
+    grad.addColorStop(1, '#333');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = radius*0.1;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+    ctx.fillStyle = '#333';
+    ctx.fill();
+  }
