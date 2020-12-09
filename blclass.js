@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.112"
+var g_ver_blClass = "blclass_v1.2.113"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -921,6 +921,18 @@ blo0.blCanvase = function(d,w,h,color){
 
 	var interval = setInterval(fTimer, 20);
 	return cvs;
+}
+blo0.blParseURL = function(_url,cb){  
+	myAjaxCmd('GET',_url, null, ajaxFun);
+	function ajaxFun(resp){
+		if(resp.readyState == 4){
+		  if(resp.status==200){			   
+			  cb(resp.responseText);
+		  }else{
+			alert("The status code:"+resp.status); 
+		  }
+		}			 
+	 } 
 }
 blo0.blGetGHI = function(_url,cb){  
 	var r = "blo0.blGetGHI： "+ _url + "_" + cb + ":"+ Date();

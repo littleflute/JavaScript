@@ -1,4 +1,4 @@
-const tag = "[plx/p1.js_v0.14]";
+const _plxTitle = "[plx/p1.js_v0.21]";
 
 var b = bl$("id_plx1_btn");
 b.onclick = function(){
@@ -77,7 +77,8 @@ function CTest(){
 		{
 			md.server = blo0.blDiv(md.v,md.v.id+"server","server",c);
 			b.b = false;   
-			var ss = "1";     
+			var ss = "1";    
+			var sVOANews = 'blo0.blText(cvs,"voaNews",22,120,blColor[2]);';    
 			var tb = blo0.blDiv(md.server,md.server.id+"sv","sv",blGrey[0]);
 			var _wso = null;
 			var dbg = blo0.dbgBtn(tb,"dbg","grey",c,
@@ -85,6 +86,7 @@ function CTest(){
 				blo0.blRect(cvs,_x,_y,_w,_h,"lightblue");
 				blo0.blText(cvs,"server.dbg",_x,_y,20,c);
 				eval(ss);
+				eval(sVOANews);
 			  },
 			  function(_btn){//init	  				  
 				_wso = new WebSocket("ws://localhost:9090");
@@ -118,24 +120,24 @@ function CTest(){
 				  } 
 			  }
 			); 
-			var b1 = blo0.blBtn(tb,tb.id+"b1","ghiTest",blGrey[1]); b1.style.float = "right";
+			var btnGHITest = blo0.blBtn(tb,tb.id+"btnGHITest","ghiTest",blGrey[1]); btnGHITest.style.float = "right";
 			 
-			b1.onclick = function(){
+			btnGHITest.onclick = function(){
 				
 				blo0.blGetGHI("url",function(s){
 					var a = s.split("\n");
 					var sa = "";
 					for(i in a){
 						var y = 100 + i*20;
-						sa += 'blo0.blText(cvs,"'+a[i] +'",111,'+y+',20,blColor[0]);'; 
+						sa += 'blo0.blText(cvs,"'+a[i] +'",11,'+y+',20,blColor[1]);'; 
 					}
 					ss = sa;//'blo0.blText(cvs,"'+a[0] +'",111,122,20,blColor[0]);'; 
 				});	
 			}
 
 			 
-			var b3 = blo0.blBtn(tb,tb.id+"b3","b3",blGrey[1]); b3.style.float = "right";
-			b3.onclick = function(){ 
+			var btnWS = blo0.blBtn(tb,tb.id+"btnWS","btnWS",blGrey[1]); btnWS.style.float = "right";
+			btnWS.onclick = function(){ 
 				var i = 0;
 				var f = function(_o,_x,_y){
 					var c = _o.getColor();
@@ -158,13 +160,38 @@ function CTest(){
 					i++;
 				}
 			}();
+
+			var btnVOANews1 = blo0.blBtn(tb,tb.id+"btnVOANews1","btnVOANews1",blGrey[1]); btnVOANews1.style.float = "right";
+			btnVOANews1.onclick = function(_this){  
+				var f = function(){
+					blo0.blParseURL("http://localhost:8080",function(p1)
+						{
+							var s = 'blo0.blText(cvs,';
+							
+							s += '"';
+							s += p1 ;
+							s += '"';
+
+							s += ",";
+							s += "_x";
+							s += ",";
+							s += "120";
+							s += ",";
+							s += '"skyblue"';
+							s += ");";  
+							sVOANews = s;
+						} 
+					);
+				}
+				return function(){	f(); }
+			}(btnVOANews1);
 		} 
 		blon(b,md.server,blGrey[0],c);
 	} 
 	
 	this.run = function(){
 		var cs = blGrey;
-		md = blo0.blMD("id_md","md4CTest",x,y,w,h,cs[0]);
+		md = blo0.blMD("id_md",_plxTitle,x,y,w,h,cs[0]);
 		md.tb = blo0.blDiv(md,md.id+"tb","md.tb",cs[1]); 
 		md.v = blo0.blDiv(md,md.id+"v","md.v",cs[2]); 
 		var n = 0;
