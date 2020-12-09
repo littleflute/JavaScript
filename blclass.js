@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.2.113"
+var g_ver_blClass = "blclass_v1.2.114"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -957,6 +957,10 @@ blo0.blGetGHI = function(_url,cb){
 	 }
 	 //*/
 	return r;
+}
+
+blo0.blPlayer = function(cvs,txt,x,y,size,color){
+	alert("blPlayer");
 }
 blo0.blRect = function(cvs,x,y,w,h,color){
 	var ctx = cvs.getContext("2d");

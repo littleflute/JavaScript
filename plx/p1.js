@@ -1,4 +1,4 @@
-const _plxTitle = "[plx/p1.js_v0.21]";
+const _plxTitle = "[plx/p1.js_v0.23]";
 
 var b = bl$("id_plx1_btn");
 b.onclick = function(){
@@ -39,35 +39,11 @@ function CTest(){
 			md.storyBoard = blo0.blDiv(md.v,md.v.id+"storyBoard","storyBoard",c);
 			b.b = false;      
 
-			var tb = blo0.blDiv(md.storyBoard,md.storyBoard.id+"sb","::",blGrey[0]);
-			var dbg = blo0.dbgBtn(tb,"dbg","grey",c,function(cvs){
-				blo0.blText(cvs,"storyBoard.dbg",50,80,20,c);
-			}); 
-			
-			var b2 = blo0.blBtn(tb,tb.id+"b2","b2",c);
-			b2.style.float="right";
-			b2.onclick = function(){
-				if(!this.vFrame){
-					var vFInf = blo0.blDiv(md.storyBoard,md.storyBoard.id+"vFInf","vFInf",blGrey[3]);
-					this.vFrame = blo0.blDiv(md.storyBoard,md.storyBoard.id+"vFrame","",blGrey[1]);
-					var vFInf2 = blo0.blDiv(md.storyBoard,md.storyBoard.id+"vFInf2","vFInf2",blGrey[3]);
-					var ftb = blo0.blBtn(this.vFrame,"id_ftb","+",blGrey[0]);
-					ftb.style.float="left";
-					var fls = [];
-					ftb.onclick = function(){
-						var l = fls.length;
-						var fb = blo0.blBtn(this.parentElement,"id_ftb"+l,l,blGrey[0]);
-						fb.style.float="left";
-						fb.onclick = function(_fb){
-							return function(){
-								vFInf.innerHTML = _fb.id;
-							}
-						}(fb);
-						fls.push(fb);
-					}
-				} 
-				blon(this,this.vFrame,"grey","green");
-			}
+			var tb = blo0.blDiv(md.storyBoard,md.storyBoard.id+"sb","::",blGrey[0]); 
+			var btnPlayerTest = blo0.blBtn(tb,tb.id+"btnPlayerTest","btnPlayerTest",c);
+			btnPlayerTest.onclick = function(){
+				blo0.blPlayer();
+			}			 
 		} 
 		blon(b,md.storyBoard,blGrey[0],c);
 	}
