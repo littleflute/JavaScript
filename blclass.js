@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.3.14"
+var g_ver_blClass = "blclass_v1.3.21"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -1263,11 +1263,55 @@ function ftnPlayer( oDiv ){
 									var bShowLrc = blo0.blBtn(_this.v0 ,_this.v0.id+"bShowLrc","bShowLrc",blGrey[1]);
 									var bShowSrt = blo0.blBtn(_this.v0 ,_this.v0.id+"bShowSrt","bShowSrt",blGrey[1]);
 									bShowSrt.onclick = function(){
+										 
 										if(!blo0.plxSrt){
 											blo0.plxSrt = blo0.blMD(_div.id+"plxSrt","plxSrt",150,100,400,300,blGrey[0]);
-											blo0.plxSrt.ctx = _div;
-											blo0.blScript("id_4_js_plxSrt","c1/p1.js");
+											blo0.plxSrt.ctx = _div; 
+											var v = blo0.plxSrt; 
+											v.tb = blo0.blDiv(v,v.id+"tb","tb4SRT",blGrey[0]);
+											v.v1 = blo0.blDiv(v,v.id+"v1","_v_plx_Srt",blGrey[1]);
+											v.v1.ta = blo0.blTextarea(v.v1,v.v1.id+"ta",_s,"lightblue");
+											v.v1.ta.style.width = "98%";
+											v.v1.ta.style.height = "311px";
 										}
+										var v = blo0.plxSrt; 
+										var tArr = v.ctx.lrcTimeArray;
+										var lArr = v.ctx.lrcArray;
+										var _fTime = function ( n ){
+											var hh = (n/3600).toFixed(2);
+											hh = hh<10?"0"+hh:hh;
+											hh = hh.split('.')[0];
+											
+											var mm = ((n%3600)/60).toFixed(1);
+											mm = mm<10?"0"+mm:mm;
+											mm = mm.split('.')[0];
+
+											var ss = ((n%3600)%60).toFixed(3);
+											ss= ss<10?"0"+ss : ss;
+											ss = ss.split('.');
+
+											var r = hh + ":" + mm + ":" + ss[0] + "," + ss[1];
+
+											return r;
+										}
+
+										var _s = "";
+										for(i in tArr){ 
+											_s += "\n";
+											var ii = i;
+											ii++;
+											_s += ii;
+											_s += "\n"; 
+											var dt =  ( ii==tArr.length ) ?  _fTime(tArr[i]+3) : _fTime(tArr[ii]);
+											_s += _fTime(tArr[i]) + " --> " + dt;
+											_s += "\n";
+											_s += lArr[i];
+											_s += "\n";
+
+										}
+										//*/
+										v.v1.ta.value = _s;
+
 										_on_off_div(this,blo0.plxSrt);
 									}
 									
@@ -1275,23 +1319,23 @@ function ftnPlayer( oDiv ){
 									bShowLrc.onclick = function(_this){
 										return function(){
 											if(!_this.v){
-												_this.v = blo0.blMD("id_mdiv_4bSHowLrc",
-												 		 "v4bShowLrc", 300,100,500,400, blGrey[0]);
-												var tArr = _div.lrcTimeArray;
-												var lArr = _div.lrcArray;
-												var s = "";
-												for(i in tArr){
-													var mm = Math.floor(tArr[i]/60); 
-													mm = mm<10?"0"+mm:mm;
-													var ss = tArr[i]%60;
-													ss = ss<10?"0"+ss.toPrecision(3):ss.toPrecision(4);
-													s += "[" + mm + ":" + ss  +"]" + lArr[i] + "\n";
-												}
-												_this.v.ta = blo0.blTextarea(_this.v,"ta2",s,blGrey[1]);
+												_this.v = blo0.blMD("id_mdiv_4bSHowLrc",												 		 "v4bShowLrc", 300,100,500,400, "red");
+												_this.v.ta = blo0.blTextarea(_this.v,"ta2","","green");
 												_this.v.ta.style.width = "98%";
-												_this.v.ta.style.height = "98%";
-												 
+												_this.v.ta.style.height = "98%";		  
 											}
+											var tArr = _div.lrcTimeArray;
+											var lArr = _div.lrcArray;
+											var s = "";
+											for(i in tArr){
+												var mm = Math.floor(tArr[i]/60); 
+												mm = mm<10?"0"+mm:mm;
+												var ss = tArr[i]%60;
+												ss = ss<10?"0"+ss.toPrecision(3):ss.toPrecision(4);
+												s += "[" + mm + ":" + ss  +"]" + lArr[i] + "\n";
+											}
+											_this.v.ta.value = s;
+
 											_on_off_div(_this,_this.v);
 										}
 									}(bShowLrc);
@@ -1321,6 +1365,7 @@ function ftnPlayer( oDiv ){
 											dl.b2 = blo0.blBtn(dl,dl.id+"b2",_div.lrcArray[i],blGrey[0]);
 										}
 									}
+
 									bUpdate.onclick();									
 								} 
 								_on_off_div(_this,_this.v0);
