@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.3.21"
+var g_ver_blClass = "blclass_v1.3.23"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -70,6 +70,7 @@ var QueryString = function ()
 
 var blColor	= ["red","tomato","gold","black","green","blue","lightblue","yellow","brown","pink","gray","white","mediumpurple",
 	"cyan"];
+var blPink	= ["Pink","LightPink","HotPink","DeepPink","PaleVioletRed","MediumVioletRed"];
 var blGrey	= ["Gainsboro","LightGray","Silver","DarkGray",
 			   "DimGray","Gray","LightSlateGray","SlateGray","DarkSlateGray","black"];
 
@@ -864,6 +865,7 @@ blo0.regMousemove = function(o){
 blo0.initDraw = function(cvs,_x,_y,_c){
 	for(i in blColor){blo0.blRect(cvs,_x+i*20,_y+5,10,10,blColor[i]);}
 	for(i in blGrey){blo0.blRect(cvs,_x+i*20,_y+25,10,10,blGrey[i]);}
+	for(i in blPink){blo0.blRect(cvs,_x+i*20,_y+55,10,10,blPink[i]);}
 }
 
 blo0.blCanvase = function(d,w,h,color){
@@ -904,7 +906,7 @@ blo0.blCanvase = function(d,w,h,color){
 		blo0.scm = new CScriptMng;
 		return function(){
 			_o.blRect(_cvs,0,0,_cvs.width,_cvs.height,"grey");	
-			_o.initDraw(_cvs,10,10,"brown");
+			_o.initDraw(_cvs,50,10,"brown");
 
 			blo0.scm.drawMng(_cvs,_cvs.width,_cvs.height);
 			var n = blo0.lsCVS.length; 
