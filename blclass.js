@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.3.23"
+var g_ver_blClass = "blclass_v1.3.25"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -290,7 +290,7 @@ function blClass ()
         return r;
     }
     this.blMD = function(id,html,x,y,w,h,bkClr){
-	    	var md = this.blDiv(document.body, id, g_ver_blClass + ":" + html,bkClr);  
+	    var md = this.blDiv(document.body, id, g_ver_blClass + ":" + html,bkClr);  
 		if(!md.run){
 		    md.run = true; 
 			var style ="position: absolute;";
@@ -497,7 +497,51 @@ function blClass ()
     	    if(oBoss!=null)oBoss.appendChild(r);
         }
         return r;
-    }
+	}
+	this.blTA = function(oBoss,id,txt){
+		var b1 = this.blBtn(oBoss,oBoss.id+"b1","b1","grey"); b1.style.float = "left";
+		var b2 = this.blBtn(oBoss,oBoss.id+"b2","b2","grey"); b2.style.float = "right";
+		var b3 = this.blBtn(oBoss,oBoss.id+"b3","b3","grey");  
+		var b4 = this.blBtn(oBoss,oBoss.id+"b4","b4","grey");  
+		var v1 = this.blDiv(oBoss,oBoss.id+"v1","v1","lightblue");
+		var v2 = this.blDiv(oBoss,oBoss.id+"v2","v2","lightblue");
+		var r 	= this.blTextarea(v1,id,txt,"grey");
+		r.style.width="95%"; 
+		r.style.height="30px"; 
+		b1.onclick = function(){
+			var p = bl$("myVideo"); p.src = r.value;
+		}
+
+		b2.onclick = function(){			
+			var url ="http://localhost:8080/download?url="+ r.value + "&filename=d.html";  
+			var w = {};
+			w._2do = function(txt){
+				var str = "var a =" +  txt;  
+				eval(str);  
+				v2.innerHTML =  a.filename;
+				b3.click();
+			}
+			blo0.blAjx(w,url);		 
+		}
+		b3.onclick = function(){			
+			var url ="http://localhost:8080/" + v2.innerHTML;  
+			var w = {};
+			w._2do = function(txt){
+				r.value = txt;
+				b4.click();
+			}
+			blo0.blAjx(w,url);		 
+		}
+		b4.onclick = function(){			
+			var a = r.value;
+			var b = a.split(".mp3");
+			var c = b[0].split("https://");
+			var d = c[c.length-1]; 
+			v2.innerHTML = "https://" + d + ".mp3";
+			var p = bl$("myVideo"); p.src = v2.innerHTML;
+		}
+		return r;
+	}
 
     this.blBtn = function (oBoss,id,html,bkClr){
         var r = document.getElementById(id);
@@ -579,7 +623,7 @@ var mousedownList = [];
 var mouseupList = [];
 var mousemoveList = [];
 
-function CPlayer(_w,_h,_c){ 
+function CMyTest(_w,_h,_c){ 
 	var x = 0, y=0,w=_w,h=_h,c=_c;
 	var txt = "player..."; 
 	var b1Txt = "b1";
@@ -587,8 +631,8 @@ function CPlayer(_w,_h,_c){
 		function(){
 			var d = new Date();
 			b1Txt = d.toLocaleTimeString();
-			var s = "testCPlayer: v0.0. 12";
-			var d = blo0.blMD("testCPlayer", s,    300,100,500,111, blGrey[5]); 
+			var s = "myTest: v0.0. 12";
+			var d = blo0.blMD("myTest", s,    300,100,500,111, blGrey[5]); 
 						 
 			_on_off_div(null,d);
 		},
@@ -736,7 +780,7 @@ function CScriptMng(){
 		ls.push(s);
 	});	
 	var rc = new CRectBtn(X,Y,w,h,CC,CC1);
-	var myPlayer = new CPlayer(121,55,"yellow");
+	var myTest = new CMyTest(121,55,"yellow");
  
 	this.clickList = function(_x,_y){ 
 		var l = ls.length;
@@ -780,7 +824,7 @@ function CScriptMng(){
 
 			this.drawList_z_0_n(cvs,X+W/18,Y+H/1.8,"brown"); 
 
-			myPlayer.draw(cvs,X+111,Y+1);
+			myTest.draw(cvs,X+111,Y+1);
  
 		}
 	} 
@@ -821,7 +865,7 @@ function CScriptMng(){
 			for(i in ls){
 				ls[i].click1script(_x,_y);
 			}	
-			myPlayer.click(_x,_y);
+			myTest.click(_x,_y);
 		}	
 		if(m){
 			X = _x;
@@ -1105,6 +1149,11 @@ function ftnPlayer( oDiv ){
 		if(!this.v){
 			this.v = blo0.blDiv(v,v.id + "List","list", "lightblue");
 			var d = this.v;
+
+			d.vn = blo0.blDiv(d,d.id+"v4NewURL","v4NewURL",blPink[2]); 
+			d.vn.ta = blo0.blTA(d.vn,d.vn+"ta","test");
+			
+
 			d.v = blo0.blDiv(d,d.id+"v","v",blGrey[3]); 
 			d.v4List = blo0.blDiv(d,d.id+"v4List", "v4List",  blColor[4]);
  
@@ -1145,7 +1194,7 @@ function ftnPlayer( oDiv ){
 			 
 				 for(i in a.songs){
 					   var p = bl$("myVideo");
-					  var id4Song = i/2+3;
+					   var id4Song = i/2+3;
 					   var dSong = blo0.blDiv(d,d.id+"_mp3_"+i, a.songs[i].mp3,blGrey[id4Song]);
 					   dSong.id = id4Song;
 					   dSong.style.border = "2px solid blue;";
