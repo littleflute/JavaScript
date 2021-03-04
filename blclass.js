@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.3.25"
+var g_ver_blClass = "blclass_v1.3.31"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -1035,7 +1035,6 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbInit,cbMousedown,cbMouseup,cbMousem
 	}
 	b.onCVSDraw = function(cvs){
 		if(b.b){
-			if(cbDraw) cbDraw(cvs,x,y,w,h);
 			blo0.blText(cvs,"down="+isDown,x+55,y,20,"yellow"); 
 			
 			blo0.blText(cvs,s,x+55,y+55,20,"Blue"); 
@@ -1043,6 +1042,7 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbInit,cbMousedown,cbMouseup,cbMousem
 			for(i in ls){
 				ls[i].onCVSDraw(cvs);
 			}
+			if(cbDraw) cbDraw(cvs,x,y,w,h);
 		}
 	}
 	b.onCVSMousedown = function(_x,_y){

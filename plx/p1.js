@@ -1,4 +1,4 @@
-const _plxTitle = "[plx/p1.js_v0.31]";
+const _plxTitle = "[plx/p1.js_v0.34]";
 
 var b = bl$("id_plx1_btn");
 b.onclick = function(){
@@ -61,10 +61,54 @@ function CTest(){
 			var sVOANews = 'blo0.blText(cvs,"voaNews",22,120,blColor[2]);';    
 			var tb = blo0.blDiv(md.server,md.server.id+"sv","sv",blGrey[0]);
 			var _wso = null;
+			var cs = {};
+			var ls = [2,3,4,5,6,7,8,9,10,"J","Q","K","A",2,3,4,5,6,7,8,9,10,"J","Q","K","A",2,3,4,5,6,7,8,9,10,"J","Q","K","A",2,3,4,5,6,7,8,9,10,"J","Q","K","A"];
+			var sT = "st...";
+			cs.init = function(_btn,_x,_y){
+				var di = 0, dj = 0;
+				for(i in ls){					
+					var r = _btn.addRect(_x + di*41,_y + dj*61,40,60,"white");
+					r.setFun(function(_o,_x,_y){ 
+						var c = _o.getColor();
+						if(c=="white") c = "brown";
+						else c = "white";
+						_o.setColor(c); 
+
+						const payLoad = {
+							"method": "M_i_201",
+							"msg": "msg..."			
+						}
+		
+						_wso.send(JSON.stringify(payLoad));
+					});
+					di++;
+					if(di>12){
+						dj++;
+						di=0;
+					}
+				}				
+			}
+			cs.draw = function(cvs,_x,_y){
+				var di = 0, dj = 0;
+				for(i in ls){
+					blo0.blText(cvs,ls[i],_x + di*41 + 120,_y+120 + dj*61, 20,"blue");
+					var ss = "var gs = " + JSON.stringify( sT );
+        			eval(ss);
+
+					blo0.blText(cvs,gs[i].num,_x + di*41 + 120,_y+150 + dj*61, 20,"blue");
+					di++;
+					if(di>12){
+						dj++;
+						di=0;
+					}
+				}
+			}
+
 			var dbg = blo0.dbgBtn(tb,"dbg","grey",c,
-			  function(cvs,_x,_y,_w,_h){
+			  function(cvs,_x,_y,_w,_h){//cbDraw
 				blo0.blRect(cvs,_x,_y,_w,_h,"lightblue");
 				blo0.blText(cvs,"server.dbg",_x,_y,20,c);
+				cs.draw(cvs,_x,_y);
 				eval(ss);
 				eval(sVOANews);
 			  },
@@ -74,11 +118,22 @@ function CTest(){
 					const da = JSON.parse(msg.data);
 					var s = "";
 					if (da.method === "mBreakNews"){
-						_btn.setS(da.news);
-					}					
+						_btn.setS(da.news); 
+					}	
+					if (da.method === "M_i_201"){
+						sT=da.data;
+					}										
 				}
+				
+				cs.init(_btn,222,222);
+
 				var r = _btn.addRect(100 + 25,300,20,20,"green");
 				r.setFun(function(_o,_x,_y){ 
+					var c = _o.getColor();
+					if(c=="green") c = "brown";
+					else c = "green";
+					_o.setColor(c);
+
 					const payLoad = {
 						"method": "html5Test",
 						"msg": "msg...",
@@ -126,7 +181,7 @@ function CTest(){
 					_o.setColor(c);
 
 					const payLoad = {
-						"method": "html5Test",
+						"method": "M_i_201",
 						"msg": "msg...",
 						"x": _x,
 						"y": _y						
