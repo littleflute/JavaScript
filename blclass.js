@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.3.34"
+var g_ver_blClass = "blclass_v1.3.35"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -618,12 +618,28 @@ function blClass ()
 		ctx.fillStyle = color;
 		ctx.fillRect(x,y,w,h);	
 	}
-	this.blCard = function(_cvs,_s,_n,_x,_y,_w,_h,_c){
-		var cvs=_cvs,suit=_s,num=_n; 
+	this.blCard = function(_s,_n,_x,_y,_w,_h,_c){
+		var suit=_s,num=_n; 
+		var x = _x, y = _y;
+		var sCLickX = "[x]";
 		var r = {}; 
-		var or = new CCVSRect(_x,_y,_w,_h,_c);
-		r.draw = function(){
-			or.onCVSDraw(cvs);
+		var or = new CCVSRect(_x,_y,_w,_h,_c); 
+		or.setFun(function(_this,x,y){
+			sClickX = x;
+		});
+		or.setDrawFun(function(cvs){
+			blo0.blText(cvs,"set f",x,y+30,20,"brown");
+		});
+	
+		
+		blo0.regCVSDraw(or);	
+		blo0.regMousedown(or); 
+		r.setXY = function(_x,_y) {
+			or.setXY(_x,_y);
+			x = _x, y = _y;
+		} 
+		r.draw = function(cvs,x,y){
+			blo0.blText(cvs,sCLickX,x,y,20,"yellow");
 		}
 		return r;
 	}
@@ -1107,19 +1123,26 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbInit,cbMousedown,cbMouseup,cbMousem
 
 function CCVSRect(_x,_y,_w,_h,_clr){
 	var x = _x; var y = _y; var w = _w; var h = _h; var clr = _clr;
-	var f = null;
-	this.setFun = function(_f){ f = _f;	}
+	var fClick = null;
+	var fDraw = null;
+
+	this.setFun = function(_f){ fClick = _f;	}
+	this.setDrawFun = function(_f){ fDraw = _f;	}
+	this.setXY = function(_x,_y) { x = _x; y= _y; }
 	this.setColor = function(_clr){ clr = _clr;	}
 	this.getColor = function(){ return clr;}
+	this.getX = function(){ return x;}
+	this.getY = function(){ return y;} 
 	this.onCVSDraw = function(cvs){
 		blo0.blRect(cvs,x,y,w,h,clr);
+		if(fDraw) { fDraw(cvs);}
 	}
 	this.move = function(_dx,_dy){
 		x += _dx; y += _dy;
 	} 
 	this.onCVSMousedown = function(_x,_y){ 
 			if(blo0.blPiR(_x,_y,x,y,w,h)){ 
-				if(f) f(this,_x,_y);
+				if(fClick) fClick(this,_x,_y);
 			} 
 	} 
 }
