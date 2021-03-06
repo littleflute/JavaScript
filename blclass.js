@@ -628,9 +628,8 @@ function blClass ()
 			sClickX = x;
 		});
 		or.setDrawFun(function(cvs){
-			blo0.blText(cvs,"set f",x,y+30,20,"brown");
-		});
-	
+			blo0.blText(cvs,sCLickX,x,y+30,20,"brown");
+		});	
 		
 		blo0.regCVSDraw(or);	
 		blo0.regMousedown(or); 
@@ -1135,6 +1134,7 @@ function CCVSRect(_x,_y,_w,_h,_clr){
 	this.getY = function(){ return y;} 
 	this.onCVSDraw = function(cvs){
 		blo0.blRect(cvs,x,y,w,h,clr);
+		blo0.blText(cvs,fClick,x,y+50,20,"green");
 		if(fDraw) { fDraw(cvs);}
 	}
 	this.move = function(_dx,_dy){
