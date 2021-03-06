@@ -66,8 +66,23 @@ function CTest(){
 			var cards = [];
 			var sT = "st..."; 
 			cs.init = function(_btn,_x,_y){  
-				for(i in ls){   	
-					var c = blo0.blCard(0,0,_x+i*41,_y, 40,60,"red"); 
+				for(i in ls){  
+					var xi = _x+i*41, yi = _y; 	
+					var c = blo0.blCard(i/13,ls[i],xi,yi, 40,60,"white",
+					  function(_i){
+						return  function(cvs,x,y,w,h,c){//onDraw								
+							blo0.blRect(cvs,x+w-10,y+h-10,10,10,"yellow");	
+							blo0.blText(cvs,sT,x+w/2,y+h/2,20,"lightgreen");			
+						  }
+					  }(i),
+					  function(wso){//onClick
+						return function(_o,x,y){
+							var c = _o.getColor();
+							if(c=="lightgreen") c = "yellow";
+							else c = "lightgreen";
+							_o.setColor(c);
+						}
+						}(_wso)); 
 					cards.push(c);
 				}
 			}
