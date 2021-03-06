@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.3.34"
+var g_ver_blClass = "blclass_v1.3.35"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -618,12 +618,220 @@ function blClass ()
 		ctx.fillStyle = color;
 		ctx.fillRect(x,y,w,h);	
 	}
-	this.blCard = function(_cvs,_s,_n,_x,_y,_w,_h,_c){
-		var cvs=_cvs,suit=_s,num=_n; 
+	this.drawSpade = function (cvs, x, y, width, height){
+        var context = cvs.getContext("2d");
+        
+        context.fillStyle = "black";
+
+        context.save();
+        var bottomWidth = width * 0.7;
+        var topHeight = height * 0.7;
+        var bottomHeight = height * 0.3;
+        
+        context.beginPath();
+        context.moveTo(x, y);
+        
+        // top left of spade          
+        context.bezierCurveTo(
+               x, y + topHeight / 2, // control point 1
+               x - width / 2, y + topHeight / 2, // control point 2
+               x - width / 2, y + topHeight // end point
+                             );
+        
+        // bottom left of spade
+        context.bezierCurveTo(
+  x - width / 2, y + topHeight * 1.3, // control point 1
+        x, y + topHeight * 1.3, // control point 2
+        x, y + topHeight // end point
+      );
+        
+        // bottom right of spade
+        context.bezierCurveTo(
+  x, y + topHeight * 1.3, // control point 1
+        x + width / 2, y + topHeight * 1.3, // control point 2
+        x + width / 2, y + topHeight // end point
+      );
+        
+        // top right of spade
+        context.bezierCurveTo(
+  x + width / 2, y + topHeight / 2, // control point 1
+        x, y + topHeight / 2, // control point 2
+        x, y // end point
+      );
+        
+        context.closePath();
+        context.fill();
+        
+        // bottom of spade
+        context.beginPath();
+        context.moveTo(x, y + topHeight);
+        context.quadraticCurveTo(
+  x, y + topHeight + bottomHeight, // control point
+        x - bottomWidth / 2, y + topHeight + bottomHeight // end point
+      );
+        context.lineTo(x + bottomWidth / 2, y + topHeight + bottomHeight);
+        context.quadraticCurveTo(
+  x, y + topHeight + bottomHeight, // control point
+        x, y + topHeight // end point
+      );
+        context.closePath();
+        context.fillStyle = "black";
+        context.fill();
+        context.restore();
+    }
+	 
+	this.drawDiamond = function(cvs, x, y, width, height){
+        var context = cvs.getContext("2d");
+        context.fillStyle = "red";
+        context.save();
+                context.beginPath();
+                context.moveTo(x, y);
+                
+                // top left edge
+                context.lineTo(x - width / 2, y + height / 2);
+                
+                // bottom left edge
+                context.lineTo(x, y + height);
+                
+                // bottom right edge
+                context.lineTo(x + width / 2, y + height / 2);
+                
+                // closing the path automatically creates
+                // the top right edge
+                context.closePath();
+                
+                context.fillStyle = "red";
+                context.fill();
+        context.restore();
+    }
+	this.drawClub = function (cvs, x, y, width, height){
+        var context = cvs.getContext("2d");        
+        context.fillStyle = "black";
+
+        context.save();
+        var circleRadius = width * 0.3;
+        var bottomWidth = width * 0.5;
+        var bottomHeight = height * 0.35;
+                context.fillStyle = "black";
+        
+                // top circle
+                context.beginPath();
+                context.arc(
+          x, y + circleRadius + (height * 0.05), 
+          circleRadius, 0, 2 * Math.PI, false
+        );
+                context.fill();
+                
+                // bottom right circle
+                context.beginPath();
+                context.arc(
+          x + circleRadius, y + (height * 0.6), 
+          circleRadius, 0, 2 * Math.PI, false
+        );
+                context.fill();
+                
+                // bottom left circle
+                context.beginPath();
+                context.arc(
+          x - circleRadius, y + (height * 0.6), 
+          circleRadius, 0, 2 * Math.PI, false
+        );
+                context.fill();
+                
+                // center filler circle
+                context.beginPath();
+                context.arc(
+          x, y + (height * 0.5), 
+          circleRadius / 2, 0, 2 * Math.PI, false
+        );
+                context.fill();
+                
+                // bottom of club
+                context.moveTo(x, y + (height * 0.6));
+                context.quadraticCurveTo(
+          x, y + height, 
+          x - bottomWidth / 2, y + height
+        );
+                context.lineTo(x + bottomWidth / 2, y + height);
+                context.quadraticCurveTo(
+          x, y + height, 
+          x, y + (height * 0.6)
+        );
+                context.closePath();
+                context.fill();
+        context.restore();
+    }
+	this.drawHeart = function (cvs, x, y, width, height){
+        var context = cvs.getContext("2d");        
+        context.fillStyle = "black";
+        context.save();
+                context.beginPath();
+        var topCurveHeight = height * 0.3;
+                context.moveTo(x, y + topCurveHeight);
+                // top left curve
+                context.bezierCurveTo(
+          x, y, 
+          x - width / 2, y, 
+          x - width / 2, y + topCurveHeight
+        );
+                
+                // bottom left curve
+                context.bezierCurveTo(
+          x - width / 2, y + (height + topCurveHeight) / 2, 
+          x, y + (height + topCurveHeight) / 2, 
+          x, y + height
+        );
+                
+                // bottom right curve
+                context.bezierCurveTo(
+          x, y + (height + topCurveHeight) / 2, 
+          x + width / 2, y + (height + topCurveHeight) / 2, 
+          x + width / 2, y + topCurveHeight
+        );
+                
+                // top right curve
+                context.bezierCurveTo(
+          x + width / 2, y, 
+          x, y, 
+          x, y + topCurveHeight
+        );
+                
+                context.closePath();
+                context.fillStyle = "red";
+                context.fill();
+        context.restore();
+    }
+
+	this.blCard = function(_s,_n,_x,_y,_w,_h,_c,_ondraw,_onclick){
+		var suit=_s,num=_n; 
+		var x = _x, y = _y; 
+		var myDraw = function(_suit,_num,_toDraw){ 			
+			return function(cvs,x,h,w,h,c){
+				if(_suit==0)				blo0.drawSpade(cvs,x+w/6,y+h/8,15,15);	
+				if(_suit==1)				blo0.drawHeart(cvs,x+w/6,y+h/8,15,15);	
+				if(_suit==2)				blo0.drawClub(cvs,x+w/6,y+h/8,15,15);		
+				if(_suit==3)				blo0.drawDiamond(cvs,x+w/6,y+h/8,15,15);	
+				
+				blo0.blText(cvs,_suit,x+w/3,y+h/2,20,"brown");
+				blo0.blText(cvs,_num,x+w/3,y+h/3,20,"blue");
+				if(_toDraw) _toDraw(cvs,x,y,w,h,c);
+			}
+		}(suit,num,_ondraw);
 		var r = {}; 
-		var or = new CCVSRect(_x,_y,_w,_h,_c);
-		r.draw = function(){
-			or.onCVSDraw(cvs);
+		r.x = 0;
+		var or = new CCVSRect(_x,_y,_w,_h,_c); 
+		or.setFun(_onclick);
+		or.setDrawFun(myDraw);	
+		
+		blo0.regCVSDraw(or);	
+		blo0.regMousedown(or); 
+
+		r.setXY = function(_x,_y) {
+			or.setXY(_x,_y);
+			x = _x, y = _y;
+		} 
+		r.draw = function(cvs,x,y){
+			blo0.blText(cvs,r.y,x,y,20,"yellow");
 		}
 		return r;
 	}
@@ -1107,19 +1315,26 @@ blo0.dbgBtn = function(tb,txt,c1,c2,cbDraw,cbInit,cbMousedown,cbMouseup,cbMousem
 
 function CCVSRect(_x,_y,_w,_h,_clr){
 	var x = _x; var y = _y; var w = _w; var h = _h; var clr = _clr;
-	var f = null;
-	this.setFun = function(_f){ f = _f;	}
+	var fClick = null;
+	var fDraw = null;
+
+	this.setFun = function(_f){ fClick = _f;	}
+	this.setDrawFun = function(_f){ fDraw = _f;	}
+	this.setXY = function(_x,_y) { x = _x; y= _y; }
 	this.setColor = function(_clr){ clr = _clr;	}
 	this.getColor = function(){ return clr;}
+	this.getX = function(){ return x;}
+	this.getY = function(){ return y;} 
 	this.onCVSDraw = function(cvs){
-		blo0.blRect(cvs,x,y,w,h,clr);
+		blo0.blRect(cvs,x,y,w,h,clr); 
+		if(fDraw) { fDraw(cvs,x,y,w,h,clr);}
 	}
 	this.move = function(_dx,_dy){
 		x += _dx; y += _dy;
 	} 
 	this.onCVSMousedown = function(_x,_y){ 
 			if(blo0.blPiR(_x,_y,x,y,w,h)){ 
-				if(f) f(this,_x,_y);
+				if(fClick) fClick(this,_x,_y);
 			} 
 	} 
 }

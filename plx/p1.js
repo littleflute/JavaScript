@@ -63,40 +63,33 @@ function CTest(){
 			var _wso = null;
 			var cs = {};
 			var ls = [2,3,4,5,6,7,8,9,10,"J","Q","K","A",2,3,4,5,6,7,8,9,10,"J","Q","K","A",2,3,4,5,6,7,8,9,10,"J","Q","K","A",2,3,4,5,6,7,8,9,10,"J","Q","K","A"];
-			var sT = "st...";
-			cs.init = function(_btn,_x,_y){
-				var di = 0, dj = 0;
-				for(i in ls){					
-					var r = _btn.addRect(_x + di*41,_y + dj*61,40,60,"white");
-					r.setFun(function(_o,_x,_y){ 
-						var c = _o.getColor();
-						if(c=="white") c = "brown";
-						else c = "white";
-						_o.setColor(c); 
-
-						const payLoad = {
-							"method": "M_i_201",
-							"msg": "msg..."			
+			var cards = [];
+			var sT = "st..."; 
+			cs.init = function(_btn,_x,_y){  
+				for(i in ls){  
+					var xi = _x+i*41, yi = _y; 	
+					var c = blo0.blCard(i/13,ls[i],xi,yi, 40,60,"white",
+					  function(_i){
+						return  function(cvs,x,y,w,h,c){//onDraw								
+							blo0.blRect(cvs,x+w-10,y+h-10,10,10,"yellow");	
+							blo0.blText(cvs,sT,x+w/2,y+h/2,20,"lightgreen");			
+						  }
+					  }(i),
+					  function(wso){//onClick
+						return function(_o,x,y){
+							var c = _o.getColor();
+							if(c=="lightgreen") c = "yellow";
+							else c = "lightgreen";
+							_o.setColor(c);
 						}
-		
-						_wso.send(JSON.stringify(payLoad));
-					});
-					di++;
-					if(di>12){
-						dj++;
-						di=0;
-					}
-				}				
+						}(_wso)); 
+					cards.push(c);
+				}
 			}
 			cs.draw = function(cvs,_x,_y){
 				var di = 0, dj = 0;
-				for(i in ls){   
-					blo0.blText(cvs,ls[i],_x + di*41 + 120,_y+120 + dj*61, 20,"blue");
-					var ss = "var gs = " + JSON.stringify( sT );
-        			eval(ss);
-
-					blo0.blText(cvs,gs[i].num,_x + di*41 + 120,_y+150 + dj*61, 20,"blue");
-				 
+				for(i in ls){   					 
+					cards[i].setXY(_x + di*41 + 120,_y+120 + dj*61);  
 					di++;
 					if(di>12){
 						dj++;
