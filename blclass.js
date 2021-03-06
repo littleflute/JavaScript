@@ -1,5 +1,5 @@
 // file: blclass.js    by littleflute 
-var g_ver_blClass = "blclass_v1.3.31"
+var g_ver_blClass = "blclass_v1.3.34"
 function myAjaxCmd(method, url, data, callback){
 	var xmlHttpReg = null;
 	if (window.XMLHttpRequest){
@@ -613,6 +613,20 @@ function blClass ()
 	this.sXY = function(x,y){
 		return " ["+x+","+y+"]";
 	}
+	this.blRect = function(cvs,x,y,w,h,color){
+		var ctx = cvs.getContext("2d");
+		ctx.fillStyle = color;
+		ctx.fillRect(x,y,w,h);	
+	}
+	this.blCard = function(_cvs,_s,_n,_x,_y,_w,_h,_c){
+		var cvs=_cvs,suit=_s,num=_n; 
+		var r = {}; 
+		var or = new CCVSRect(_x,_y,_w,_h,_c);
+		r.draw = function(){
+			or.onCVSDraw(cvs);
+		}
+		return r;
+	}
 	
 }//END: function blClass ()
  
@@ -980,7 +994,7 @@ blo0.blParseURL = function(_url,cb){
 		}			 
 	 } 
 }
-blo0.blGetGHI = function(_url,cb){  
+blo0.blGetGHI = function(_url,cb){  //git github issue
 	var r = "blo0.blGetGHI： "+ _url + "_" + cb + ":"+ Date();
 	var token = "f89b0eccf7"+"4c65a65513"+"60062c3e47"+"98d0df4577";//jp
 	var xdToken = "023b4e4f"+"a78cff90"+"8afa75bf"+"072567053"+"3bacc60";
@@ -1010,11 +1024,8 @@ blo0.blPlayer = function(_id, _title,_x,_y,_w,_h,_c){
 	ftnPlayer(d);
 	return d;
 }
-blo0.blRect = function(cvs,x,y,w,h,color){
-	var ctx = cvs.getContext("2d");
-	ctx.fillStyle = color;
-	ctx.fillRect(x,y,w,h);	
-}
+
+
 blo0.blText = function(cvs,txt,x,y,size,color){
 	var ctx = cvs.getContext("2d");
 	ctx.font = size + "px Arial";

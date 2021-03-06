@@ -90,12 +90,13 @@ function CTest(){
 			}
 			cs.draw = function(cvs,_x,_y){
 				var di = 0, dj = 0;
-				for(i in ls){
+				for(i in ls){   
 					blo0.blText(cvs,ls[i],_x + di*41 + 120,_y+120 + dj*61, 20,"blue");
 					var ss = "var gs = " + JSON.stringify( sT );
         			eval(ss);
 
 					blo0.blText(cvs,gs[i].num,_x + di*41 + 120,_y+150 + dj*61, 20,"blue");
+				 
 					di++;
 					if(di>12){
 						dj++;
